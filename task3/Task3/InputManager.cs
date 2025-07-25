@@ -37,7 +37,7 @@ namespace Task3
             for (int i = 0; i < input.Length; i++)
             {
 
-                if (index > 6)
+                if (index > 5)
                 {
                     throw new Exception("Invalid arguments. Please restart game with correct arguments.");
                 }
@@ -66,6 +66,11 @@ namespace Task3
                     buffer = "";
 
                 }
+            }
+
+            if (index < 5)
+            {
+                throw new Exception("Invalid arguments. Please restart game with correct arguments.");
             }
 
             return result;

@@ -140,7 +140,7 @@ namespace Task3
 
                     int num = inputManager.stringToInt(input);
 
-                    if (num < 0 && (computeIndex == -1 && num > args.Length - 1 || computeIndex != -1 && num > args.Length - 2))
+                    if (num < 0 || (computeIndex == -1 && num > args.Length - 1 || computeIndex != -1 && num > args.Length - 2))
                     {
                         Console.WriteLine("Incorrect input. Please try again");
                     }
@@ -149,6 +149,78 @@ namespace Task3
                         break;
                     }
                     
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+
+            return input;
+        }
+
+        public string menuSecondMove()
+        {
+            string? input;
+
+            InputManager inputManager = new InputManager();
+
+            while (true)
+            {
+
+                for (int i = 0; i < 6; i++)
+                {
+                    Console.WriteLine($"{i} - {i}");
+                }
+                Console.WriteLine("X - exit");
+                Console.WriteLine("? - help");
+
+                Console.Write("Your selection: ");
+
+                input = Console.ReadLine();
+
+                if (input != "X" && input != "?")
+                {
+
+                    int num = inputManager.stringToInt(input);
+
+                    if (num < 0 || num > 5)
+                    {
+                        Console.WriteLine("Incorrect input. Please try again");
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+
+            return input;
+        }
+
+        public string menuRepeat()
+        {
+
+            string input;
+
+            while (true)
+            {
+                Console.WriteLine("0 - Repeat");
+                Console.WriteLine("X - exit");
+                Console.Write("Your selection: ");
+
+                input = Console.ReadLine();
+
+                if (input != "X" && input != "0")
+                {
+                    Console.WriteLine("Incorrect input. Please try again");
                 }
                 else
                 {

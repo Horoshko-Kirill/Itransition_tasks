@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "nZ6zdgg5qj0=",
+  "dgSpecHash": "CBgx29jp7IA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Кирилл\\Desktop\\task3\\Task3\\Task3.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task3\\Task3\\Task3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Кирилл\\.nuget\\packages\\consoletables\\2.7.0\\consoletables.2.7.0.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\wcwidth\\1.0.0\\wcwidth.1.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

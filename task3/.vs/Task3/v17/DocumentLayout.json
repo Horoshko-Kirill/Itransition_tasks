@@ -1,34 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\",
+  "WorkspaceRootPath": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\random.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\random.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\task3\\task3\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\probability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\probability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\tableprobability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\tableprobability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task3\\task3\\random.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5CF36C-D9B3-469D-8A54-BAEC065BDCF2}|Task3\\Task3.csproj|solutionrelative:task3\\random.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,92 +46,124 @@
       "DocumentGroups": [
         {
           "DockedHeight": 147,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Output.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Output.cs",
-              "RelativeDocumentMoniker": "Task3\\Output.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Output.cs",
-              "RelativeToolTip": "Task3\\Output.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "TableProbability.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\TableProbability.cs",
+              "RelativeDocumentMoniker": "Task3\\TableProbability.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\TableProbability.cs",
+              "RelativeToolTip": "Task3\\TableProbability.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAswCIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T21:36:44.739Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Random.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Random.cs",
-              "RelativeDocumentMoniker": "Task3\\Random.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Random.cs",
-              "RelativeToolTip": "Task3\\Random.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCoAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T20:25:22.515Z"
+              "WhenOpened": "2025-07-25T21:32:59.946Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Probability.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Probability.cs",
+              "RelativeDocumentMoniker": "Task3\\Probability.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Probability.cs",
+              "RelativeToolTip": "Task3\\Probability.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T21:20:15.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Output.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Output.cs",
+              "RelativeDocumentMoniker": "Task3\\Output.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Output.cs",
+              "RelativeToolTip": "Task3\\Output.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAADwvxgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T21:36:44.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Random.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Random.cs",
+              "RelativeDocumentMoniker": "Task3\\Random.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Random.cs",
+              "RelativeToolTip": "Task3\\Random.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T20:25:22.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Menu.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Menu.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Menu.cs",
               "RelativeDocumentMoniker": "Task3\\Menu.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Menu.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Menu.cs",
               "RelativeToolTip": "Task3\\Menu.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAADwv5QAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAmwI4AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T19:15:14.536Z"
+              "WhenOpened": "2025-07-23T19:15:14.536Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "InputManager.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\InputManager.cs",
               "RelativeDocumentMoniker": "Task3\\InputManager.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\InputManager.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\InputManager.cs",
               "RelativeToolTip": "Task3\\InputManager.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAiwEgAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T18:38:43.998Z"
+              "WhenOpened": "2025-07-23T18:38:43.998Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Dice.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Dice.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Dice.cs",
               "RelativeDocumentMoniker": "Task3\\Dice.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Dice.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Dice.cs",
               "RelativeToolTip": "Task3\\Dice.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T18:25:10.546Z"
+              "WhenOpened": "2025-07-23T18:25:10.546Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "GameController.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\GameController.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\GameController.cs",
               "RelativeDocumentMoniker": "Task3\\GameController.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\GameController.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\GameController.cs",
               "RelativeToolTip": "Task3\\GameController.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAswKQAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAP8AAAAAAAAAAAAowAsBAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-23T18:23:27.357Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Program.cs",
               "RelativeDocumentMoniker": "Task3\\Program.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\task3\\Task3\\Program.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task3\\Task3\\Program.cs",
               "RelativeToolTip": "Task3\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T18:10:35.168Z"
+              "WhenOpened": "2025-07-23T18:10:35.168Z",
+              "EditorCaption": ""
             }
           ]
         },
