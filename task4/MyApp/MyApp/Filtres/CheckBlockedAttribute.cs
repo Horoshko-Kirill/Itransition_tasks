@@ -8,46 +8,41 @@ namespace MyApp.Filtres
     public class CheckBlockedAttribute : ActionFilterAttribute
     {
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public CheckBlockedAttribute(UserManager<User> userManager)
+        public CheckBlockedAttribute(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            try
+            var userPrincipal = context.HttpContext.User;
+
+            if (userPrincipal.Identity?.IsAuthenticated == true)
             {
-                var user = context.HttpContext.User;
+                var appUser = await _userManager.GetUserAsync(userPrincipal);
 
-                if (user.Identity?.IsAuthenticated == true)
+                if (appUser == null)
                 {
-                    var appUser = await _userManager.GetUserAsync(user);
-
-                    if (appUser != null)
-                    {
-                        appUser.LastVisit = DateTime.UtcNow;
-                        await _userManager.UpdateAsync(appUser);
-
-                        if (appUser.IsBlocked)
-                        {
-                            var signInManager = context.HttpContext.RequestServices.GetService<SignInManager<User>>();
-                            if (signInManager != null)
-                            {
-                                await signInManager.SignOutAsync();
-                            }
-                            context.Result = new RedirectToActionResult("Blocked", "Account", null);
-                            return;
-                        }
-                    }
+                    await _signInManager.SignOutAsync();
+                    context.Result = new RedirectToActionResult("Login", "Account", null);
+                    return;
                 }
 
-                await next();
+                if (appUser.IsBlocked)
+                {
+                    await _signInManager.SignOutAsync();
+                    context.Result = new RedirectToActionResult("Login", "Account", null);
+                    return;
+                }
+
+                appUser.LastVisit = DateTime.UtcNow;
+                await _userManager.UpdateAsync(appUser);
             }
-            catch (Exception ex)
-            {
-                context.Result = new StatusCodeResult(500);
-            }
+
+            await next();
         }
     }
 }
