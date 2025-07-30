@@ -35,7 +35,7 @@ namespace MyApp.Controllers
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
-                ModelState.AddModelError("", "Incorrect email or password.");
+                TempData["Blocked"] = "Incorrect email or password.";
                 return View(model);
             }
 
