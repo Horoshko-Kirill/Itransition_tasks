@@ -10,26 +10,32 @@ using NpgsqlTypes;
 var builder = WebApplication.CreateBuilder(args);
 
 
-var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-if (string.IsNullOrEmpty(dbUrl))
-    throw new Exception("DATABASE_URL is not set");
+var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL")
+    ?? throw new Exception("DATABASE_URL is not set");
+
+
+if (!dbUrl.Contains(":"))
+{
+    var parts = dbUrl.Split('@');
+    dbUrl = $"{parts[0]}@{parts[1].Replace("-a/", "-a:5432/")}";
+}
 
 var uri = new Uri(dbUrl);
 var userInfo = uri.UserInfo.Split(':');
 
-
-var port = uri.Port > 0 ? uri.Port : 5432; 
-
 var connectionString = new NpgsqlConnectionStringBuilder
 {
     Host = uri.Host,
-    Port = port, 
+    Port = uri.Port > 0 ? uri.Port : 5432, 
     Username = userInfo[0],
     Password = userInfo[1],
     Database = uri.AbsolutePath.Trim('/'),
     SslMode = SslMode.Require,
     TrustServerCertificate = true
 }.ToString();
+
+
+Console.WriteLine($"DB Connection: {connectionString}");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
