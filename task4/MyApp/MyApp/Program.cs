@@ -4,30 +4,35 @@ using Microsoft.Extensions.Options;
 using MyApp.Data;
 using MyApp.Filtres;
 using MyApp.Models;
+using Npgsql;
+using NpgsqlTypes;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-var envConnection = Environment.GetEnvironmentVariable("DATABASE_URL");
+var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+if (string.IsNullOrEmpty(dbUrl))
+{
+    throw new Exception("DATABASE_URL environment variable is not set");
+}
 
-
-var uri = new Uri(envConnection);
+var uri = new Uri(dbUrl);
 var db = uri.AbsolutePath.Trim('/');
 var userInfo = uri.UserInfo.Split(':');
 
-var connection = new NpgsqlConnectionStringBuilder
+var connectionString = new NpgsqlConnectionStringBuilder
 {
     Host = uri.Host,
     Port = uri.Port,
     Username = userInfo[0],
     Password = userInfo[1],
     Database = db,
-    SslMode = SslMode.Require, 
+    SslMode = SslMode.Require,
     TrustServerCertificate = true
 }.ToString();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connection));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>(options => 
     {
