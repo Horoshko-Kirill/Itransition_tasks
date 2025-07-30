@@ -8,8 +8,26 @@ using MyApp.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 
+var envConnection = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+
+var uri = new Uri(envConnection);
+var db = uri.AbsolutePath.Trim('/');
+var userInfo = uri.UserInfo.Split(':');
+
+var connection = new NpgsqlConnectionStringBuilder
+{
+    Host = uri.Host,
+    Port = uri.Port,
+    Username = userInfo[0],
+    Password = userInfo[1],
+    Database = db,
+    SslMode = SslMode.Require, 
+    TrustServerCertificate = true
+}.ToString();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connection));
 
 builder.Services.AddIdentity<User, IdentityRole>(options => 
     {
