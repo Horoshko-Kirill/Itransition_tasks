@@ -12,21 +12,21 @@ var builder = WebApplication.CreateBuilder(args);
 
 var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 if (string.IsNullOrEmpty(dbUrl))
-{
-    throw new Exception("DATABASE_URL environment variable is not set");
-}
+    throw new Exception("DATABASE_URL is not set");
 
 var uri = new Uri(dbUrl);
-var db = uri.AbsolutePath.Trim('/');
 var userInfo = uri.UserInfo.Split(':');
+
+
+var port = uri.Port > 0 ? uri.Port : 5432; 
 
 var connectionString = new NpgsqlConnectionStringBuilder
 {
     Host = uri.Host,
-    Port = uri.Port,
+    Port = port, 
     Username = userInfo[0],
     Password = userInfo[1],
-    Database = db,
+    Database = uri.AbsolutePath.Trim('/'),
     SslMode = SslMode.Require,
     TrustServerCertificate = true
 }.ToString();
