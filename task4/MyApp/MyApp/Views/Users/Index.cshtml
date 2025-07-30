@@ -1,0 +1,93 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<MyApp.Models.User>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary m-0">List of Users</h2>
+
+    <form asp-action="Logout" asp-controller="Account" method="post" class="mb-0">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Logout</button>
+    </form>
+</div>
+
+<div class="d-flex justify-content-between mb-3">
+
+
+    <form asp-action="BulkAction" method="post" style="width: 100%;">
+        <div class="d-flex gap-2 mb-3">
+            <button name="action" value="block" class="btn btn-warning">Block</button>
+            <button name="action" value="unblock" class="btn btn-success">Unblock</button>
+            <button name="action" value="delete" class="btn btn-danger">Delete</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col"><input type="checkbox" id="select-all" /></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Last Visit</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td><input type="checkbox" name="selectedIds" value="@user.Id" /></td>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            @{
+                                TimeSpan? ago = user.LastVisit == default ? (TimeSpan?)null : DateTime.UtcNow - user.LastVisit;
+                            }
+                            <td>
+                                @if (ago == null)
+                                {
+                                    <span class="text-muted">Never</span>
+                                }
+                                else
+                                {
+                                    var readable = ago.Value.TotalMinutes < 1 ? "Just now"
+                                    : ago.Value.TotalMinutes < 60 ? $"{(int)ago.Value.TotalMinutes} min ago"
+                                    : ago.Value.TotalHours < 24 ? $"{(int)ago.Value.TotalHours} hours ago"
+                                    : $"{(int)ago.Value.TotalDays} days ago";
+
+                                    <span title="@user.LastVisit.ToLocalTime().ToString("f")">@readable</span>
+                                }
+                            </td>
+                            <td>
+                                @if (user.IsBlocked)
+                                {
+                                    <span class="badge bg-danger">Blocked</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("select-all").addEventListener("click", function () {
+            const checkboxes = document.querySelectorAll('input[name="selectedIds"]');
+            for (const cb of checkboxes) {
+                cb.checked = this.checked;
+            }
+        });
+    </script>
+}
