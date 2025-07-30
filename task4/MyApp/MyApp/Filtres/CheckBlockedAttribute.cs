@@ -7,9 +7,7 @@ namespace MyApp.Filtres
 {
     public class CheckBlockedAttribute : ActionFilterAttribute
     {
-
         private readonly UserManager<User> _userManager;
-
 
         public CheckBlockedAttribute(UserManager<User> userManager)
         {
@@ -18,26 +16,38 @@ namespace MyApp.Filtres
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var user = context.HttpContext.User;
-
-            if (user.Identity.IsAuthenticated)
+            try
             {
-                var appUser = await _userManager.GetUserAsync(user);
+                var user = context.HttpContext.User;
 
-                appUser.LastVisit = DateTime.UtcNow;
-                await _userManager.UpdateAsync(appUser);
-
-                if (appUser != null && appUser.IsBlocked)
+                if (user.Identity?.IsAuthenticated == true)
                 {
-                    var signInManager = context.HttpContext.RequestServices.GetService<SignInManager<User>>();
-                    await signInManager.SignOutAsync();
-                    context.Result = new RedirectToActionResult("Blocked", "Account", null);
-                    return;
+                    var appUser = await _userManager.GetUserAsync(user);
+
+                    if (appUser != null)
+                    {
+                        appUser.LastVisit = DateTime.UtcNow;
+                        await _userManager.UpdateAsync(appUser);
+
+                        if (appUser.IsBlocked)
+                        {
+                            var signInManager = context.HttpContext.RequestServices.GetService<SignInManager<User>>();
+                            if (signInManager != null)
+                            {
+                                await signInManager.SignOutAsync();
+                            }
+                            context.Result = new RedirectToActionResult("Blocked", "Account", null);
+                            return;
+                        }
+                    }
                 }
+
+                await next();
             }
-
-            await next();
+            catch (Exception ex)
+            {
+                context.Result = new StatusCodeResult(500);
+            }
         }
-
     }
 }
