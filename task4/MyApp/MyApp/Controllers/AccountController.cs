@@ -57,7 +57,7 @@ namespace MyApp.Controllers
                 return RedirectToAction("Index", "Users");
             }
 
-            ModelState.AddModelError("", "Incorrect email or password.");
+            TempData["Blocked"] = "Incorrect email or password.";
             return View(model);
         }
 

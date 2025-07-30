@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,30 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|solutionrelative:myapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C51606EC-87C1-4C55-A6E6-20AE1EF17C5F}|MyApp\\MyApp.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task4\\myapp\\myapp\\filtres\\checkblockedattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,23 +78,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 147,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AppDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
-              "RelativeToolTip": "MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-29T20:03:54.915Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\appsettings.json",
               "RelativeDocumentMoniker": "MyApp\\appsettings.json",
@@ -102,12 +90,11 @@
               "RelativeToolTip": "MyApp\\appsettings.json",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-29T19:49:56.879Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-29T19:49:56.879Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Program.cs",
               "RelativeDocumentMoniker": "MyApp\\Program.cs",
@@ -120,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "MyApp\\Data\\AppDbContext.cs",
@@ -140,11 +127,12 @@
               "RelativeToolTip": "MyApp\\Views\\Users\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-30T12:32:43.781Z"
+              "WhenOpened": "2025-07-30T12:32:43.781Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "MyApp\\Views\\Account\\Register.cshtml",
@@ -152,11 +140,12 @@
               "RelativeToolTip": "MyApp\\Views\\Account\\Register.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-30T13:35:02.336Z"
+              "WhenOpened": "2025-07-30T13:35:02.336Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "MyApp\\Views\\Account\\Login.cshtml",
@@ -164,11 +153,12 @@
               "RelativeToolTip": "MyApp\\Views\\Account\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-30T13:31:20.215Z"
+              "WhenOpened": "2025-07-30T13:31:20.215Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "MyApp\\Views\\Shared\\_Layout.cshtml",
@@ -176,31 +166,46 @@
               "RelativeToolTip": "MyApp\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-30T12:36:11.806Z"
+              "WhenOpened": "2025-07-30T12:36:11.806Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "MyApp\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "MyApp\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAowIEAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T12:56:35.272Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "MyApp\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Controllers\\UsersController.cs",
               "RelativeToolTip": "MyApp\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCMAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCMAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T12:24:07.389Z"
+              "WhenOpened": "2025-07-30T12:24:07.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "MyApp\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "MyApp\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAA3wDsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T12:56:35.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task4\\MyApp\\MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "MyApp\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T20:03:54.915Z"
             },
             {
               "$type": "Document",
