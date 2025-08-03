@@ -1,12 +1,26 @@
-FROM nginx:alpine
+# 1. Stage: build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-RUN rm -rf /etc/nginx/conf.d/*
+WORKDIR /src
 
-COPY wwwroot/index.html /usr/share/nginx/html/
-COPY wwwroot/script.js /usr/share/nginx/html/
+# Копируем csproj и восстанавливаем зависимости (улучшает кэширование)
+COPY *.csproj ./
+RUN dotnet restore
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Копируем всё и билдим
+COPY . ./
+RUN dotnet publish -c Release -o /app/publish
 
-EXPOSE 80
+# 2. Stage: runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+
+# Копируем из билд-стадии
+COPY --from=build /app/publish ./
+
+# Порт, который слушает .NET по умолчанию (Render перебрасывает через $PORT)
+ENV ASPNETCORE_URLS=http://+:$PORT
+
+# Запуск
+ENTRYPOINT ["dotnet", "BookStore.dll"]

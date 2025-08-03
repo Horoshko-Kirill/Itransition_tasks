@@ -4,10 +4,6 @@ using BookStore.Models;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.Urls.Add($"http://*:{Environment.GetEnvironmentVariable("PORT") ?? "5000"}");
-
-app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-
 app.UseStaticFiles();
 
 app.MapGet("/api/books", (string seed, string lang, int offset = 0, int limit = 20, double likes = 5.5, double reviews = 3.5) =>
