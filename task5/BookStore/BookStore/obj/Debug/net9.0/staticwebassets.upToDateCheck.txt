@@ -1,0 +1,4 @@
+C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\wwwroot\script.js
+C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\wwwroot\index.html
+wwwroot\index.html
+wwwroot\script.js

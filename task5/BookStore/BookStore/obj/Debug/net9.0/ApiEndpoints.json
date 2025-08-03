@@ -1,15 +1,31 @@
 [
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_1",
     "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
+    "RelativePath": "api/books",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
         "Name": "seed",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       },
       {
@@ -18,14 +34,24 @@
         "IsRequired": true
       },
       {
-        "Name": "index",
+        "Name": "offset",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "likes",
+        "Type": "System.Double",
+        "IsRequired": false
       },
       {
         "Name": "reviews",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "System.Double",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
