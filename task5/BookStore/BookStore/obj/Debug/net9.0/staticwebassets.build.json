@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DA2rMuUHdHgRRpaVMsUBFSlO5O/9yrTWK6/yWfHYiTo=",
+  "Hash": "BvBzRR5eh8j5awhk3EEttPf2isiyruhjSMx4oVK8P6g=",
   "Source": "BookStore",
   "BasePath": "_content/BookStore",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-yigw393h7j.gz",
+      "Identity": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-jbs0oi836u.gz",
       "SourceId": "BookStore",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/BookStore",
-      "RelativePath": "script#[.{fingerprint=yigw393h7j}]?.js.gz",
+      "RelativePath": "script#[.{fingerprint=jbs0oi836u}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -31,19 +31,19 @@
       "RelatedAsset": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\script.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "u72ztppcei",
-      "Integrity": "+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo=",
+      "Fingerprint": "b7vvseglp0",
+      "Integrity": "t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\script.js"
     },
     {
-      "Identity": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-v64eb8ryzm.gz",
+      "Identity": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-hsclm6g5u9.gz",
       "SourceId": "BookStore",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/BookStore",
-      "RelativePath": "index#[.{fingerprint=v64eb8ryzm}]?.html.gz",
+      "RelativePath": "index#[.{fingerprint=hsclm6g5u9}]?.html.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -52,8 +52,8 @@
       "RelatedAsset": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\index.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "hflklb0wud",
-      "Integrity": "gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ=",
+      "Fingerprint": "zy373n3nt2",
+      "Integrity": "JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\index.html"
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "v64eb8ryzm",
-      "Integrity": "SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA=",
+      "Fingerprint": "hsclm6g5u9",
+      "Integrity": "/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "yigw393h7j",
-      "Integrity": "qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY=",
+      "Fingerprint": "jbs0oi836u",
+      "Integrity": "oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\script.js"
@@ -103,13 +103,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "index.html",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-v64eb8ryzm.gz",
+      "Route": "index.hsclm6g5u9.html",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-hsclm6g5u9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000758725341"
+          "Quality": "0.000536768653"
         }
       ],
       "ResponseHeaders": [
@@ -119,19 +119,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1317"
+          "Value": "1862"
         },
         {
           "Name": "ETag",
-          "Value": "\"gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ=\""
+          "Value": "\"JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:21 GMT"
+          "Value": "Sun, 03 Aug 2025 21:36:47 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -147,18 +147,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA=\""
+          "Value": "W/\"/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "hsclm6g5u9"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA="
+          "Value": "sha256-/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0="
         }
       ]
     },
     {
-      "Route": "index.html",
+      "Route": "index.hsclm6g5u9.html",
       "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -168,7 +176,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3586"
+          "Value": "5792"
         },
         {
           "Name": "Content-Type",
@@ -176,121 +184,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA=\""
+          "Value": "\"/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA="
-        }
-      ]
-    },
-    {
-      "Route": "index.html.gz",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-v64eb8ryzm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1317"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ="
-        }
-      ]
-    },
-    {
-      "Route": "index.v64eb8ryzm.html",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-v64eb8ryzm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000758725341"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1317"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:21 GMT"
+          "Value": "Sun, 03 Aug 2025 21:36:47 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "v64eb8ryzm"
+          "Value": "hsclm6g5u9"
         },
         {
           "Name": "label",
@@ -298,13 +206,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA="
+          "Value": "sha256-/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0="
         }
       ]
     },
     {
-      "Route": "index.v64eb8ryzm.html",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\index.html",
+      "Route": "index.hsclm6g5u9.html.gz",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-hsclm6g5u9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -313,7 +221,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3586"
+          "Value": "1862"
         },
         {
           "Name": "Content-Type",
@@ -321,56 +229,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA=\""
+          "Value": "\"JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "v64eb8ryzm"
-        },
-        {
-          "Name": "label",
-          "Value": "index.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-SbgA1g06vFPAlzvP3xCCnZbw3onvIWGTLpnM7bOP7GA="
-        }
-      ]
-    },
-    {
-      "Route": "index.v64eb8ryzm.html.gz",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-v64eb8ryzm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1317"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:21 GMT"
+          "Value": "Sun, 03 Aug 2025 21:36:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -388,7 +251,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "v64eb8ryzm"
+          "Value": "hsclm6g5u9"
         },
         {
           "Name": "label",
@@ -396,18 +259,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-gxUYNb2HDUrfF3tbDZu2seuWj0kRrNyWXHQL7l285rQ="
+          "Value": "sha256-JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk="
         }
       ]
     },
     {
-      "Route": "script.js",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-yigw393h7j.gz",
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-hsclm6g5u9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000686813187"
+          "Quality": "0.000536768653"
         }
       ],
       "ResponseHeaders": [
@@ -417,15 +280,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1455"
+          "Value": "1862"
         },
         {
           "Name": "ETag",
-          "Value": "\"+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo=\""
+          "Value": "\"JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:32 GMT"
+          "Value": "Sun, 03 Aug 2025 21:36:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -441,22 +304,167 @@
         },
         {
           "Name": "Content-Type",
-          "Value": "text/javascript"
+          "Value": "text/html"
         },
         {
           "Name": "ETag",
-          "Value": "W/\"qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY=\""
+          "Value": "W/\"/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY="
+          "Value": "sha256-/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0="
         }
       ]
     },
     {
-      "Route": "script.js",
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5792"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 03 Aug 2025 21:36:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/90SgllAHoGzXqQ7eqrL985ChKRgF1U0SxDD+9GFwk0="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\mlrveqh651-hsclm6g5u9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1862"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 03 Aug 2025 21:36:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JWFfkD+/pPbzeNPxhQfgFaNX/JQKBd4LGTW1BWp5Rvk="
+        }
+      ]
+    },
+    {
+      "Route": "script.jbs0oi836u.js",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-jbs0oi836u.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000367107195"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2723"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 03 Aug 2025 21:36:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jbs0oi836u"
+        },
+        {
+          "Name": "label",
+          "Value": "script.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec="
+        }
+      ]
+    },
+    {
+      "Route": "script.jbs0oi836u.js",
       "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\script.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -466,7 +474,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4577"
+          "Value": "9322"
         },
         {
           "Name": "Content-Type",
@@ -474,121 +482,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY=\""
+          "Value": "\"oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:32 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY="
-        }
-      ]
-    },
-    {
-      "Route": "script.js.gz",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-yigw393h7j.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1455"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:32 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo="
-        }
-      ]
-    },
-    {
-      "Route": "script.yigw393h7j.js",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-yigw393h7j.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000686813187"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1455"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:32 GMT"
+          "Value": "Sun, 03 Aug 2025 21:36:35 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "yigw393h7j"
+          "Value": "jbs0oi836u"
         },
         {
           "Name": "label",
@@ -596,13 +504,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY="
+          "Value": "sha256-oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec="
         }
       ]
     },
     {
-      "Route": "script.yigw393h7j.js",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\script.js",
+      "Route": "script.jbs0oi836u.js.gz",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-jbs0oi836u.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -611,7 +519,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4577"
+          "Value": "2723"
         },
         {
           "Name": "Content-Type",
@@ -619,56 +527,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY=\""
+          "Value": "\"t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:32 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "yigw393h7j"
-        },
-        {
-          "Name": "label",
-          "Value": "script.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-qjLGvi6/uj5LvpqLxcbevFG+IDC6izJJVIL6ZyJnyfY="
-        }
-      ]
-    },
-    {
-      "Route": "script.yigw393h7j.js.gz",
-      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-yigw393h7j.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1455"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 03 Aug 2025 20:48:32 GMT"
+          "Value": "Sun, 03 Aug 2025 21:36:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -686,7 +549,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "yigw393h7j"
+          "Value": "jbs0oi836u"
         },
         {
           "Name": "label",
@@ -694,7 +557,144 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+sZjyue0ZdxhhXYZghG+L9qdR8QEONuTnfhgfIOkWRo="
+          "Value": "sha256-t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk="
+        }
+      ]
+    },
+    {
+      "Route": "script.js",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-jbs0oi836u.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000367107195"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2723"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 03 Aug 2025 21:36:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec="
+        }
+      ]
+    },
+    {
+      "Route": "script.js",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\wwwroot\\script.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9322"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 03 Aug 2025 21:36:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oZB326AYxzW+4zyC0p5Es1+MwhznbvUcihCvgej14Ec="
+        }
+      ]
+    },
+    {
+      "Route": "script.js.gz",
+      "AssetFile": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\obj\\Debug\\net9.0\\compressed\\2rqxs6r14m-jbs0oi836u.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 03 Aug 2025 21:36:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-t4P+qNTsXLA+AUTVzHgSP4IqfZOHygs3HifDyDTVuBk="
         }
       ]
     }
