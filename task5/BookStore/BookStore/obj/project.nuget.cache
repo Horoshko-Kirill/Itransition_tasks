@@ -1,0 +1,87 @@
+{
+  "version": 2,
+  "dgSpecHash": "mnvQ+xu6JMM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Кирилл\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\BookStore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Кирилл\\.nuget\\packages\\bogus\\35.6.3\\bogus.35.6.3.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sixlabors.fonts\\2.1.3\\sixlabors.fonts.2.1.3.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sixlabors.imagesharp\\2.1.5\\sixlabors.imagesharp.2.1.5.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sixlabors.imagesharp.drawing\\1.0.0\\sixlabors.imagesharp.drawing.1.0.0.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-2cmq-823j-5qj8 (уровень серьезности: высокий уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-5x7m-6737-26cr (уровень серьезности: средний уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-63p8-c4ww-9cg7 (уровень серьезности: высокий уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-65x7-c272-7g7r (уровень серьезности: высокий уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-g85r-6x2q-45w7 (уровень серьезности: средний уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-qxrv-gp6x-rc23 (уровень серьезности: средний уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "У пакета \"SixLabors.ImageSharp\" 2.1.5 есть известная уязвимость https://github.com/advisories/GHSA-rxmq-m78w-7wmc (уровень серьезности: средний уровень)",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
+}
