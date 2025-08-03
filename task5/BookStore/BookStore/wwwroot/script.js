@@ -205,7 +205,13 @@ async function loadMore() {
   
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error("fetch failed");
+     if (!res.ok) {
+    // Если ответ с ошибкой, читаем тело как текст
+    const errorText = await res.text();
+    console.error('Ошибка запроса:', res.status, res.statusText);
+    console.error('Тело ответа:', errorText);
+    throw new Error(`fetch failed with status ${res.status}`);
+  }
     const payload = await res.json();
     const items = payload.items || [];
     
