@@ -206,6 +206,8 @@ async function loadMore() {
   try {
     const res = await fetch(url);
      if (!res.ok) {
+      const text = await res.text();    // читаем ответ как текст (HTML)
+  console.log('Ответ сервера:', text);  // выводим весь HTML в консоль
     // Если ответ с ошибкой, читаем тело как текст
     const errorText = await res.text();
     console.error('Ошибка запроса:', res.status, res.statusText);
