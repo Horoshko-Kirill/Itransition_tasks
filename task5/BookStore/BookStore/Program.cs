@@ -1,3 +1,6 @@
+using BookStore.Generation;
+using BookStore.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
