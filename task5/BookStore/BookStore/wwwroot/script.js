@@ -204,39 +204,38 @@ async function loadMore() {
   const url = `/api/books?seed=${seed}&lang=${reqLang}&offset=${offset}&limit=${limit}&reviews=${reviews}&likes=${likes}`;
   
   try {
-    const res = await fetch(url);
-     if (!res.ok) {
-      const text = await res.text();    // читаем ответ как текст (HTML)
-  console.log('Ответ сервера:', text);  // выводим весь HTML в консоль
-    // Если ответ с ошибкой, читаем тело как текст
-    const errorText = await res.text();
+  const res = await fetch(url);
+  if (!res.ok) {
+    const text = await res.text();  // читаем тело один раз
+    console.log('Ответ сервера:', text); // выводим HTML или текст
     console.error('Ошибка запроса:', res.status, res.statusText);
-    console.error('Тело ответа:', errorText);
+    console.error('Тело ответа:', text);
     throw new Error(`fetch failed with status ${res.status}`);
   }
-    const payload = await res.json();
-    const items = payload.items || [];
-    
-    if (items.length === 0) {
-      allDone = true;
-      loader.textContent = t.noMore;
-      return;
-    }
-    
-    for (let book of items) {
-      const [row, detail] = makeBookRow(book);
-      tbody.appendChild(row);
-      tbody.appendChild(detail);
-    }
-    
-    offset += items.length;
-    loading = false;
-    loader.textContent = items.length === limit ? "" : t.noMore;
-  } catch (e) {
-    console.error(e);
-    loader.textContent = t.error;
-    loading = false;
+  const payload = await res.json();
+  const items = payload.items || [];
+  
+  if (items.length === 0) {
+    allDone = true;
+    loader.textContent = t.noMore;
+    return;
   }
+  
+  for (let book of items) {
+    const [row, detail] = makeBookRow(book);
+    tbody.appendChild(row);
+    tbody.appendChild(detail);
+  }
+  
+  offset += items.length;
+  loading = false;
+  loader.textContent = items.length === limit ? "" : t.noMore;
+} catch (e) {
+  console.error(e);
+  loader.textContent = t.error;
+  loading = false;
+}
+
 }
 
 function reset() {
