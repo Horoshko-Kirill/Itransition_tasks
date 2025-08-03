@@ -40,7 +40,7 @@ app.MapGet("/api/books", (HttpRequest req, ILogger<Program> logger) =>
         catch (Exception ex)
         {
             logger.LogError(ex, "Ошибка при генерации книги index={Index}", i);
-\
+            // добавим заглушку, чтобы не прерывать весь ответ
             list.Add(new Book
             {
                 Id = i,
