@@ -36,4 +36,4 @@ C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\obj\Debug\ne
 C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\obj\Debug\net9.0\ref\BookStore.dll
 C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\bin\Debug\net9.0\BookStore.staticwebassets.runtime.json
 C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\obj\Debug\net9.0\compressed\mlrveqh651-hsclm6g5u9.gz
-C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\obj\Debug\net9.0\compressed\2rqxs6r14m-jbs0oi836u.gz
+C:\Users\Кирилл\Desktop\Itransition\task5\BookStore\BookStore\obj\Debug\net9.0\compressed\2rqxs6r14m-05ygq5lzys.gz
