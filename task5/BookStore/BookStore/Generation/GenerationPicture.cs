@@ -6,6 +6,7 @@ using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Drawing;
+using SixLabors.ImageSharp.Formats.Png;
 using System.Text;
 
 namespace BookStore.Generation
@@ -13,12 +14,19 @@ namespace BookStore.Generation
     public class GenerationPicture
     {
         private static readonly FontFamily FontFamily;
+        private static readonly PngEncoder FastPngEncoder;
 
-        // Статический конструктор: загружаем шрифт один раз
+        // Статический конструктор — грузим шрифт и настраиваем PNG один раз
         static GenerationPicture()
         {
             var collection = new FontCollection();
             FontFamily = collection.Add("fonts/NotoSansJP-VariableFont_wght.ttf");
+
+            FastPngEncoder = new PngEncoder
+            {
+                CompressionLevel = (PngCompressionLevel)1,
+                FilterMethod = PngFilterMethod.None
+            };
         }
 
         public static string GeneratePictureUri(int userSeed, string lang, int index, string title, string[] authors, int width = 300, int height = 450)
@@ -64,10 +72,10 @@ namespace BookStore.Generation
             });
 
             using var ms = new System.IO.MemoryStream();
-            img.SaveAsPng(ms);
-            var base64 = Convert.ToBase64String(ms.ToArray());
+            img.Save(ms, FastPngEncoder);
 
-            return $"data:image/png;base64,{base64}";
+            // Быстрое преобразование в Base64 без копирования массива
+            return $"data:image/png;base64,{Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length)}";
         }
 
         public static void GenerateRandomFigure(Random rand, int width, int height, ref IImageProcessingContext ctx)
@@ -127,15 +135,14 @@ namespace BookStore.Generation
             var currentLine = new StringBuilder();
             var options = new TextOptions(font);
 
-            // Кэш размеров слов
-            var wordWidthCache = new Dictionary<string, float>();
+            var widthCache = new Dictionary<string, float>();
 
             foreach (var word in words)
             {
-                if (!wordWidthCache.TryGetValue(word, out float wordWidth))
+                if (!widthCache.TryGetValue(word, out float wordWidth))
                 {
                     wordWidth = TextMeasurer.MeasureSize(word, options).Width;
-                    wordWidthCache[word] = wordWidth;
+                    widthCache[word] = wordWidth;
                 }
 
                 if (wordWidth > maxWidth)
@@ -151,14 +158,12 @@ namespace BookStore.Generation
                 }
                 else
                 {
-                    var testLine = currentLine.Length > 0
-                        ? currentLine + " " + word
-                        : word;
+                    var testLine = currentLine.Length > 0 ? currentLine + " " + word : word;
 
-                    if (!wordWidthCache.TryGetValue(testLine, out float lineWidth))
+                    if (!widthCache.TryGetValue(testLine, out float lineWidth))
                     {
                         lineWidth = TextMeasurer.MeasureSize(testLine, options).Width;
-                        wordWidthCache[testLine] = lineWidth;
+                        widthCache[testLine] = lineWidth;
                     }
 
                     if (lineWidth <= maxWidth)
