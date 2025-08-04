@@ -6,22 +6,28 @@ using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Drawing;
-using Bogus.DataSets;
 using System.Text;
 
 namespace BookStore.Generation
 {
     public class GenerationPicture
     {
+        private static readonly FontFamily FontFamily;
+
+        // Статический конструктор: загружаем шрифт один раз
+        static GenerationPicture()
+        {
+            var collection = new FontCollection();
+            FontFamily = collection.Add("fonts/NotoSansJP-VariableFont_wght.ttf");
+        }
+
         public static string GeneratePictureUri(int userSeed, string lang, int index, string title, string[] authors, int width = 300, int height = 450)
         {
             string composite = $"{userSeed}|{lang}|{index}|{title}|{string.Join(",", authors)}";
             byte[] hash = GenerationHashKey.GetHashByteKey(composite);
 
-
             int seed = BitConverter.ToInt32(hash, 0);
             var rand = new Random(seed);
-
 
             var bgColor = Color.FromRgb(
                 (byte)(hash[0] * 0.5),
@@ -30,45 +36,29 @@ namespace BookStore.Generation
 
             using var img = new Image<Rgba32>(width, height);
 
-            var collection = new FontCollection();
-            var family = collection.Add("fonts/NotoSansJP-VariableFont_wght.ttf");
-
-
-            Font titleFont = family.CreateFont(25, FontStyle.Bold);
-            Font authorFont = family.CreateFont(20, FontStyle.Italic);
+            Font titleFont = FontFamily.CreateFont(25, FontStyle.Bold);
+            Font authorFont = FontFamily.CreateFont(20, FontStyle.Italic);
 
             img.Mutate(ctx =>
             {
-           
                 ctx.Fill(bgColor);
-                
                 GenerateRandomFigure(rand, width, height, ref ctx);
-                      
-                var textColor = Color.White;
-
 
                 float padding = 20f;
                 float maxWidth = width - 2 * padding;
                 float y = padding;
-                var titlePosition = new PointF(10, 10);
+
                 var titleLines = WrapText(title, titleFont, maxWidth);
-                var titleOptions = new TextOptions(titleFont);
                 foreach (var line in titleLines)
                 {
-                    ctx.DrawText(
-                        new DrawingOptions(),
-                        line,
-                        titleFont,
-                        Color.White,
-                        new PointF(padding, y));
-
+                    ctx.DrawText(line, titleFont, Color.White, new PointF(padding, y));
                     y += 20;
                 }
 
                 float authorY = width - 50 + titleFont.Size + 10;
                 foreach (var author in authors)
                 {
-                    ctx.DrawText(author, authorFont, textColor, new PointF(10, authorY));
+                    ctx.DrawText(author, authorFont, Color.White, new PointF(10, authorY));
                     authorY += authorFont.Size + 5;
                 }
             });
@@ -85,7 +75,6 @@ namespace BookStore.Generation
             int shapesCount = rand.Next(5, 20);
             for (int i = 0; i < shapesCount; i++)
             {
-
                 var shapeColor = new Rgba32(
                     (byte)rand.Next(256),
                     (byte)rand.Next(256),
@@ -107,9 +96,9 @@ namespace BookStore.Generation
                     case 2:
                         var triangle = new Polygon(new PointF[]
                         {
-                                new PointF(x, y),
-                                new PointF(x + size, y),
-                                new PointF(x + size/2, y + size)
+                            new PointF(x, y),
+                            new PointF(x + size, y),
+                            new PointF(x + size / 2, y + size)
                         });
                         ctx.Fill(new Color(shapeColor), triangle);
                         break;
@@ -121,7 +110,6 @@ namespace BookStore.Generation
                         var hexagon = new RegularPolygon(x + size / 2, y + size / 2, 6, size / 2);
                         ctx.Fill(new Color(shapeColor), hexagon);
                         break;
-
                     case 5:
                         var rect = new RectangularPolygon(x, y, size, size * 0.6f);
                         ctx.Fill(new Color(shapeColor), rect);
@@ -129,7 +117,6 @@ namespace BookStore.Generation
                 }
             }
         }
-
 
         public static List<string> WrapText(string text, Font font, float maxWidth)
         {
@@ -140,32 +127,39 @@ namespace BookStore.Generation
             var currentLine = new StringBuilder();
             var options = new TextOptions(font);
 
+            // Кэш размеров слов
+            var wordWidthCache = new Dictionary<string, float>();
+
             foreach (var word in words)
             {
-   
-                var wordWidth = TextMeasurer.MeasureSize(word, options).Width;
+                if (!wordWidthCache.TryGetValue(word, out float wordWidth))
+                {
+                    wordWidth = TextMeasurer.MeasureSize(word, options).Width;
+                    wordWidthCache[word] = wordWidth;
+                }
 
                 if (wordWidth > maxWidth)
                 {
-           
                     if (currentLine.Length > 0)
                     {
                         lines.Add(currentLine.ToString());
                         currentLine.Clear();
                     }
 
-       
                     var parts = SplitLongWord(word, font, maxWidth, options);
                     lines.AddRange(parts);
                 }
                 else
                 {
-
                     var testLine = currentLine.Length > 0
                         ? currentLine + " " + word
                         : word;
 
-                    var lineWidth = TextMeasurer.MeasureSize(testLine, options).Width;
+                    if (!wordWidthCache.TryGetValue(testLine, out float lineWidth))
+                    {
+                        lineWidth = TextMeasurer.MeasureSize(testLine, options).Width;
+                        wordWidthCache[testLine] = lineWidth;
+                    }
 
                     if (lineWidth <= maxWidth)
                     {
