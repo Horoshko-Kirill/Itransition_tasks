@@ -29,28 +29,27 @@ app.MapGet("/api/books", (HttpRequest req, ILogger<Program> logger) =>
     logger.LogInformation("Request /api/books seed={Seed} lang={Lang} offset={Offset} limit={Limit} likes={Likes} reviews={Reviews}",
         seed, lang, offset, limit, likes, reviews);
 
-    var list = new List<Book>();
-    for (int i = offset; i < offset + limit; i++)
+    int seedInt = int.TryParse(seed, out var s) ? s : 0;
+
+    var list = Enumerable.Range(offset, limit).AsParallel().Select(i =>
     {
         try
         {
-            var book = GenerateBook.GenerateRandomBook(i, int.TryParse(seed, out var s) ? s : 0, lang, likes, reviews);
-            list.Add(book);
+            return GenerateBook.GenerateRandomBook(i, seedInt, lang, likes, reviews);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Ошибка при генерации книги index={Index}", i);
-            // добавим заглушку, чтобы не прерывать весь ответ
-            list.Add(new Book
+            return new Book
             {
                 Id = i,
                 Title = $"<error generating book {i}>",
                 Authors = new[] { "error" },
                 Publisher = "error",
                 ISBN = "error"
-            });
+            };
         }
-    }
+    }).ToList();
 
     return Results.Json(new
     {
