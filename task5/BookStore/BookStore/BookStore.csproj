@@ -10,6 +10,9 @@
 	  <None Include="fonts\Inter-Regular.otf">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	  <None Update="fonts\NotoSansJP-VariableFont_wght.ttf">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
     <PackageReference Include="Bogus" Version="35.6.3" />
     <PackageReference Include="SixLabors.Fonts" Version="2.1.3" />
     <PackageReference Include="SixLabors.ImageSharp" Version="2.1.5" />

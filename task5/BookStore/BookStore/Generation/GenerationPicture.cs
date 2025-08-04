@@ -30,7 +30,9 @@ namespace BookStore.Generation
 
             using var img = new Image<Rgba32>(width, height);
 
-            FontFamily family = GetFontFamily(lang);
+            var collection = new FontCollection();
+            var family = collection.Add("fonts/NotoSansJP-VariableFont_wght.ttf");
+
 
             Font titleFont = family.CreateFont(25, FontStyle.Bold);
             Font authorFont = family.CreateFont(20, FontStyle.Italic);
@@ -127,80 +129,6 @@ namespace BookStore.Generation
                 }
             }
         }
-
-
-        private static readonly object _fontLock = new();
-        private static FontFamily _fallbackEmbeddedFont;
-
-        public static FontFamily GetFontFamily(string lang)
-        {
-            var languageFonts = new Dictionary<string, string[]>
-            {
-                ["ja"] = new[] { "MS Gothic", "Meiryo", "Yu Gothic", "MS Mincho" },
-                ["ru"] = new[] { "Arial", "Times New Roman", "Calibri", "Verdana" },
-                ["fr"] = new[] { "Arial", "Times New Roman", "Calibri" },
-                ["en"] = new[] { "Arial", "Times New Roman", "Helvetica" }
-            };
-
-            // 1. Предпочитаемые системные шрифты по языку
-            if (languageFonts.TryGetValue(lang, out var preferredFonts))
-            {
-                foreach (var fontName in preferredFonts)
-                {
-                    if (SystemFonts.TryGet(fontName, out var fontFamily))
-                    {
-                        return fontFamily;
-                    }
-                }
-            }
-
-            // 2. Любой системный шрифт, если есть
-            var systemFamilies = SystemFonts.Collection.Families;
-            if (systemFamilies != null && systemFamilies.Any())
-            {
-                return systemFamilies.First();
-            }
-
-            // 3. Фоллбэк: встроенный шрифт из файла
-            if (_fallbackEmbeddedFont == null)
-            {
-                lock (_fontLock)
-                {
-                    if (_fallbackEmbeddedFont == null)
-                    {
-                        try
-                        {
-                            var fontCollection = new FontCollection();
-                            var path = System.IO.Path.Combine(AppContext.BaseDirectory, "fonts", "Inter-Regular.ttf");
-                            if (File.Exists(path))
-                            {
-                                var family = fontCollection.Add(path);
-                                _fallbackEmbeddedFont = family;
-                            }
-                            else
-                            {
-                                throw new InvalidOperationException($"Embedded font file not found at '{path}' and no system fonts available.");
-                            }
-                        }
-                        catch
-                        {
-                            // Если даже это не удалось, пробуем снова взять любой системный, и если нет — пробросим
-                            if (systemFamilies != null && systemFamilies.Any())
-                            {
-                                _fallbackEmbeddedFont = systemFamilies.First();
-                            }
-                            else
-                            {
-                                throw;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return _fallbackEmbeddedFont;
-        }
-
 
 
         public static List<string> WrapText(string text, Font font, float maxWidth)

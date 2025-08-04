@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\generation\\generationpicture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|solutionrelative:bookstore\\generation\\generationpicture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\bookstore.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|solutionrelative:bookstore\\bookstore.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\generation\\generationpicture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|solutionrelative:bookstore\\generation\\generationpicture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\generation\\generatebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|solutionrelative:bookstore\\generation\\generatebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|solutionrelative:bookstore\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\generation\\generatebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|solutionrelative:bookstore\\generation\\generatebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{98521B6B-C0B1-4717-A320-64D6596F03D5}|BookStore\\BookStore.csproj|c:\\users\\\u043A\u0438\u0440\u0438\u043B\u043B\\desktop\\itransition\\task5\\bookstore\\bookstore\\generation\\generationhashkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,24 +42,50 @@
       "DocumentGroups": [
         {
           "DockedHeight": 147,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "BookStore.csproj",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\BookStore.csproj",
               "RelativeDocumentMoniker": "BookStore\\BookStore.csproj",
               "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\BookStore.csproj",
               "RelativeToolTip": "BookStore\\BookStore.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-08-03T23:55:27.818Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "GenerationPicture.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerationPicture.cs",
+              "RelativeDocumentMoniker": "BookStore\\Generation\\GenerationPicture.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerationPicture.cs",
+              "RelativeToolTip": "BookStore\\Generation\\GenerationPicture.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACEAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T09:00:46.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GenerateBook.cs",
+              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerateBook.cs",
+              "RelativeDocumentMoniker": "BookStore\\Generation\\GenerateBook.cs",
+              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerateBook.cs",
+              "RelativeToolTip": "BookStore\\Generation\\GenerateBook.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T10:04:49.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Book.cs",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Models\\Book.cs",
               "RelativeDocumentMoniker": "BookStore\\Models\\Book.cs",
@@ -71,20 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GenerationPicture.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerationPicture.cs",
-              "RelativeDocumentMoniker": "BookStore\\Generation\\GenerationPicture.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerationPicture.cs",
-              "RelativeToolTip": "BookStore\\Generation\\GenerationPicture.cs",
-              "ViewState": "AgIAALAAAAAAAAAAAAAgwMgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T09:00:46.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Program.cs",
               "RelativeDocumentMoniker": "BookStore\\Program.cs",
@@ -96,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Review.cs",
               "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Models\\Review.cs",
               "RelativeDocumentMoniker": "BookStore\\Models\\Review.cs",
@@ -105,18 +118,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-02T21:15:50.213Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GenerateBook.cs",
-              "DocumentMoniker": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerateBook.cs",
-              "RelativeDocumentMoniker": "BookStore\\Generation\\GenerateBook.cs",
-              "ToolTip": "C:\\Users\\\u041A\u0438\u0440\u0438\u043B\u043B\\Desktop\\Itransition\\task5\\BookStore\\BookStore\\Generation\\GenerateBook.cs",
-              "RelativeToolTip": "BookStore\\Generation\\GenerateBook.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T10:04:49.373Z"
             },
             {
               "$type": "Document",
