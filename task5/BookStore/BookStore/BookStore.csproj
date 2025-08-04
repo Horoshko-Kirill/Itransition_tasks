@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <None Include="fonts\Inter-Regular.ttf">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <None Include="fonts\Inter-Regular.otf">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
     <PackageReference Include="Bogus" Version="35.6.3" />
     <PackageReference Include="SixLabors.Fonts" Version="2.1.3" />
