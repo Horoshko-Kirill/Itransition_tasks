@@ -80,7 +80,7 @@ namespace BookStore.Generation
 
         public static void GenerateRandomFigure(Random rand, int width, int height, ref IImageProcessingContext ctx)
         {
-            int shapesCount = rand.Next(5, 20);
+            int shapesCount = rand.Next(5, 10);
             for (int i = 0; i < shapesCount; i++)
             {
                 var shapeColor = new Rgba32(
