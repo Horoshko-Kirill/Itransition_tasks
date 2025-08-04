@@ -8,6 +8,7 @@ using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Drawing;
 using SixLabors.ImageSharp.Formats.Png;
 using System.Text;
+using System.Numerics;
 
 namespace BookStore.Generation
 {
@@ -16,7 +17,7 @@ namespace BookStore.Generation
         private static readonly FontFamily FontFamily;
         private static readonly PngEncoder FastPngEncoder;
 
-        // Статический конструктор — грузим шрифт и настраиваем PNG один раз
+
         static GenerationPicture()
         {
             var collection = new FontCollection();
@@ -74,57 +75,42 @@ namespace BookStore.Generation
             using var ms = new System.IO.MemoryStream();
             img.Save(ms, FastPngEncoder);
 
-            // Быстрое преобразование в Base64 без копирования массива
+            
             return $"data:image/png;base64,{Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length)}";
         }
 
         public static void GenerateRandomFigure(Random rand, int width, int height, ref IImageProcessingContext ctx)
         {
-            int shapesCount = rand.Next(5, 10);
-            for (int i = 0; i < shapesCount; i++)
+            int linesCount = rand.Next(5, 10);
+
+            for (int i = 0; i < linesCount; i++)
             {
-                var shapeColor = new Rgba32(
+                var lineColor = new Rgba32(
                     (byte)rand.Next(256),
                     (byte)rand.Next(256),
                     (byte)rand.Next(256),
-                    (byte)rand.Next(50, 150));
+                    (byte)rand.Next(100, 255));
 
-                float x = rand.Next(width);
-                float y = rand.Next(height);
-                float size = rand.Next(30, 100);
+                float x1 = rand.Next(width);
+                float y1 = rand.Next(height);
+                float x2 = rand.Next(width);
+                float y2 = rand.Next(height);
 
-                switch (rand.Next(6))
-                {
-                    case 0:
-                        ctx.Fill(new Color(shapeColor), new RectangleF(x, y, size, size * 0.6f));
-                        break;
-                    case 1:
-                        ctx.Fill(new Color(shapeColor), new EllipsePolygon(x, y, size / 2));
-                        break;
-                    case 2:
-                        var triangle = new Polygon(new PointF[]
-                        {
-                            new PointF(x, y),
-                            new PointF(x + size, y),
-                            new PointF(x + size / 2, y + size)
-                        });
-                        ctx.Fill(new Color(shapeColor), triangle);
-                        break;
-                    case 3:
-                        var star = new Star(x + size / 2, y + size / 2, 5, size / 2, size / 4);
-                        ctx.Fill(new Color(shapeColor), star);
-                        break;
-                    case 4:
-                        var hexagon = new RegularPolygon(x + size / 2, y + size / 2, 6, size / 2);
-                        ctx.Fill(new Color(shapeColor), hexagon);
-                        break;
-                    case 5:
-                        var rect = new RectangularPolygon(x, y, size, size * 0.6f);
-                        ctx.Fill(new Color(shapeColor), rect);
-                        break;
-                }
+                float thickness = (float)(rand.NextDouble() * 3 + 1); // толщина 1..4
+
+                
+                var brush = new SolidBrush(lineColor);
+
+ 
+                var pathBuilder = new PathBuilder();
+                pathBuilder.AddLine(new Vector2(x1, y1), new Vector2(x2, y2));
+                var path = pathBuilder.Build();
+
+                ctx.Draw(brush, thickness, path);
             }
         }
+
+
 
         public static List<string> WrapText(string text, Font font, float maxWidth)
         {
