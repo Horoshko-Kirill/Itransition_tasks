@@ -1,6 +1,8 @@
-﻿@{
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
 	Layout = "_Layout";
 	ViewData["Title"] = "Home";
 }
 
-<h1>Hello World</h1>
+<h1>@User.Identity.Name</h1>

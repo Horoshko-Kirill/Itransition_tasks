@@ -13,13 +13,15 @@ builder.Services.AddDbContext<CourseWorkDbContext>(options =>
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = true;
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 1;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 0;
+    options.Password.RequireLowercase = false;
 })
     .AddEntityFrameworkStores<CourseWorkDbContext>()
     .AddDefaultTokenProviders();
+
 
 var app = builder.Build();
 
