@@ -2,3 +2,4 @@
 CourseWork/bin/
 CourseWork/obj/
 CourseWork/*.user
+CourseWork/appsettings.Development.json

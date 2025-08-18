@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CourseWork.Models;
 using CourseWork.Data;
+using CourseWork.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<CourseWorkDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
@@ -19,8 +20,19 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.Password.RequireUppercase = false;
     options.Password.RequireLowercase = false;
 })
-    .AddEntityFrameworkStores<CourseWorkDbContext>()
-    .AddDefaultTokenProviders();
+.AddEntityFrameworkStores<CourseWorkDbContext>()
+.AddDefaultTokenProviders();
+
+
+builder.Services.AddHttpClient(); 
+
+builder.Services.AddSingleton<DropboxService>(sp =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+    var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
+    var httpClient = httpClientFactory.CreateClient();
+    return new DropboxService(config, httpClient);
+});
 
 
 var app = builder.Build();
@@ -33,15 +45,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();         
-app.UseAuthentication();   
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-
     try
     {
         var dbContext = services.GetRequiredService<CourseWorkDbContext>();
@@ -54,14 +64,10 @@ using (var scope = app.Services.CreateScope())
         foreach (var roleName in roleNames)
         {
             if (!await roleManager.RoleExistsAsync(roleName))
-            {
                 await roleManager.CreateAsync(new IdentityRole(roleName));
-            }
         }
 
-
         var adminUser = await userManager.FindByEmailAsync("admin@admin.com");
-
         if (adminUser == null)
         {
             adminUser = new User
@@ -74,29 +80,16 @@ using (var scope = app.Services.CreateScope())
             };
 
             string adminPassword = "admin123";
-
             var result = await userManager.CreateAsync(adminUser, adminPassword);
-
             if (result.Succeeded)
-            {
                 await userManager.AddToRoleAsync(adminUser, "Admin");
-            }
-            else
-            {
-                foreach (var error in result.Errors)
-                {
-                    Console.WriteLine($"Error: {error.Description}");
-                }
-                throw new Exception("Admin was not created");
-            }
         }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Error: {ex.Message}");
+        Console.WriteLine($"Database initialization error: {ex.Message}");
     }
 }
-
 
 app.MapControllerRoute(
     name: "default",

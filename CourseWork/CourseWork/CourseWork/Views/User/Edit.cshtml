@@ -1,0 +1,37 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using CourseWork.Models.ViewModels;
+
+@model EditViewModel;
+
+
+<div asp-validation-summary="All"></div>
+
+
+<h2>Edit profile</h2>
+
+
+<form asp-action="Edit" method="post">
+
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+    
+    <button type="submit">Save</button>
+</form>
+
+<a asp-action="Profile">Back to profile</a>

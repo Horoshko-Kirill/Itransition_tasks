@@ -1,0 +1,48 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using CourseWork.Models.ViewModels;
+
+@model UserViewModel;
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Profile";
+}
+
+
+<h2>My profile</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div>@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div>@TempData["ErrorMessage"]</div>
+}
+
+<div>
+    <h3>@Model.UserName</h3>
+    <p>@Model.FirstName @Model.LastName</p>
+    <p>Email: @Model.Email</p>
+
+    @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+    {
+        <img src="@Model.PhotoUrl" alt="Аватар" width="200" />
+    }
+    else
+    {
+        <p>Avatar is empty</p>
+    }
+
+    <form asp-action="UpdatePhoto" method="post" enctype="multipart/form-data">
+        <div>
+            <label>New avatar:</label>
+            <input type="file" name="newPhoto" accept="image/*" />
+        </div>
+        <button type="submit">Update avatar</button>
+    </form>
+
+    <a asp-action="Edit" class="btn btn-primary">Edit profile</a>
+</div>
