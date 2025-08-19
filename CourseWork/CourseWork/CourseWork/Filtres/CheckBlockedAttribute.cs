@@ -33,6 +33,17 @@ namespace CourseWork.Filtres
                     return;
                 }
 
+                await _signInManager.RefreshSignInAsync(appUser);
+
+                var controllerName = context.RouteData.Values["controller"]?.ToString();
+                var actionName = context.RouteData.Values["action"]?.ToString();
+
+                if (IsAdminPage(controllerName, actionName) && !await _userManager.IsInRoleAsync(appUser, "Admin"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Home", null);
+                    return;
+                }
+
                 appUser.LastVisit = DateTime.UtcNow;
                 await _userManager.UpdateAsync(appUser);
             }
@@ -40,5 +51,13 @@ namespace CourseWork.Filtres
             await next();
         }
 
+        private bool IsAdminPage(string controllerName, string actionName)
+        {
+
+            var adminControllers = new[] { "Admin" };
+            var adminActions = new[] { "AdminPage", "ControlUserAction" };
+
+            return adminControllers.Contains(controllerName) || adminActions.Contains(actionName);
+        }
     }
 }
