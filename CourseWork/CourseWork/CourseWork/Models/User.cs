@@ -9,6 +9,8 @@ namespace CourseWork.Models
         public string LastName { get; set; }
         public string? DropboxPath { get; set; }
         public string? PhotoUrl { get; set; }
+        public bool IsBlocked { get; set; }
+        public DateTime LastVisit { get; set; }
 
         public ICollection<Inventory> OwnedInventories { get; set; }
         public ICollection<Permission> Permissions { get; set; }

@@ -10,6 +10,13 @@
 <form asp-action="Login" method="post">
 	<div asp-validation-summary="All"></div>
 
+    @if (TempData["Blocked"] != null)
+    {
+        <div>
+            @TempData["Blocked"]
+        </div>
+    }
+
     <div>
         <label asp-for="Email"></label>
         <input asp-for="Email" />

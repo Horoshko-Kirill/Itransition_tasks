@@ -1,0 +1,100 @@
+﻿﻿
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	Layout = "_Layout";
+	ViewData["Title"] = "AdminPage";
+}
+
+@using CourseWork.Models
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager
+
+@model List<User>
+
+
+<h2>List of Users</h2>
+
+<form asp-action="ControlUserAction" method="post">
+	<div>
+		<button name="action" value="block">Block</button>
+		<button name="action" value="unblock">Unblock</button>
+		<button name="action" value="delete">Delete</button>
+		<button name="action" value="give_admin">Give admin role</button>
+		<button name="action" value="remove_admin">Remove admin role</button>
+	</div>
+
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="select-all" /></th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Last Visit</th>
+					<th>Status</th>
+					<th>Role</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var user in Model)
+				{
+					<tr>
+						<td><input type="checkbox" name="selectedIds" value="@user.Id" /></td>
+						<td>@user.UserName</td>
+						<td>@user.Email</td>
+						@{
+							TimeSpan? ago = user.LastVisit == default ? (TimeSpan?)null : DateTime.UtcNow - user.LastVisit;
+						}
+						<td>
+							@if (ago == null)
+							{
+								<span class="text-muted">Never</span>
+							}
+							else
+							{
+								var readable = ago.Value.TotalMinutes < 1 ? "Just now"
+								: ago.Value.TotalMinutes < 60 ? $"{(int)ago.Value.TotalMinutes} min ago"
+								: ago.Value.TotalHours < 24 ? $"{(int)ago.Value.TotalHours} hours ago"
+								: $"{(int)ago.Value.TotalDays} days ago";
+
+								<span title="@user.LastVisit.ToLocalTime().ToString("f")">@readable</span>
+							}
+						</td>
+						<td>
+							@if (user.IsBlocked)
+							{
+								<span>Blocked</span>
+							}
+							else
+							{
+								<span>Active</span>
+							}
+						</td>
+						<td>
+							@if(await UserManager.IsInRoleAsync(user, "Admin"))
+							{
+								<span>Admin</span>
+							}
+							else
+							{
+								<span>User</span>
+							}
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</form>
+
+@section Scripts {
+<script>
+	document.getElementById("select-all").addEventListener("click", function () {
+		const checkboxes = document.querySelectorAll('input[name="selectedIds"]');
+		for (const cb of checkboxes) {
+			cb.checked = this.checked;
+		}
+	});
+</script>
+}

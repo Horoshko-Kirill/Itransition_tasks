@@ -30,12 +30,20 @@ namespace CourseWork.Controllers
             if (ModelState.IsValid)
             {
 
+                var existingUser = await _userManager.FindByEmailAsync(model.Email);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError(nameof(model.Email), "User with this email is already registered.");
+                    return View(model);
+                }
+
                 User user = new User()
                 {
                     Email = model.Email,
                     UserName = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    LastVisit = DateTime.Now,
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -73,6 +81,18 @@ namespace CourseWork.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
 
+                if (user == null)
+                {
+                    TempData["Blocked"] = "Incorrect email or password.";
+                    return View(model);
+                }
+
+                if (user.IsBlocked)
+                {
+                    TempData["Blocked"] = "You have been blocked.";
+                    return RedirectToAction("Login");
+                }
+
                 var result = await _signInManager.PasswordSignInAsync(
                     user.UserName,
                     model.Password,
@@ -85,7 +105,7 @@ namespace CourseWork.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Incorrect email or password");
                 }
 
             }

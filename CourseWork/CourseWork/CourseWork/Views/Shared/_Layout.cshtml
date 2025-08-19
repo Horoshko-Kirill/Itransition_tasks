@@ -2,6 +2,7 @@
 @using CourseWork.Models
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,12 @@
 		<li>
 			<a asp-controller="User" asp-action="Profile">Profile</a>
 		</li>
+		@if (User.IsInRole("Admin"))
+		{
+			<li>
+				<a asp-controller="Admin" asp-action="AdminPage">Admin page</a>
+			</li>
+		}
 	}
 	else
 	{
@@ -34,5 +41,7 @@
 
 <body>
 	@RenderBody()
+
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

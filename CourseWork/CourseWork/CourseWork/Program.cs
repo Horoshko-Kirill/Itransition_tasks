@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using CourseWork.Models;
 using CourseWork.Data;
 using CourseWork.Services;
+using CourseWork.Filtres;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -34,6 +35,12 @@ builder.Services.AddSingleton<DropboxService>(sp =>
     return new DropboxService(config, httpClient);
 });
 
+builder.Services.AddScoped<CheckBlockedAttribute>();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.AddService<CheckBlockedAttribute>();
+});
 
 var app = builder.Build();
 
@@ -82,7 +89,12 @@ using (var scope = app.Services.CreateScope())
             string adminPassword = "admin123";
             var result = await userManager.CreateAsync(adminUser, adminPassword);
             if (result.Succeeded)
+            {
+                var currentRoles = await userManager.GetRolesAsync(adminUser);
+                await userManager.RemoveFromRolesAsync(adminUser, currentRoles);
                 await userManager.AddToRoleAsync(adminUser, "Admin");
+            }    
+                
         }
     }
     catch (Exception ex)
