@@ -98,9 +98,9 @@ namespace CourseWork.Controllers
                         var rolesToRemove = await _userManager.GetRolesAsync(user);
                         await _userManager.RemoveFromRolesAsync(user, rolesToRemove);
                         await _userManager.AddToRoleAsync(user, "User");
+                        await _signInManager.RefreshSignInAsync(user);
                         if (user.Id == currentUserId)
                         {
-                            await _signInManager.RefreshSignInAsync(user);
                             return RedirectToAction("Index", "Home");
                         }
                         break;
