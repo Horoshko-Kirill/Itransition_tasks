@@ -58,6 +58,22 @@ namespace CourseWork.Controllers
                 return RedirectToAction(nameof(Profile));
             }
 
+            string[] format = new[] {".jpg", ".jpeg", ".png", ".gif", ".webp", ".jfif"};
+            string fileExtension = Path.GetExtension(newPhoto.FileName).ToLowerInvariant();
+
+            if (string.IsNullOrEmpty(fileExtension) || !format.Contains(fileExtension))
+            {
+                TempData["ErrorMessage"] = "Can upload only: JPG, JPEG, PNG, GIF, WEBP, JFIF";
+                return RedirectToAction(nameof(Profile));
+            }
+
+            const int maxFileSize = 5 * 1024 * 1024; 
+            if (newPhoto.Length > maxFileSize)
+            {
+                TempData["ErrorMessage"] = "The file size must not exceed 5 MB.";
+                return RedirectToAction(nameof(Profile));
+            }
+
             try
             {
 
