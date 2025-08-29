@@ -17,6 +17,9 @@ namespace CourseWork.Models
 
         public string CustomId { get; set; }
 
+        public string ImageUrl { get; set; }
+        public string ImageDropboxPath { get; set; }
+
         [Required]
         public int InventoryId { get; set; }
 

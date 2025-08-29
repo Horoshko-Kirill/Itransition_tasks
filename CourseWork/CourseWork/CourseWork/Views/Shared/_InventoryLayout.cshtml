@@ -1,0 +1,56 @@
+﻿@using CourseWork.Models
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<User> UserManager
+
+@{
+	bool isCreator = ViewBag.IsCreator;
+	bool isAdmin = User.IsInRole("Admin");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CourseWork/@ViewData["Title"]</title>
+</head>
+
+<h2>@ViewBag.InventoryName</h2>
+
+<ul>
+	<li>
+		<a asp-controller="Items" asp-action="Items">Items</a>
+	</li>
+	<li>
+		<a asp-controller="Chat" asp-action="Chat">Chat</a>
+	</li>
+	<li>
+		<a asp-controller="Description" asp-action="Description">Description</a>
+	</li>
+	<li>
+		<a asp-controller="Statistics" asp-action="Statistics">Statistics</a>
+	</li>
+	<li>
+		<a asp-controller="Export" asp-action="Export">Export</a>
+	</li>
+
+	@if (isCreator || isAdmin)
+	{
+		<li>
+			<a asp-controller="CustomID" asp-action="CustomID">Custom ID</a>
+		</li>
+		<li>
+			<a asp-controller="CustomFields" asp-action="CustomFields">Custom Fields</a>
+		</li>
+		<li>
+			<a asp-controller="AccessControl" asp-action="AccessControl">Access Control</a>
+		</li>
+	}
+</ul>
+
+<body>
+	@RenderBody()
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

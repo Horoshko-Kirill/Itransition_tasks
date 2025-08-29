@@ -103,6 +103,39 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var dbContext = services.GetRequiredService<CourseWorkDbContext>();
+        dbContext.Database.Migrate();
+
+        if (!dbContext.Categories.Any())
+        {
+            var categories = new List<Category>
+            {
+                new Category { Name = "Furniture"},
+                new Category { Name = "Books"},
+                new Category { Name = "Electronics"},
+                new Category { Name = "Clothing"},
+                new Category { Name = "Tools"},
+                new Category { Name = "Transport"},
+                new Category { Name = "Sports"},
+                new Category { Name = "Art"},
+                new Category { Name = "Other"}
+            };
+
+            dbContext.Categories.AddRange(categories);
+            dbContext.SaveChanges();
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database initialization error: {ex.Message}");
+    }
+}
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

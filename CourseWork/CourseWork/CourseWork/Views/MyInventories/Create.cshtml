@@ -1,0 +1,53 @@
+﻿@using CourseWork.Models.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model InventoryCreateViewModel
+@{
+    ViewData["Title"] = "Create Inventory";
+    Layout = "_Layout";
+}
+
+<h2>Create New Inventory</h2>
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" asp-items="Model.CategoryOptions">
+            <option value="">Select category</option>
+        </select>
+        <span asp-validation-for="CategoryId"></span>
+    </div>
+
+    <div>
+        <label>
+            <input asp-for="IsPublic" /> Public Inventory
+        </label>
+    </div>
+
+    <div>
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file" />
+    </div>
+
+    <div>
+        <button type="submit">Create Inventory</button>
+        <a asp-action="MyInventories">Cancel</a>
+    </div>
+</form>
+

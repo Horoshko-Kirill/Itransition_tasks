@@ -1,0 +1,35 @@
+﻿@using CourseWork.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model List<Item>
+
+@{
+	Layout = "_InventoryLayout";
+	ViewData["Title"] = "Items";
+}
+
+<h2>Items</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Photo</th>
+			<th>Custom ID</th>
+			<th>Name</th>
+			<th>Create at</th>
+			<th>Update at</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.ImageUrl</td>
+				<td>@item.CustomId</td>
+				<td>@item.Name</td>
+				<td>@item.CreatedAt</td>
+				<td>@item.UpdatedAt</td>
+			</tr>
+		}
+	</tbody>
+</table>

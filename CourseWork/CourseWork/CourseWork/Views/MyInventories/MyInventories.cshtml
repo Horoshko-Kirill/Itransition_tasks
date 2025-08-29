@@ -1,0 +1,195 @@
+﻿@using CourseWork.Models.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model MyInventoriesViewModel
+
+@{
+	ViewData["Title"] = "My Inventories";
+	Layout = "_Layout";
+}
+
+<h2>My Inventories</h2>
+
+<a asp-controller="MyInventories" asp-action="Create">Create New Inventory</a>
+
+<form asp-action="DeleteSelected" method="post">
+    @Html.AntiForgeryToken()
+
+    <h3>My Created Inventories (@Model.CreatedInventories.Count)</h3>
+
+    @if (Model.CreatedInventories.Any())
+    {
+        <div>
+            <button type="button" onclick="selectAll('created')">Select All</button>
+            <button type="button" onclick="clearSelection()">Clear Selection</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="select-all-created" /></th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Items</th>
+                    <th>Category</th>
+                    <th>Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var inventory in Model.CreatedInventories)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="selectedInventories" value="@inventory.Id" class="created-checkbox" />
+                        </td>
+                        <td>@inventory.Name</td>
+                        <td>@inventory.Description</td>
+                        <td>@inventory.Items.Count</td>
+                        <td>@inventory.Category?.Name</td>
+                        <td>@inventory.CreatedAt.ToString("MMM dd, yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No inventories created yet. <a asp-controller="MyInventories" asp-action="Create">Create your first inventory</a></p>
+    }
+
+    @if (Model.CreatedInventories.Any())
+    {
+        <div>
+            <span id="selectedCount">0 inventories selected</span>
+            <button type="submit" id="deleteButton" disabled>Delete Selected</button>
+        </div>
+    }
+
+    <h3>Shared With Me (@Model.AccessibleInventories.Count)</h3>
+
+    @if (Model.AccessibleInventories.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Owner</th>
+                    <th>Items</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var inventory in Model.AccessibleInventories)
+                {
+                    <tr>
+                        <td>@inventory.Name</td>
+                        <td>@inventory.Description</td>
+                        <td>@inventory.Creator.UserName</td>
+                        <td>@inventory.Items.Count</td>
+                        <td>@inventory.Category?.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No shared inventories. Other users can share their inventories with you.</p>
+    }
+
+    <h3>Public Inventories (@Model.PublicInventories.Count)</h3>
+
+    @if (Model.PublicInventories.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Owner</th>
+                    <th>Items</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var inventory in Model.PublicInventories)
+                {
+                    <tr>
+                        <td>@inventory.Name</td>
+                        <td>@inventory.Description</td>
+                        <td>@inventory.Creator.UserName</td>
+                        <td>@inventory.Items.Count</td>
+                        <td>@inventory.Category?.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No public inventories. Other users can make their inventories public.</p>
+    }
+
+
+  
+</form>
+
+@section Scripts {
+    <script>
+
+        document.getElementById("select-all-created").addEventListener("click", function () {
+            const checkboxes = document.querySelectorAll('.created-checkbox');
+            for (const cb of checkboxes) {
+                cb.checked = this.checked;
+            }
+            updateSelectedCount();
+        });
+
+
+        function updateSelectedCount() {
+            const selected = document.querySelectorAll('.created-checkbox:checked').length;
+            document.getElementById('selectedCount').textContent = selected + ' inventories selected';
+            document.getElementById('deleteButton').disabled = selected === 0;
+        }
+
+
+        function selectAll(section) {
+            const checkboxes = document.querySelectorAll('.created-checkbox');
+            for (const cb of checkboxes) {
+                cb.checked = true;
+            }
+            document.getElementById("select-all-created").checked = true;
+            updateSelectedCount();
+        }
+
+
+        function clearSelection() {
+            const checkboxes = document.querySelectorAll('.created-checkbox');
+            for (const cb of checkboxes) {
+                cb.checked = false;
+            }
+            document.getElementById("select-all-created").checked = false;
+            updateSelectedCount();
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.created-checkbox');
+            for (const cb of checkboxes) {
+                cb.addEventListener('change', updateSelectedCount);
+            }
+
+
+            document.querySelector('form').addEventListener('submit', function(e) {
+                const selected = document.querySelectorAll('.created-checkbox:checked').length;
+                if (selected > 0 && !confirm('Are you sure you want to delete ' + selected + ' inventory(ies)?')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

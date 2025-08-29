@@ -58,6 +58,26 @@ namespace CourseWork.Services
             return rawUrl;
         }
 
+        public async Task<string> UploadInventoryImageAsync(Stream fileStream, string fileName, string inventoryId)
+        {
+            var accessToken = await GetAccessTokenAsync();
+            using var dbx = new DropboxClient(accessToken);
+
+            string dropboxPath = $"/inventories/{inventoryId}_image_{fileName}";
+
+
+            var uploaded = await dbx.Files.UploadAsync(
+                dropboxPath,
+                WriteMode.Overwrite.Instance,
+                body: fileStream);
+
+            var link = await dbx.Sharing.CreateSharedLinkWithSettingsAsync(dropboxPath);
+
+            string rawUrl = link.Url.Replace("&dl=0", "&raw=1");
+
+            return rawUrl;
+        }
+
 
         public async Task DeleteFileAsync(string filePath)
         {

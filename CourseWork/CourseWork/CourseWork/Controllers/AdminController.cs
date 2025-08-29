@@ -28,6 +28,7 @@ namespace CourseWork.Controllers
             _dropboxService = dropboxService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> AdminPage()
         {
 
