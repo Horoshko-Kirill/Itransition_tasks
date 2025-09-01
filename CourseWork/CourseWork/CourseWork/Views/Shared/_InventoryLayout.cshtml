@@ -4,7 +4,7 @@
 @inject UserManager<User> UserManager
 
 @{
-	bool isCreator = ViewBag.IsCreator;
+	bool isCreator = ViewBag.IsCreator ?? false;
 	bool isAdmin = User.IsInRole("Admin");
 }
 
@@ -18,31 +18,31 @@
 
 <ul>
 	<li>
-		<a asp-controller="Items" asp-action="Items">Items</a>
+		<a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@ViewBag.InventoryId">Items</a>
 	</li>
 	<li>
-		<a asp-controller="Chat" asp-action="Chat">Chat</a>
+		<a asp-controller="Chat" asp-action="Chat" asp-route-inventoryId="@ViewBag.InventoryId">Chat</a>
 	</li>
 	<li>
-		<a asp-controller="Description" asp-action="Description">Description</a>
+		<a asp-controller="Description" asp-action="Description" asp-route-inventoryId="@ViewBag.InventoryId">Description</a>
 	</li>
 	<li>
-		<a asp-controller="Statistics" asp-action="Statistics">Statistics</a>
+		<a asp-controller="Statistics" asp-action="Statistics" asp-route-inventoryId="@ViewBag.InventoryId">Statistics</a>
 	</li>
 	<li>
-		<a asp-controller="Export" asp-action="Export">Export</a>
+		<a asp-controller="Export" asp-action="Export" asp-route-inventoryId="@ViewBag.InventoryId">Export</a>
 	</li>
 
 	@if (isCreator || isAdmin)
 	{
 		<li>
-			<a asp-controller="CustomID" asp-action="CustomID">Custom ID</a>
+		<a asp-controller="CustomId" asp-action="CustomId" asp-route-inventoryId="@ViewBag.InventoryId">Custom ID</a>
 		</li>
 		<li>
-			<a asp-controller="CustomFields" asp-action="CustomFields">Custom Fields</a>
+			<a asp-controller="CustomFields" asp-action="CustomFields" asp-route-inventoryId="@ViewBag.InventoryId">Custom Fields</a>
 		</li>
 		<li>
-			<a asp-controller="AccessControl" asp-action="AccessControl">Access Control</a>
+			<a asp-controller="AccessControl" asp-action="AccessControl" asp-route-inventoryId="@ViewBag.InventoryId">Access Control</a>
 		</li>
 	}
 </ul>

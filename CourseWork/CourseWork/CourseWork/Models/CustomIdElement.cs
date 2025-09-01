@@ -16,6 +16,11 @@ namespace CourseWork.Models
         [Required]
         public int CustomIdFormatId { get; set; }
 
+        [Required]
+        public int Order { get; set; }
+
+        public string? FixedValue { get; set; }
+
         [ForeignKey("CustomIdFormatId")]
         public CustomIdFormat CustomIdFormat { get; set; }
 

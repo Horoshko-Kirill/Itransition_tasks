@@ -28,12 +28,12 @@
             <thead>
                 <tr>
                     <th><input type="checkbox" id="select-all-created" /></th>
+                    <th>Photo</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Items</th>
                     <th>Category</th>
                     <th>Created</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,12 @@
                         <td>
                             <input type="checkbox" name="selectedInventories" value="@inventory.Id" class="created-checkbox" />
                         </td>
-                        <td>@inventory.Name</td>
+                        <td><img src="@inventory.ImageUrl" alt="Аватар" width="200" /></td>
+                        <td>
+                            <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
+                                @inventory.Name
+                            </a>
+                        </td>
                         <td>@inventory.Description</td>
                         <td>@inventory.Items.Count</td>
                         <td>@inventory.Category?.Name</td>
@@ -73,19 +78,24 @@
         <table>
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Owner</th>
                     <th>Items</th>
                     <th>Category</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var inventory in Model.AccessibleInventories)
                 {
                     <tr>
-                        <td>@inventory.Name</td>
+                        <td><img src="@inventory.ImageUrl" alt="Аватар" width="200" /></td>
+                        <td>
+                            <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
+                                @inventory.Name
+                            </a>
+                        </td>
                         <td>@inventory.Description</td>
                         <td>@inventory.Creator.UserName</td>
                         <td>@inventory.Items.Count</td>
@@ -107,19 +117,24 @@
         <table>
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Owner</th>
                     <th>Items</th>
                     <th>Category</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var inventory in Model.PublicInventories)
                 {
                     <tr>
-                        <td>@inventory.Name</td>
+                        <td><img src="@inventory.ImageUrl" alt="Аватар" width="200" /></td>
+                        <td>
+                            <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
+                                @inventory.Name
+                            </a>
+                        </td>
                         <td>@inventory.Description</td>
                         <td>@inventory.Creator.UserName</td>
                         <td>@inventory.Items.Count</td>

@@ -1,0 +1,58 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CourseWork.Models.ViewModels.CustomIdFormatViewModel
+
+@{
+    Layout = "_InventoryLayout";
+    ViewData["Title"] = "Custom ID";
+}
+
+<h2>Custom ID Format</h2>
+
+@{
+    var typeDescriptions = new Dictionary<string, string>
+    {
+        { "FixedText", "You can enter any text or Emoji" },
+        { "Random6Digit", "Random 6-digit number" },
+        { "Random9Digit", "Random 9-digit number" },
+        { "Random20Bit", "Random string of 5 characters" },
+        { "Random32Bit", "Random string of 9 characters" },
+        { "Guid", "GUID format" },
+        { "DateTime", "Date format (e.g., yyyy, MM, dd)" },
+        { "Sequence", "Sequence format (e.g., D3, D8)" }
+    };
+
+    string preview = Model.Elements != null
+        ? string.Join("-", Model.Elements.OrderBy(e => e.Order).Select(e => e.FixedValue))
+        : "";
+}
+
+@if (Model?.Elements != null && Model.Elements.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var el in Model.Elements.OrderBy(e => e.Order))
+            {
+                var typeName = el.Type.ToString();
+                <tr>
+                    <td>@el.Order</td>
+                    <td>@typeName</td>
+                    <td>@typeDescriptions[typeName]</td>
+                    <td>@el.FixedValue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Preview</h3>
+    <div>@preview</div>
+}
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>

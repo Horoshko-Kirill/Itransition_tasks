@@ -1,0 +1,237 @@
+﻿@using CourseWork.Models.Enums
+@{
+    Layout = "_InventoryLayout";
+    ViewData["Title"] = "Custom ID";
+}
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <h3>Elements</h3>
+    <button type="button" id="add-element">Add element</button>
+
+    <ul id="elements-list">
+        @if (Model.Elements != null)
+        {
+            @for (int i = 0; i < Model.Elements.Count; i++)
+            {
+                var element = Model.Elements[i];
+                <li class="element-item" data-index="@i">
+                    <input type="hidden" name="Elements[@i].Id" value="@element.Id" />
+                    <select name="Elements[@i].Type" class="type-select">
+                        @foreach (var t in Enum.GetValues(typeof(CustomIdElementType)))
+                        {
+                            <option value="@t" @(element.Type == (CustomIdElementType)t ? "selected" : "")>@t</option>
+                        }
+                    </select>
+                    <input name="Elements[@i].FixedValue" value="@element.FixedValue" />
+                    <button type="button" class="emoji-toggle" style="display:@(element.Type == CustomIdElementType.FixedText ? "inline-block" : "none")">😀</button>
+                    <emoji-picker class="emoji-picker" style="height:300px; display:none;"></emoji-picker>
+                    <div class="type-desc"></div>
+                    <input type="hidden" name="Elements[@i].Order" value="@i" />
+                </li>
+            }
+        }
+    </ul>
+
+    <h3>Preview</h3>
+    <div id="preview"></div>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+@section Scripts {
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
+    <style>
+        #elements-list {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow: auto;
+            padding: 5px;
+            list-style: none;
+        }
+
+        .element-item {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #aaa;
+            background: #f9f9f9;
+            cursor: grab;
+        }
+
+        .emoji-picker {
+            height: 300px;
+            max-height: 300px;
+        }
+
+        .type-desc {
+            font-size: 12px;
+            color: #555;
+            margin-top: 2px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const list = document.getElementById('elements-list');
+            const addButton = document.getElementById('add-element');
+
+            const typeDescriptions = {
+                FixedText: "You can enter any text or Emoji",
+                Random6Digit: "Random 6-digit number",
+                Random9Digit: "Random 9-digit number",
+                Random20Bit: "Random string of 5 characters",
+                Random32Bit: "Random string of 9 characters",
+                Guid: "GUID example: 00000000-0000-0000-0000-000000000000",
+                DateTime: "Date format (e.g., yyyy, MM, dd)",
+                Sequence: "Sequence format (e.g., D3, D8)"
+            };
+
+            function generateValue(type) {
+                switch(type){
+                    case 'Random6Digit': return Math.floor(100000 + Math.random()*900000);
+                    case 'Random9Digit': return Math.floor(100000000 + Math.random()*900000000);
+                    case 'Random20Bit': return Math.random().toString(36).substring(2,7);
+                    case 'Random32Bit': return Math.random().toString(36).substring(2,11);
+                    case 'Guid': return '00000000-0000-0000-0000-000000000000';
+                    case 'DateTime': return 'yyyy';
+                    case 'Sequence': return 'D3';
+                    default: return '';
+                }
+            }
+
+            function setupInputByType(li){
+                const select = li.querySelector('select');
+                const input = li.querySelector('input[name$=".FixedValue"]');
+                const toggleBtn = li.querySelector('.emoji-toggle');
+                const emojiPicker = li.querySelector('.emoji-picker');
+                const desc = li.querySelector('.type-desc');
+
+                desc.innerText = typeDescriptions[select.value] || '';
+
+                switch(select.value){
+                    case 'FixedText':
+                        input.readOnly = false;
+                        input.placeholder = "Fixed text / Emoji";
+                        toggleBtn.style.display = 'inline-block';
+                        emojiPicker.style.display = 'none';
+                        break;
+                    case 'DateTime':
+                    case 'Sequence':
+                        input.readOnly = false;
+                        input.placeholder = '';
+                        toggleBtn.style.display = 'none';
+                        emojiPicker.style.display = 'none';
+                        if(!input.value) input.value = generateValue(select.value);
+                        break;
+                    default:
+                        input.readOnly = true;
+                        input.placeholder = '';
+                        toggleBtn.style.display = 'none';
+                        emojiPicker.style.display = 'none';
+                        input.value = generateValue(select.value);
+                }
+            }
+
+            function updatePreview(){
+                let preview = '';
+                Array.from(list.children).forEach(li => {
+                    const input = li.querySelector('input[name$=".FixedValue"]');
+                    preview += input.value || '[text]';
+                    preview += '-';
+                });
+                document.getElementById('preview').innerText = preview.slice(0,-1);
+            }
+
+            function updateOrder(){
+                Array.from(list.children).forEach((li, i) => {
+                    li.dataset.index = i;
+                    li.querySelector('input[name$=".Order"]').value = i;
+                });
+            }
+
+            function initializeElement(li){
+                setupInputByType(li);
+                const select = li.querySelector('select');
+                select.addEventListener('change', () => {
+                    setupInputByType(li);
+                    updatePreview();
+                });
+
+                const input = li.querySelector('input[name$=".FixedValue"]');
+                input.addEventListener('input', () => {
+                    if(select.value === 'DateTime'){
+                        if(!/^[yMdHhms:\- ]*$/.test(input.value)) input.value = input.value.slice(0,-1);
+                    }
+                    if(select.value === 'Sequence'){
+                        if(!/^D\d*$/.test(input.value)) input.value = input.value.slice(0,-1);
+                    }
+                    updatePreview();
+                });
+            }
+
+            Array.from(list.children).forEach(li => initializeElement(li));
+            updatePreview();
+            updateOrder();
+
+            new Sortable(list, {
+                animation: 150,
+                fallbackOnBody: true,
+                swapThreshold: 0.65,
+                onEnd: function(evt){
+                    updateOrder();
+                    updatePreview();
+                }
+            });
+
+            addButton.addEventListener('click', function(){
+                const index = list.children.length;
+                const li = document.createElement('li');
+                li.className = 'element-item';
+                li.dataset.index = index;
+                li.innerHTML = `
+                    <input type="hidden" name="Elements[${index}].Id" value="0" />
+                    <select name="Elements[${index}].Type">
+                        <option value="FixedText">FixedText</option>
+                        <option value="Random6Digit">Random6Digit</option>
+                        <option value="Random9Digit">Random9Digit</option>
+                        <option value="Random20Bit">Random20Bit</option>
+                        <option value="Random32Bit">Random32Bit</option>
+                        <option value="Guid">Guid</option>
+                        <option value="DateTime">DateTime</option>
+                        <option value="Sequence">Sequence</option>
+                    </select>
+                    <input name="Elements[${index}].FixedValue" />
+                    <button type="button" class="emoji-toggle" style="display:none;">😀</button>
+                    <emoji-picker class="emoji-picker" style="height:300px; display:none;"></emoji-picker>
+                    <div class="type-desc"></div>
+                    <input type="hidden" name="Elements[${index}].Order" value="${index}" />
+                `;
+                list.appendChild(li);
+                initializeElement(li);
+                updateOrder();
+                updatePreview();
+            });
+
+            list.addEventListener('click', function(e){
+                if(e.target.classList.contains('emoji-toggle')){
+                    const picker = e.target.closest('li').querySelector('.emoji-picker');
+                    picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+
+            list.addEventListener('emoji-click', function(e){
+                if(e.target.tagName === 'EMOJI-PICKER'){
+                    const li = e.target.closest('li');
+                    const input = li.querySelector('input[name$=".FixedValue"]');
+                    input.value = e.detail.unicode;
+                    e.target.style.display = 'none';
+                    updatePreview();
+                }
+            });
+        });
+    </script>
+}

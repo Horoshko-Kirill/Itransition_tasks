@@ -23,7 +23,7 @@ namespace CourseWork.Controllers.Inventory
 
             var items = await _context.Items.ToListAsync();
 
-            return View(items);
+            return View("~/Views/Inventory/Item/Items.cshtml",items);
 
         }
     }
