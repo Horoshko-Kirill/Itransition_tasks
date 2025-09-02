@@ -42,7 +42,6 @@
 
 @section Scripts {
     <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
     <style>
         #elements-list {
@@ -60,6 +59,7 @@
             border: 1px solid #aaa;
             background: #f9f9f9;
             cursor: grab;
+            transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
         .emoji-picker {
@@ -78,6 +78,9 @@
         document.addEventListener("DOMContentLoaded", function() {
             const list = document.getElementById('elements-list');
             const addButton = document.getElementById('add-element');
+            let draggedItem = null;
+            let dragOverItem = null;
+            let wasDraggedOut = false;
 
             const typeDescriptions = {
                 FixedText: "You can enter any text or Emoji",
@@ -149,6 +152,9 @@
             function updateOrder(){
                 Array.from(list.children).forEach((li, i) => {
                     li.dataset.index = i;
+                    li.querySelectorAll("[name]").forEach(input => {
+                        input.name = input.name.replace(/Elements\[\d+\]/, `Elements[${i}]`);
+                    });
                     li.querySelector('input[name$=".Order"]').value = i;
                 });
             }
@@ -171,21 +177,100 @@
                     }
                     updatePreview();
                 });
+
+                li.setAttribute('draggable', 'true');
+
+                li.addEventListener('dragstart', function(e) {
+                    draggedItem = this;
+                    wasDraggedOut = false;
+                    this.style.opacity = '0.5';
+                    e.dataTransfer.effectAllowed = 'move';
+                    try { e.dataTransfer.setData('text/plain', ''); } catch (err) {}
+                });
+
+                li.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                    this.style.backgroundColor = '#f9f9f9';
+                    document.body.style.cursor = '';
+
+                    if (wasDraggedOut) {
+                        this.style.transform = 'scale(0)';
+                        this.style.opacity = '0';
+                        setTimeout(() => {
+                            if (this.parentNode) {
+                                this.remove();
+                                updateOrder();
+                                updatePreview();
+                            }
+                        }, 260);
+                    }
+
+                    draggedItem = null;
+                    wasDraggedOut = false;
+                });
+
+                li.addEventListener('dragover', function(e) { e.preventDefault(); });
+
+                li.addEventListener('dragenter', function(e) {
+                    e.preventDefault();
+                    if (this !== draggedItem) {
+                        this.style.backgroundColor = '#e3f2fd';
+                        dragOverItem = this;
+                    }
+                });
+
+                li.addEventListener('dragleave', function() {
+                    if (this === dragOverItem) {
+                        this.style.backgroundColor = '#f9f9f9';
+                        dragOverItem = null;
+                    }
+                });
+
+                li.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    if (this !== draggedItem && draggedItem) {
+                        this.style.backgroundColor = '#f9f9f9';
+                        if (draggedItem.parentNode === this.parentNode) {
+                            const allItems = Array.from(list.children);
+                            const thisIndex = allItems.indexOf(this);
+                            const draggedIndex = allItems.indexOf(draggedItem);
+                            if (draggedIndex < thisIndex) {
+                                list.insertBefore(draggedItem, this.nextSibling);
+                            } else {
+                                list.insertBefore(draggedItem, this);
+                            }
+                            updateOrder();
+                            updatePreview();
+                        }
+                    }
+                });
             }
+
+            document.addEventListener('dragover', function(e) {
+                if (!draggedItem) return;
+                const listRect = list.getBoundingClientRect();
+                const isOut = (
+                    e.clientX < listRect.left - 20 ||
+                    e.clientX > listRect.right + 20 ||
+                    e.clientY < listRect.top - 20 ||
+                    e.clientY > listRect.bottom + 20
+                );
+                wasDraggedOut = isOut;
+                if (isOut) {
+                    document.body.style.cursor = 'no-drop';
+                    draggedItem.style.backgroundColor = '#ffebee';
+                } else {
+                    document.body.style.cursor = '';
+                    draggedItem.style.backgroundColor = '#f9f9f9';
+                }
+                e.preventDefault();
+            });
+
+            document.addEventListener('drop', function(e) { e.preventDefault(); });
 
             Array.from(list.children).forEach(li => initializeElement(li));
             updatePreview();
             updateOrder();
-
-            new Sortable(list, {
-                animation: 150,
-                fallbackOnBody: true,
-                swapThreshold: 0.65,
-                onEnd: function(evt){
-                    updateOrder();
-                    updatePreview();
-                }
-            });
 
             addButton.addEventListener('click', function(){
                 const index = list.children.length;
@@ -194,7 +279,7 @@
                 li.dataset.index = index;
                 li.innerHTML = `
                     <input type="hidden" name="Elements[${index}].Id" value="0" />
-                    <select name="Elements[${index}].Type">
+                    <select name="Elements[${index}].Type" class="type-select">
                         <option value="FixedText">FixedText</option>
                         <option value="Random6Digit">Random6Digit</option>
                         <option value="Random9Digit">Random9Digit</option>
@@ -224,13 +309,15 @@
             });
 
             list.addEventListener('emoji-click', function(e){
-                if(e.target.tagName === 'EMOJI-PICKER'){
-                    const li = e.target.closest('li');
-                    const input = li.querySelector('input[name$=".FixedValue"]');
-                    input.value = e.detail.unicode;
-                    e.target.style.display = 'none';
-                    updatePreview();
-                }
+                const detail = e.detail || {};
+                const unicode = detail.unicode;
+                const pickerEl = e.target.closest('emoji-picker');
+                const li = (pickerEl && pickerEl.closest('li')) || e.target.closest('li');
+                if (!li) return;
+                const input = li.querySelector('input[name$=".FixedValue"]');
+                if (unicode) input.value = unicode;
+                if (pickerEl) pickerEl.style.display = 'none';
+                updatePreview();
             });
         });
     </script>
