@@ -144,7 +144,6 @@
                 Array.from(list.children).forEach(li => {
                     const input = li.querySelector('input[name$=".FixedValue"]');
                     preview += input.value || '[text]';
-                    preview += '-';
                 });
                 document.getElementById('preview').innerText = preview.slice(0,-1);
             }

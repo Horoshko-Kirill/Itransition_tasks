@@ -1,0 +1,76 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CourseWork.Models.ViewModels.InventoryListViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "All inventories";
+}
+
+<h2>All Inventories</h2>
+
+<form method="get" asp-action="AllInventories">
+    <div>
+        <input type="text" name="searchQuery" value="@Model.SearchQuery" placeholder="Search by name..." />
+
+        <select name="categoryId">
+            <option value="">All Categories</option>
+            @foreach (var cat in Model.CategoryOptions)
+            {
+                <option value="@cat.Value"
+                        selected="@(Model.SelectedCategoryId == int.Parse(cat.Value) ? "selected" : null)">
+                    @cat.Text
+                </option>
+            }
+        </select>
+
+        <select name="tagId">
+            <option value="">All Tags</option>
+            <option value="0" selected="@(Model.SelectedTagId == 0 ? "selected" : null)">No tags</option>
+            @foreach (var tag in Model.TagOptions)
+            {
+                <option value="@tag.Id"
+                        selected="@(Model.SelectedTagId == tag.Id ? "selected" : null)">
+                    @tag.Name
+                </option>
+            }
+        </select>
+
+
+        <button type="submit">Filter</button>
+    </div>
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var inventory in Model.Inventories)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
+                        @inventory.Name
+                    </a>
+                </td>
+                <td>@inventory.Description</td>
+                <td>@inventory.Category?.Name</td>
+                <td>
+                    @if (inventory.InventoryTags.Any())
+                    {
+                        @string.Join(", ", inventory.InventoryTags.Select(it => it.Tag.Name))
+                    }
+                    else
+                    {
+                        <span>No tags</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+﻿@model CourseWork.Models.Inventory
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_InventoryLayout";
+    ViewData["Title"] = "Inventory Description";
+
+    var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    bool hasLiked = ViewBag.UserLiked ?? false;
+    int likeCount = ViewBag.LikeCount ?? 0;
+}
+
+<h2>@Model.Name</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<div class="mb-3">
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="Inventory Photo" style="max-width:300px; max-height:300px; object-fit:cover;" />
+    }
+    else
+    {
+        <span>No photo</span>
+    }
+</div>
+
+<div class="mb-3">
+    <strong>Description:</strong>
+    <p>@Model.Description</p>
+</div>
+
+<div>
+    <p>@ViewBag.TagString</p>
+</div>
+
+<div class="mb-3">
+    <form asp-controller="InventoryLikes" asp-action="ToggleLike" method="post">
+        <input type="hidden" name="inventoryId" value="@Model.Id" />
+        <button type="submit" class="btn @(hasLiked ? "btn-danger" : "btn-primary")">
+            @(hasLiked ? "Unlike" : "Like") (@likeCount)
+        </button>
+    </form>
+</div>
+
+@if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin"))
+{
+    <a asp-action="EditDescription" asp-route-inventoryId="@Model.Id" class="btn btn-primary">Edit</a>
+}

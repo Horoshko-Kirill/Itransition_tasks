@@ -46,6 +46,12 @@
     </div>
 
     <div>
+        <label for="tags">Tags</label>
+        <input asp-for="Tags" placeholder="Enter tags separated by commas" />
+        <span asp-validation-for="Tags"></span>
+    </div>
+
+    <div>
         <button type="submit">Create Inventory</button>
         <a asp-action="MyInventories">Cancel</a>
     </div>

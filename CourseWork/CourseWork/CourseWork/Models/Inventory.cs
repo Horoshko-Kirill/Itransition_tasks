@@ -36,5 +36,6 @@ namespace CourseWork.Models
         public CustomIdFormat CustomIdFormat { get; set; }
         public ICollection<Item> Items { get; set; }  = new List<Item>();
         public ICollection<CustomField> CustomFields { get; set; } = new List<CustomField>();
+        public List<Review> Reviews { get; set; } = new List<Review>();
     }
 }

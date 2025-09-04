@@ -127,11 +127,6 @@
                 border: 2px dashed #007bff;
             }
 
-            .field-item.sortable-chosen {
-                background: #f8f9fa;
-                transform: rotate(2deg);
-            }
-
             .field-item.sortable-drag {
                 opacity: 0.8;
                 box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -140,12 +135,6 @@
         .type-desc {
             font-size: 12px;
             margin-top: 8px;
-        }
-
-        .deleting {
-            opacity: 0;
-            transform: scale(0.8) rotate(-10deg);
-            transition: all 0.3s ease;
         }
 
         .fa-grip-vertical {
@@ -225,22 +214,24 @@
 
             function deleteField(fieldElement) {
                 const fieldId = fieldElement.dataset.fieldId;
+
                 if (fieldId !== '0') {
-                    if (confirm('Are you sure you want to delete this field?')) {
-                        fieldElement.classList.add('deleting');
-                        fetch('/CustomField/Delete?id=' + fieldId, {
-                            method: 'POST',
-                            headers: { 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value }
-                        }).then(res => {
-                            if (res.ok) { setTimeout(() => { fieldElement.remove(); updateOrder(); }, 300); }
-                            else { fieldElement.classList.remove('deleting'); alert('Error deleting field'); }
-                        }).catch(err => { fieldElement.classList.remove('deleting'); console.error(err); });
-                    }
+  
+                    fieldElement.classList.add('deleting');
+                    fetch('/CustomField/Delete?id=' + fieldId, {
+                        method: 'POST',
+                        headers: { 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value }
+                    }).then(res => {
+                        if (res.ok) { setTimeout(() => { fieldElement.remove(); updateOrder(); }, 300); }
+                        else { fieldElement.classList.remove('deleting'); console.error('Error deleting field'); }
+                    }).catch(err => { fieldElement.classList.remove('deleting'); console.error(err); });
                 } else {
+    
                     fieldElement.classList.add('deleting');
                     setTimeout(() => { fieldElement.remove(); updateOrder(); }, 300);
                 }
             }
+
 
             document.addEventListener('dragover', e => {
                 if (!draggedItem) return;

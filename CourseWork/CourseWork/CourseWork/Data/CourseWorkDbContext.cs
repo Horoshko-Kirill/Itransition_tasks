@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CourseWork.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 
 namespace CourseWork.Data
@@ -20,6 +21,10 @@ namespace CourseWork.Data
         public DbSet<CustomField> CustomFields { get; set; }
         public DbSet<CustomFieldValue> CustomFieldValues { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<InventoryTag> inventoryTags { get; set; }
+        public DbSet<InventoryLike> InventoryLikes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -67,6 +72,40 @@ namespace CourseWork.Data
 
             builder.Entity<User>()
                 .HasIndex(u => u.Email)
+            .IsUnique();
+
+            builder.Entity<CustomField>()
+                .HasMany(cf => cf.CustomFieldValues)
+                .WithOne(cfv => cfv.CustomField)
+                .HasForeignKey(cfv => cfv.CustomFieldId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Item>()
+                .HasMany(i => i.CustomFieldValues)
+                .WithOne(cfv => cfv.Item)
+                .HasForeignKey(cfv => cfv.ItemId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Review>()
+                .HasOne(r => r.Inventory)
+                .WithMany(i => i.Reviews)
+                .HasForeignKey(r => r.InventoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<InventoryTag>()
+                .HasOne(it => it.Inventory)
+                .WithMany(i => i.InventoryTags)
+                .HasForeignKey(it => it.InventoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<InventoryTag>()
+                .HasOne(it => it.Tag)
+                .WithMany(t => t.InventoryTags)
+                .HasForeignKey(it => it.TagId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<InventoryLike>()
+                .HasIndex(l => new { l.UserId, l.inventoryId })
                 .IsUnique();
         }
     }

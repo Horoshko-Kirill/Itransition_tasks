@@ -103,6 +103,9 @@ namespace CourseWork.Migrations
                     b.Property<int>("CustomFieldId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("CustomFieldId1")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ItemId")
                         .HasColumnType("integer");
 
@@ -110,12 +113,13 @@ namespace CourseWork.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Value")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomFieldId");
+
+                    b.HasIndex("CustomFieldId1");
 
                     b.HasIndex("ItemId");
 
@@ -229,6 +233,34 @@ namespace CourseWork.Migrations
                     b.ToTable("Inventories");
                 });
 
+            modelBuilder.Entity("CourseWork.Models.InventoryLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("inventoryId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("inventoryId");
+
+                    b.HasIndex("UserId", "inventoryId")
+                        .IsUnique();
+
+                    b.ToTable("InventoryLikes");
+                });
+
             modelBuilder.Entity("CourseWork.Models.InventoryTag", b =>
                 {
                     b.Property<int>("Id")
@@ -252,7 +284,7 @@ namespace CourseWork.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("InventoryTag");
+                    b.ToTable("inventoryTags");
                 });
 
             modelBuilder.Entity("CourseWork.Models.Item", b =>
@@ -267,7 +299,6 @@ namespace CourseWork.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CustomId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
@@ -276,11 +307,9 @@ namespace CourseWork.Migrations
                         .HasColumnType("character varying(2000)");
 
                     b.Property<string>("ImageDropboxPath")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("InventoryId")
@@ -328,6 +357,40 @@ namespace CourseWork.Migrations
                     b.ToTable("Permissions");
                 });
 
+            modelBuilder.Entity("CourseWork.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("InventoryId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Reating")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InventoryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("CourseWork.Models.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -346,7 +409,7 @@ namespace CourseWork.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("CourseWork.Models.User", b =>
@@ -582,10 +645,14 @@ namespace CourseWork.Migrations
             modelBuilder.Entity("CourseWork.Models.CustomFieldValue", b =>
                 {
                     b.HasOne("CourseWork.Models.CustomField", "CustomField")
-                        .WithMany("CustomFields")
+                        .WithMany("CustomFieldValues")
                         .HasForeignKey("CustomFieldId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CourseWork.Models.CustomField", null)
+                        .WithMany("CustomFields")
+                        .HasForeignKey("CustomFieldId1");
 
                     b.HasOne("CourseWork.Models.Item", "Item")
                         .WithMany("CustomFieldValues")
@@ -637,6 +704,25 @@ namespace CourseWork.Migrations
                     b.Navigation("Creator");
                 });
 
+            modelBuilder.Entity("CourseWork.Models.InventoryLike", b =>
+                {
+                    b.HasOne("CourseWork.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CourseWork.Models.Inventory", "Inventory")
+                        .WithMany()
+                        .HasForeignKey("inventoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Inventory");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CourseWork.Models.InventoryTag", b =>
                 {
                     b.HasOne("CourseWork.Models.Inventory", "Inventory")
@@ -677,6 +763,25 @@ namespace CourseWork.Migrations
 
                     b.HasOne("CourseWork.Models.User", "User")
                         .WithMany("Permissions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Inventory");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CourseWork.Models.Review", b =>
+                {
+                    b.HasOne("CourseWork.Models.Inventory", "Inventory")
+                        .WithMany("Reviews")
+                        .HasForeignKey("InventoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CourseWork.Models.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -744,6 +849,8 @@ namespace CourseWork.Migrations
 
             modelBuilder.Entity("CourseWork.Models.CustomField", b =>
                 {
+                    b.Navigation("CustomFieldValues");
+
                     b.Navigation("CustomFields");
                 });
 
@@ -764,6 +871,8 @@ namespace CourseWork.Migrations
                     b.Navigation("Items");
 
                     b.Navigation("Permissions");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("CourseWork.Models.Item", b =>

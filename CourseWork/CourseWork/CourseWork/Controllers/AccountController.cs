@@ -43,7 +43,7 @@ namespace CourseWork.Controllers
                     UserName = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    LastVisit = DateTime.Now,
+                    LastVisit = DateTime.UtcNow,
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

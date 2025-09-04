@@ -9,14 +9,9 @@ namespace CourseWork.Models
 
         public int Id { get; set; }
 
-
-        [Required]
         public CustomIdElementType Type { get; set; }
-
-        [Required]
         public int CustomIdFormatId { get; set; }
 
-        [Required]
         public int Order { get; set; }
 
         public string? FixedValue { get; set; }

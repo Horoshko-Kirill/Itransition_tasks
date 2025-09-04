@@ -1,0 +1,42 @@
+﻿@using CourseWork.Models.ViewModels
+@model PermissionsViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_InventoryLayout";
+    ViewData["Title"] = "Manage Permissions";
+}
+
+<h2>Manage Permissions</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<form asp-action="Permissions" method="post">
+    <input type="hidden" name="inventoryId" value="@Model.InventoryId" />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Can Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Users.Count; i++)
+            {
+                <tr>
+                    <td>@Model.Users[i].UserName</td>
+                    <td>
+                        <input type="hidden" name="Users[@i].UserId" value="@Model.Users[i].UserId" />
+                        <input type="checkbox" name="Users[@i].HaveWriteAccess" value="true" @(Model.Users[i].HaveWriteAccess ? "checked" : "") />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-success">Save Permissions</button>
+</form>

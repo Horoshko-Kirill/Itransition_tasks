@@ -10,7 +10,6 @@ namespace CourseWork.Models
 
         public string Description { get; set; }
 
-        [Required]
         public int InventoryId { get; set; }
 
         [ForeignKey("InventoryId")]

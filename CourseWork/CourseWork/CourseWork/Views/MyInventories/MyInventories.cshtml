@@ -33,6 +33,7 @@
                     <th>Description</th>
                     <th>Items</th>
                     <th>Category</th>
+                    <th>Tags</th>
                     <th>Created</th>
                 </tr>
             </thead>
@@ -52,6 +53,18 @@
                         <td>@inventory.Description</td>
                         <td>@inventory.Items.Count</td>
                         <td>@inventory.Category?.Name</td>
+                        <td>
+                            @if (inventory.InventoryTags.Any())
+                            {
+                                <span>
+                                    @string.Join(", ", inventory.InventoryTags.Select(it => it.Tag.Name))
+                                </span>
+                            }
+                            else
+                            {
+                                <span>No tags</span>
+                            }
+                        </td>
                         <td>@inventory.CreatedAt.ToString("MMM dd, yyyy")</td>
                     </tr>
                 }

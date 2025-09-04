@@ -36,6 +36,12 @@ namespace CourseWork.Controllers
                 .OrderBy(c => c.Name)
                 .ToListAsync();
 
+            ViewBag.InventoryTags = await _context.inventoryTags
+                .Include(it => it.Tag)
+                .OrderBy(it => it.Tag.Name)
+                .ToListAsync();
+
+
             return View(model);
         }
 
@@ -87,6 +93,35 @@ namespace CourseWork.Controllers
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             };
+
+            var tagNames = model.Tags?
+                .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                .Select(t => t.Trim().ToLower())
+                .Distinct()
+                .ToList() ?? new List<string>();
+
+            foreach (var tagName in tagNames)
+            {
+
+                var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name.ToLower() == tagName);
+                if (tag == null)
+                {
+                    tag = new Tag
+                    {
+                        Name = tagName,
+                        CreatedDate = DateTime.UtcNow
+                    };
+                    _context.Tags.Add(tag);
+                    await _context.SaveChangesAsync();
+                }
+
+
+                inventory.InventoryTags.Add(new InventoryTag
+                {
+                    TagId = tag.Id,
+                    CreatedAt = DateTime.UtcNow
+                });
+            }
 
             try
             {

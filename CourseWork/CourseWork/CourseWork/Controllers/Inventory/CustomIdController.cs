@@ -27,10 +27,17 @@ namespace CourseWork.Controllers.Inventory
               .FirstOrDefaultAsync(f => f.InventoryId == inventoryId);
 
             var inventory = await _context.Inventories
-                .FirstOrDefaultAsync(i => i.Id == inventoryId);
+               .Include(i => i.Permissions)
+               .FirstOrDefaultAsync(i => i.Id == inventoryId);
+
+            var currnetUserId = _userManager.GetUserId(User);
+            if (currnetUserId == inventory.CreatorId)
+            {
+                ViewBag.IsCreator = true;
+            }
 
             SetInventoryViewData(inventoryId, inventory.Name);
-
+            ViewBag.isPublic = inventory.isPublic;
             if (format == null)
             {
                 format = new CustomIdFormat
@@ -63,6 +70,12 @@ namespace CourseWork.Controllers.Inventory
                 }).ToList()
             };
 
+            var userId = _userManager.GetUserId(User);
+            bool hasWritePermission = inventory.Permissions
+             .Any(p => p.UserId == userId && p.HaveWriteAccess);
+
+            ViewBag.CanEdit = hasWritePermission;
+
             return View("~/Views/Inventory/CustomId/CustomId.cshtml", model);
         }
 
@@ -75,8 +88,15 @@ namespace CourseWork.Controllers.Inventory
               .FirstOrDefaultAsync(f => f.Id == id);
 
             var inventory = await _context.Inventories
-                .FirstOrDefaultAsync(i => i.Id == format.InventoryId);
+               .Include(i => i.Permissions)
+               .FirstOrDefaultAsync(i => i.Id == format.InventoryId);
 
+            var currnetUserId = _userManager.GetUserId(User);
+            if (currnetUserId == inventory.CreatorId)
+            {
+                ViewBag.IsCreator = true;
+            }
+            ViewBag.isPublic = inventory.isPublic;
             SetInventoryViewData(format.InventoryId, inventory.Name);
 
             var model = new CustomIdFormatViewModel
@@ -92,6 +112,12 @@ namespace CourseWork.Controllers.Inventory
                         Order = i
                     }).ToList()
             };
+
+            var userId = _userManager.GetUserId(User);
+            bool hasWritePermission = inventory.Permissions
+             .Any(p => p.UserId == userId && p.HaveWriteAccess);
+
+            ViewBag.CanEdit = hasWritePermission;
 
             return View("~/Views/Inventory/CustomId/Edit.cshtml", model);
         }
@@ -118,8 +144,15 @@ namespace CourseWork.Controllers.Inventory
                .FirstOrDefaultAsync(f => f.Id == model.Id);
 
             var inventory = await _context.Inventories
-                .FirstOrDefaultAsync(i => i.Id == format.InventoryId);
+               .Include(i => i.Permissions)
+               .FirstOrDefaultAsync(i => i.Id == format.InventoryId);
 
+            var currnetUserId = _userManager.GetUserId(User);
+            if (currnetUserId == inventory.CreatorId)
+            {
+                ViewBag.IsCreator = true;
+            }
+            ViewBag.isPublic = inventory.isPublic;
             SetInventoryViewData(format.InventoryId, inventory.Name);
 
             format.UpdateAt = DateTime.UtcNow;
@@ -137,6 +170,12 @@ namespace CourseWork.Controllers.Inventory
 
 
             await _context.SaveChangesAsync();
+
+            var userId = _userManager.GetUserId(User);
+            bool hasWritePermission = inventory.Permissions
+             .Any(p => p.UserId == userId && p.HaveWriteAccess);
+
+            ViewBag.CanEdit = hasWritePermission;
 
             return RedirectToAction("CustomId", new { inventoryId = format.InventoryId });
 

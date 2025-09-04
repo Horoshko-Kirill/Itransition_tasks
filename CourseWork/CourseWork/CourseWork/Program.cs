@@ -35,6 +35,8 @@ builder.Services.AddSingleton<DropboxService>(sp =>
     return new DropboxService(config, httpClient);
 });
 
+builder.Services.AddScoped<CustomIdService>();
+
 builder.Services.AddScoped<CheckBlockedAttribute>();
 
 builder.Services.AddControllersWithViews(options =>

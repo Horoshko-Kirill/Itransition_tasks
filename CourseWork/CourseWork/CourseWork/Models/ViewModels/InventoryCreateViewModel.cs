@@ -22,7 +22,8 @@ namespace CourseWork.Models.ViewModels
 
         [Display(Name = "Inventory Image")]
         public IFormFile ImageFile { get; set; }
-
+        
+        public string Tags { get; set; }
         public List<SelectListItem> CategoryOptions { get; set; }
 
 
