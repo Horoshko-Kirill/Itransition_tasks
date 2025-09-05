@@ -167,7 +167,6 @@
 
                 li.addEventListener('dragend', function() {
                     this.style.opacity = '1';
-                    this.style.backgroundColor = '#f9f9f9';
                     document.body.style.cursor = '';
 
                     if (wasDraggedOut) {
@@ -191,14 +190,12 @@
                 li.addEventListener('dragenter', function(e) {
                     e.preventDefault();
                     if (this !== draggedItem) {
-                        this.style.backgroundColor = '#e3f2fd';
                         dragOverItem = this;
                     }
                 });
 
                 li.addEventListener('dragleave', function() {
                     if (this === dragOverItem) {
-                        this.style.backgroundColor = '#f9f9f9';
                         dragOverItem = null;
                     }
                 });
@@ -206,7 +203,6 @@
                 li.addEventListener('drop', function(e) {
                     e.preventDefault();
                     if (this !== draggedItem && draggedItem) {
-                        this.style.backgroundColor = '#f9f9f9';
                         if (draggedItem.parentNode === this.parentNode) {
                             const allItems = Array.from(list.children);
                             const thisIndex = allItems.indexOf(this);
@@ -235,10 +231,8 @@
                 wasDraggedOut = isOut;
                 if (isOut) {
                     document.body.style.cursor = 'no-drop';
-                    draggedItem.style.backgroundColor = '#ffebee';
                 } else {
                     document.body.style.cursor = '';
-                    draggedItem.style.backgroundColor = '#f9f9f9';
                 }
                 e.preventDefault();
             });
