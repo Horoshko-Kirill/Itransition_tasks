@@ -153,21 +153,6 @@
     }
 }
 
-.custom-select {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.15);
-    background-color: rgba(255,255,255,0.95);
-    color: #111;
-}
-
-    .custom-select:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 4px #007bff;
-        background-color: rgba(230,240,255,0.9);
-    }
-s
 
 
 

@@ -1,0 +1,77 @@
+﻿#fields-list {
+    min-height: 200px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 12px;
+    list-style: none;
+    background-color: #1e1e1e;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.field-item {
+    margin-bottom: 15px;
+    padding: 18px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background-color: #2a2a2a;
+    color: #fff;
+    cursor: grab;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+    .field-item:hover {
+        border-color: #007bff;
+        box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+    }
+
+    .field-item.sortable-ghost {
+        opacity: 0.6;
+        background: #333;
+        border: 2px dashed #007bff;
+    }
+
+    .field-item.sortable-drag {
+        opacity: 0.9;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .field-item input.form-control,
+    .field-item select.form-control,
+    .field-item textarea.form-control {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #555;
+        border-radius: 6px;
+    }
+
+        .field-item input.form-control:focus,
+        .field-item select.form-control:focus,
+        .field-item textarea.form-control:focus {
+            background-color: #444;
+            border-color: #007bff;
+            box-shadow: 0 0 4px #007bff;
+            outline: none;
+        }
+
+    .field-item .badge {
+        background-color: #555;
+        color: #fff;
+    }
+
+.type-desc {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 6px;
+}
+
+.fa-grip-vertical {
+    cursor: grab;
+    color: #aaa;
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 10px 15px;
+}

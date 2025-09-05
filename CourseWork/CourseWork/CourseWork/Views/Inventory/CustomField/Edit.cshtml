@@ -6,6 +6,8 @@
     ViewData["Title"] = "Custom Fields";
 }
 
+<link rel="stylesheet" href="~/css/custom-field.css" />
+
 <form asp-action="Edit" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
 
@@ -96,86 +98,6 @@
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
-    <style>
-        #fields-list {
-            min-height: 200px;
-            border: 1px solid #444;
-            border-radius: 10px;
-            padding: 12px;
-            list-style: none;
-            background-color: #1e1e1e;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .field-item {
-            margin-bottom: 15px;
-            padding: 18px;
-            border: 1px solid #333;
-            border-radius: 10px;
-            background-color: #2a2a2a;
-            color: #fff;
-            cursor: grab;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-            .field-item:hover {
-                border-color: #007bff;
-                box-shadow: 0 4px 12px rgba(0,123,255,0.3);
-            }
-
-            .field-item.sortable-ghost {
-                opacity: 0.6;
-                background: #333;
-                border: 2px dashed #007bff;
-            }
-
-            .field-item.sortable-drag {
-                opacity: 0.9;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            }
-
-            .field-item input.form-control,
-            .field-item select.form-control,
-            .field-item textarea.form-control {
-                background-color: #333;
-                color: #fff;
-                border: 1px solid #555;
-                border-radius: 6px;
-            }
-
-                .field-item input.form-control:focus,
-                .field-item select.form-control:focus,
-                .field-item textarea.form-control:focus {
-                    background-color: #444;
-                    border-color: #007bff;
-                    box-shadow: 0 0 4px #007bff;
-                    outline: none;
-                }
-
-            .field-item .badge {
-                background-color: #555;
-                color: #fff;
-            }
-
-        .type-desc {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-top: 6px;
-        }
-
-        .fa-grip-vertical {
-            cursor: grab;
-            color: #aaa;
-        }
-
-        .alert {
-            border-radius: 8px;
-            padding: 10px 15px;
-        }
-    </style>
-
     <script>
             document.addEventListener("DOMContentLoaded", function() {
             const list = document.getElementById('fields-list');
@@ -217,14 +139,12 @@
                 li.addEventListener('dragenter', e => {
                     e.preventDefault();
                     if (li !== draggedItem) {
-                        li.style.backgroundColor = '#e3f2fd';
                         dragOverItem = li;
                     }
                 });
 
                 li.addEventListener('dragleave', e => {
                     if (li === dragOverItem) {
-                        li.style.backgroundColor = '#fff';
                         dragOverItem = null;
                     }
                 });
@@ -232,7 +152,6 @@
                 li.addEventListener('drop', e => {
                     e.preventDefault();
                     if (li !== draggedItem && draggedItem) {
-                        li.style.backgroundColor = '#fff';
                         const items = Array.from(list.children);
                         const draggedIndex = items.indexOf(draggedItem);
                         const targetIndex = items.indexOf(li);
@@ -271,7 +190,6 @@
                 if (!draggedItem) return;
                 const rect = list.getBoundingClientRect();
                 wasDraggedOut = e.clientX < rect.left - 10 || e.clientX > rect.right + 10 || e.clientY < rect.top - 10 || e.clientY > rect.bottom + 10;
-                draggedItem.style.backgroundColor = wasDraggedOut ? '#ffebee' : '#fff';
                 e.preventDefault();
             });
 
