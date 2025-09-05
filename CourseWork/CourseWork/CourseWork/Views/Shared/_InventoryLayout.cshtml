@@ -5,72 +5,112 @@
 @inject SignInManager<User> SignInManager
 
 @{
-	bool isCreator = ViewBag.IsCreator ?? false;
-	bool isAdmin = User.IsInRole("Admin");
-	bool isPublic = ViewBag.isPublic ?? false;
-	bool canEdit = ViewBag.CanEdit ?? false;
+    bool isCreator = ViewBag.IsCreator ?? false;
+    bool isAdmin = User.IsInRole("Admin");
+    bool isPublic = ViewBag.isPublic ?? false;
+    bool canEdit = ViewBag.CanEdit ?? false;
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="ru" data-bs-theme="light">
 <head>
-	<title>CourseWork/@ViewData["Title"]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CourseWork / @ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
-<h2>@ViewBag.InventoryName</h2>
-
-<ul>
-	@if (SignInManager.IsSignedIn(User))
-	{
-		<li>
-			<form asp-controller="Account" asp-action="Logout">
-				<button type="submit">Logout</button>
-			</form>
-		</li>
-	}
-	else
-	{
-		<li>
-			<a asp-controller="Account" asp-action="Register">Register</a>
-		</li>
-		<li>
-			<a asp-controller="Account" asp-action="Login">Login</a>
-		</li>
-	}
-	<li>
-		<a asp-controller="MyInventories" asp-action="MyInventories">My Inventories</a>
-	</li>
-	<li>
-		<a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@ViewBag.InventoryId">Items</a>
-	</li>
-	<li>
-		<a asp-controller="Reviews" asp-action="Reviews" asp-route-inventoryId="@ViewBag.InventoryId">Chat</a>
-	</li>
-	<li>
-		<a asp-controller="Description" asp-action="Description" asp-route-inventoryId="@ViewBag.InventoryId">Description</a>
-	</li>
-
-	@if (isCreator || isAdmin)
-	{
-		<li>
-			<a asp-controller="CustomId" asp-action="CustomId" asp-route-inventoryId="@ViewBag.InventoryId">Custom ID</a>
-		</li>
-		<li>
-			<a asp-controller="CustomField" asp-action="Edit" asp-route-inventoryId="@ViewBag.InventoryId">Custom Fields</a>
-		</li>
-		@if (!isPublic)
-		{
-			<li>
-				<a asp-controller="Permissions" asp-action="Permissions" asp-route-inventoryId="@ViewBag.InventoryId">Access Control</a>
-			</li>
-		}
-	}
-</ul>
-
 <body>
-	@RenderBody()
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">CourseWork</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-	@await RenderSectionAsync("Scripts", required: false)
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="MyInventories" asp-action="MyInventories">My Inventories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Items" asp-action="Items" asp-route-inventoryId="@ViewBag.InventoryId">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Reviews" asp-action="Reviews" asp-route-inventoryId="@ViewBag.InventoryId">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Description" asp-action="Description" asp-route-inventoryId="@ViewBag.InventoryId">Description</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+
+                    @if (isCreator || isAdmin)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="CustomId" asp-action="CustomId" asp-route-inventoryId="@ViewBag.InventoryId">Custom ID</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="CustomField" asp-action="Edit" asp-route-inventoryId="@ViewBag.InventoryId">Custom Fields</a>
+                        </li>
+                        @if (!isPublic)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Permissions" asp-action="Permissions" asp-route-inventoryId="@ViewBag.InventoryId">Access Control</a>
+                            </li>
+                        }
+                    }
+
+                    <li class="nav-item">
+                        <button id="themeToggle" class="btn btn-outline-secondary ms-2">🌙 / ☀️</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <h2>@ViewBag.InventoryName</h2>
+        @RenderBody()
+    </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const html = document.documentElement;
+        const btn = document.getElementById('themeToggle');
+
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-bs-theme', savedTheme);
+        }
+
+        btn.addEventListener('click', () => {
+            let newTheme = html.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
-
 </html>

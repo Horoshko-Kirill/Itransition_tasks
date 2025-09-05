@@ -1,7 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
 @using CourseWork.Models.ViewModels;
-
 @model UserViewModel;
 
 @{
@@ -9,40 +7,43 @@
     ViewData["Title"] = "Profile";
 }
 
+<div class="container my-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-5" style="width: 100%; max-width: 500px; border-radius: 1.5rem;">
 
-<h2>My profile</h2>
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <div>@TempData["SuccessMessage"]</div>
-}
-
-@if (TempData["ErrorMessage"] != null)
-{
-    <div>@TempData["ErrorMessage"]</div>
-}
-
-<div>
-    <h3>@Model.UserName</h3>
-    <p>@Model.FirstName @Model.LastName</p>
-    <p>Email: @Model.Email</p>
-
-    @if (!string.IsNullOrEmpty(Model.PhotoUrl))
-    {
-        <img src="@Model.PhotoUrl" alt="Аватар" width="200" />
-    }
-    else
-    {
-        <p>Avatar is empty</p>
-    }
-
-    <form asp-action="UpdatePhoto" method="post" enctype="multipart/form-data">
-        <div>
-            <label>New avatar:</label>
-            <input type="file" name="newPhoto" accept="image/*" />
+        <div class="d-flex flex-column align-items-center mb-4">
+            @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+            {
+                <img src="@Model.PhotoUrl" alt="Avatar" class="rounded-circle border border-3 border-primary" style="width:180px; height:180px; object-fit:cover;" />
+            }
+            else
+            {
+                <div class="rounded-circle bg-light border border-3 border-secondary d-flex align-items-center justify-content-center" style="width:180px; height:180px;">
+                    <span class="text-muted">No Avatar</span>
+                </div>
+            }
         </div>
-        <button type="submit">Update avatar</button>
-    </form>
 
-    <a asp-action="Edit" class="btn btn-primary">Edit profile</a>
+        <div class="text-center mb-4">
+            <h3 class="mb-1">@Model.UserName</h3>
+            <p class="mb-1">@Model.FirstName @Model.LastName</p>
+            <p><strong>@Model.Email</strong></p>
+        </div>
+
+        <form asp-action="UpdatePhoto" method="post" enctype="multipart/form-data" class="mb-3">
+            <input type="file" name="newPhoto" accept="image/*" class="form-control mb-2" />
+            <button type="submit" class="btn btn-outline-primary w-100">Update Avatar</button>
+        </form>
+
+        <a asp-action="Edit" class="btn btn-primary w-100 mb-3">Edit Profile</a>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success mt-3">@TempData["SuccessMessage"]</div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger mt-3">@TempData["ErrorMessage"]</div>
+        }
+    </div>
 </div>

@@ -1,47 +1,59 @@
 ﻿@model List<CourseWork.Models.Review>
-
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = "_InventoryLayout";
-    ViewData["Title"] = "Manage Permissions";
+    ViewData["Title"] = "Reviews";
 }
 
-<h2>Reviews</h2>
+<h2 class="mb-4">Reviews</h2>
 
 <form asp-action="Create" method="post">
     <input type="hidden" name="inventoryId" value="@ViewBag.inventoryId" />
 
-    <div class="mb-3">
-        <label>Rating</label>
-        <select name="rating" class="form-control">
-            <option value="1">1 ⭐</option>
-            <option value="2">2 ⭐⭐</option>
-            <option value="3">3 ⭐⭐⭐</option>
-            <option value="4">4 ⭐⭐⭐⭐</option>
-            <option value="5">5 ⭐⭐⭐⭐⭐</option>
-        </select>
+    <div class="row g-3 mb-3">
+        <div class="col-md-3 col-12">
+            <label class="form-label">Rating</label>
+            <select name="rating" class="form-select">
+                <option value="1">1 ⭐</option>
+                <option value="2">2 ⭐⭐</option>
+                <option value="3">3 ⭐⭐⭐</option>
+                <option value="4">4 ⭐⭐⭐⭐</option>
+                <option value="5">5 ⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+
+        <div class="col-md-9 col-12">
+            <label class="form-label">Review</label>
+            <textarea name="content" class="form-control" rows="2"></textarea>
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label>Review</label>
-        <textarea name="content" class="form-control"></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Leave review</button>
-
+    <button type="submit" class="btn btn-primary mb-4">
+        <i class="bi bi-chat-left-text me-1"></i> Leave review
+    </button>
 </form>
 
 <hr />
 
-@foreach (var review in Model)
-{
-    <div class="card mb-3">
-        <div class="card-body">
-            <strong>@review.User.UserName</strong>
-            <span>(@review.Reating ⭐)</span>
-            <p>@review.Content</p>
-            <small class="text-muted">@review.CreatedAt.ToLocalTime()</small>
+<div class="row row-cols-1 row-cols-md-2 g-3">
+    @foreach (var review in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <strong>@review.User.UserName</strong>
+                        <span class="text-warning">@review.Reating ⭐</span>
+                    </div>
+                    <p class="card-text">@review.Content</p>
+                    <small class="text-muted">@review.CreatedAt.ToLocalTime().ToString("g")</small>
+                </div>
+            </div>
         </div>
-    </div>
+    }
+</div>
+
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 }

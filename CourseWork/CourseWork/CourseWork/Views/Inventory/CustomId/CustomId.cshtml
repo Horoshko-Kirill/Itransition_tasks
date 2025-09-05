@@ -22,7 +22,7 @@
     };
 
     string preview = Model.Elements != null
-        ? string.Join("", Model.Elements.OrderBy(e => e.Order).Select(e => e.FixedValue))
+        ? string.Join("--", Model.Elements.OrderBy(e => e.Order).Select(e => e.FixedValue))
         : "";
 }
 

@@ -4,171 +4,200 @@
 @model MyInventoriesViewModel
 
 @{
-	ViewData["Title"] = "My Inventories";
-	Layout = "_Layout";
+    ViewData["Title"] = "My Inventories";
+    Layout = "_Layout";
 }
 
-<h2>My Inventories</h2>
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>My Inventories</h2>
+        <a asp-controller="MyInventories" asp-action="Create" class="btn btn-success">Create New Inventory</a>
+    </div>
 
-<a asp-controller="MyInventories" asp-action="Create">Create New Inventory</a>
+    <form asp-action="DeleteSelected" method="post">
+        @Html.AntiForgeryToken()
 
-<form asp-action="DeleteSelected" method="post">
-    @Html.AntiForgeryToken()
+ 
+        <h3>My Created Inventories (@Model.CreatedInventories.Count)</h3>
+        @if (Model.CreatedInventories.Any())
+        {
+            <div class="mb-2">
+                <button type="button" onclick="selectAll('created')" class="btn btn-sm btn-outline-primary me-2">Select All</button>
+                <button type="button" onclick="clearSelection()" class="btn btn-sm btn-outline-secondary">Clear Selection</button>
+            </div>
 
-    <h3>My Created Inventories (@Model.CreatedInventories.Count)</h3>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col"><input type="checkbox" id="select-all-created" /></th>
+                            <th scope="col">Photo</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Tags</th>
+                            <th scope="col">Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var inventory in Model.CreatedInventories)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="selectedInventories" value="@inventory.Id" class="created-checkbox" />
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(inventory.ImageUrl))
+                                    {
+                                        <img src="@inventory.ImageUrl" alt="Photo" class="img-thumbnail" style="width:80px; height:80px; object-fit:cover;" />
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="width:80px; height:80px;">
+                                            <span class="text-muted small">No photo</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
+                                        @inventory.Name
+                                    </a>
+                                </td>
+                                <td>@inventory.Description</td>
+                                <td>@inventory.Items.Count</td>
+                                <td>@inventory.Category?.Name</td>
+                                <td>
+                                    @if (inventory.InventoryTags.Any())
+                                    {
+                                        <span>@string.Join(", ", inventory.InventoryTags.Select(it => it.Tag.Name))</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No tags</span>
+                                    }
+                                </td>
+                                <td>@inventory.CreatedAt.ToString("MMM dd, yyyy")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-    @if (Model.CreatedInventories.Any())
-    {
-        <div>
-            <button type="button" onclick="selectAll('created')">Select All</button>
-            <button type="button" onclick="clearSelection()">Clear Selection</button>
-        </div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <span id="selectedCount">0 inventories selected</span>
+                <button type="submit" id="deleteButton" class="btn btn-danger" disabled>Delete Selected</button>
+            </div>
+        }
+        else
+        {
+            <p>No inventories created yet. <a asp-controller="MyInventories" asp-action="Create">Create your first inventory</a></p>
+        }
 
-        <table>
-            <thead>
-                <tr>
-                    <th><input type="checkbox" id="select-all-created" /></th>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Items</th>
-                    <th>Category</th>
-                    <th>Tags</th>
-                    <th>Created</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var inventory in Model.CreatedInventories)
-                {
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="selectedInventories" value="@inventory.Id" class="created-checkbox" />
-                        </td>
-                        <td><img src="@inventory.ImageUrl" alt="Аватар" width="200" /></td>
-                        <td>
-                            <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
-                                @inventory.Name
-                            </a>
-                        </td>
-                        <td>@inventory.Description</td>
-                        <td>@inventory.Items.Count</td>
-                        <td>@inventory.Category?.Name</td>
-                        <td>
-                            @if (inventory.InventoryTags.Any())
-                            {
-                                <span>
-                                    @string.Join(", ", inventory.InventoryTags.Select(it => it.Tag.Name))
-                                </span>
-                            }
-                            else
-                            {
-                                <span>No tags</span>
-                            }
-                        </td>
-                        <td>@inventory.CreatedAt.ToString("MMM dd, yyyy")</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No inventories created yet. <a asp-controller="MyInventories" asp-action="Create">Create your first inventory</a></p>
-    }
-
-    @if (Model.CreatedInventories.Any())
-    {
-        <div>
-            <span id="selectedCount">0 inventories selected</span>
-            <button type="submit" id="deleteButton" disabled>Delete Selected</button>
-        </div>
-    }
-
-    <h3>Shared With Me (@Model.AccessibleInventories.Count)</h3>
-
-    @if (Model.AccessibleInventories.Any())
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Owner</th>
-                    <th>Items</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var inventory in Model.AccessibleInventories)
-                {
-                    <tr>
-                        <td><img src="@inventory.ImageUrl" alt="Аватар" width="200" /></td>
-                        <td>
-                            <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
-                                @inventory.Name
-                            </a>
-                        </td>
-                        <td>@inventory.Description</td>
-                        <td>@inventory.Creator.UserName</td>
-                        <td>@inventory.Items.Count</td>
-                        <td>@inventory.Category?.Name</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No shared inventories. Other users can share their inventories with you.</p>
-    }
-
-    <h3>Public Inventories (@Model.PublicInventories.Count)</h3>
-
-    @if (Model.PublicInventories.Any())
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Owner</th>
-                    <th>Items</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var inventory in Model.PublicInventories)
-                {
-                    <tr>
-                        <td><img src="@inventory.ImageUrl" alt="Аватар" width="200" /></td>
-                        <td>
-                            <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">
-                                @inventory.Name
-                            </a>
-                        </td>
-                        <td>@inventory.Description</td>
-                        <td>@inventory.Creator.UserName</td>
-                        <td>@inventory.Items.Count</td>
-                        <td>@inventory.Category?.Name</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No public inventories. Other users can make their inventories public.</p>
-    }
+    
+        <h3 class="mt-5">Shared With Me (@Model.AccessibleInventories.Count)</h3>
+        @if (Model.AccessibleInventories.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Photo</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Owner</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var inventory in Model.AccessibleInventories)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(inventory.ImageUrl))
+                                    {
+                                        <img src="@inventory.ImageUrl" alt="Photo" class="img-thumbnail" style="width:80px; height:80px; object-fit:cover;" />
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="width:80px; height:80px;">
+                                            <span class="text-muted small">No photo</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">@inventory.Name</a>
+                                </td>
+                                <td>@inventory.Description</td>
+                                <td>@inventory.Creator.UserName</td>
+                                <td>@inventory.Items.Count</td>
+                                <td>@inventory.Category?.Name</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>No shared inventories. Other users can share their inventories with you.</p>
+        }
 
 
-  
-</form>
+        <h3 class="mt-5">Public Inventories (@Model.PublicInventories.Count)</h3>
+        @if (Model.PublicInventories.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Photo</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Owner</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var inventory in Model.PublicInventories)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(inventory.ImageUrl))
+                                    {
+                                        <img src="@inventory.ImageUrl" alt="Photo" class="img-thumbnail" style="width:80px; height:80px; object-fit:cover;" />
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="width:80px; height:80px;">
+                                            <span class="text-muted small">No photo</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-controller="Items" asp-action="Items" asp-route-inventoryId="@inventory.Id">@inventory.Name</a>
+                                </td>
+                                <td>@inventory.Description</td>
+                                <td>@inventory.Creator.UserName</td>
+                                <td>@inventory.Items.Count</td>
+                                <td>@inventory.Category?.Name</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>No public inventories. Other users can make their inventories public.</p>
+        }
+    </form>
+</div>
 
 @section Scripts {
     <script>
-
         document.getElementById("select-all-created").addEventListener("click", function () {
             const checkboxes = document.querySelectorAll('.created-checkbox');
             for (const cb of checkboxes) {
@@ -177,13 +206,11 @@
             updateSelectedCount();
         });
 
-
         function updateSelectedCount() {
             const selected = document.querySelectorAll('.created-checkbox:checked').length;
             document.getElementById('selectedCount').textContent = selected + ' inventories selected';
             document.getElementById('deleteButton').disabled = selected === 0;
         }
-
 
         function selectAll(section) {
             const checkboxes = document.querySelectorAll('.created-checkbox');
@@ -194,7 +221,6 @@
             updateSelectedCount();
         }
 
-
         function clearSelection() {
             const checkboxes = document.querySelectorAll('.created-checkbox');
             for (const cb of checkboxes) {
@@ -204,15 +230,13 @@
             updateSelectedCount();
         }
 
-
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const checkboxes = document.querySelectorAll('.created-checkbox');
             for (const cb of checkboxes) {
                 cb.addEventListener('change', updateSelectedCount);
             }
 
-
-            document.querySelector('form').addEventListener('submit', function(e) {
+            document.querySelector('form').addEventListener('submit', function (e) {
                 const selected = document.querySelectorAll('.created-checkbox:checked').length;
                 if (selected > 0 && !confirm('Are you sure you want to delete ' + selected + ' inventory(ies)?')) {
                     e.preventDefault();

@@ -15,7 +15,7 @@ namespace CourseWork.Models
         [ForeignKey("InventoryId")]
         public Inventory Inventory { get; set; }
         
-        public ICollection<CustomIdElement> Elements { get; set; } = new List<CustomIdElement>();
+        public List<CustomIdElement> Elements { get; set; } = new List<CustomIdElement>();
 
         public DateTime CreatedAt { get; set; } 
         public DateTime UpdateAt { get; set; }

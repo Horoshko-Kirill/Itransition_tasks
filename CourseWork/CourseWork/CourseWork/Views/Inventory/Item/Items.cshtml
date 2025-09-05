@@ -16,101 +16,108 @@
         .ToList();
 }
 
-<h2>Items</h2>
+<div class="container my-4">
+    <h2 class="mb-4">Items</h2>
 
-@if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
-{
-    <p>
-        <a asp-action="Create" asp-route-inventoryId="@inventoryId" class="btn btn-success">Add Item</a>
-        <button id="deleteSelected" class="btn btn-danger">Delete Selected</button>
-    </p>
-}
+    @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
+    {
+        <div class="mb-3 d-flex flex-wrap gap-2">
+            <a asp-action="Create" asp-route-inventoryId="@inventoryId" class="btn btn-success">Add Item</a>
+            <button id="deleteSelected" class="btn btn-danger">Delete Selected</button>
+        </div>
+    }
 
-<form id="itemsForm" method="post" asp-action="DeleteSelected">
-    <input type="hidden" name="inventoryId" value="@inventoryId" />
+    <form id="itemsForm" method="post" asp-action="DeleteSelected">
+        <input type="hidden" name="inventoryId" value="@inventoryId" />
 
-    <table id="itemsTable" class="table table-striped">
-        <thead>
-            <tr>
-                @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
-                {
-                    <th><input type="checkbox" id="selectAll" /></th>
-                }
-                <th>Photo</th>
-                <th>Custom ID</th>
-                <th>Name</th>
-                @foreach (var field in tableFields)
-                {
-                    <th>@field.Name</th>
-                }
-                <th>Created at</th>
-                <th>Updated at</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
-                    {
-                        <td>
-                            <input type="checkbox" name="selectedItemIds" value="@item.Id" />
-                        </td>
-                    }
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.ImageUrl))
-                        {
-                            <img src="@item.ImageUrl" alt="Photo" style="width:60px;height:60px;object-fit:cover;" />
-                        }
-                        else
-                        {
-                            <span>No photo</span>
-                        }
-                    </td>
-                    <td>
+        <div class="table-responsive">
+            <table id="itemsTable" class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
                         @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
                         {
-                            <a asp-action="Edit" asp-route-id="@item.Id">@item.CustomId</a>
+                            <th><input type="checkbox" id="selectAll" /></th>
                         }
-                        else
+                        <th>Photo</th>
+                        <th>Custom ID</th>
+                        <th>Name</th>
+                        @foreach (var field in tableFields)
                         {
-                            @item.CustomId
+                            <th>@field.Name</th>
                         }
-                    </td>
-                    <td>@item.Name</td>
-                    @foreach (var field in tableFields)
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
                     {
-                        var value = item.CustomFieldValues.FirstOrDefault(cfv => cfv.CustomFieldId == field.Id)?.Value ?? "";
-                        <td>@value</td>
+                        <tr>
+                            @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
+                            {
+                                <td>
+                                    <input type="checkbox" name="selectedItemIds" value="@item.Id" />
+                                </td>
+                            }
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                {
+                                    <img src="@item.ImageUrl" alt="Photo" class="rounded" style="width:60px;height:60px;object-fit:cover;" />
+                                }
+                                else
+                                {
+                                    <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center rounded" style="width:60px; height:60px;">
+                                        No photo
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id">@item.CustomId</a>
+                                }
+                                else
+                                {
+                                    @item.CustomId
+                                }
+                            </td>
+                            <td>@item.Name</td>
+                            @foreach (var field in tableFields)
+                            {
+                                var value = item.CustomFieldValues.FirstOrDefault(cfv => cfv.CustomFieldId == field.Id)?.Value ?? "";
+                                <td>@value</td>
+                            }
+                            <td>@item.CreatedAt.ToLocalTime().ToString("g")</td>
+                            <td>@item.UpdatedAt.ToLocalTime().ToString("g")</td>
+                        </tr>
                     }
-                    <td>@item.CreatedAt.ToLocalTime()</td>
-                    <td>@item.UpdatedAt.ToLocalTime()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</form>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
         $(document).ready(function() {
-
             $('#itemsTable').DataTable({
                 paging: true,
                 searching: true,
                 info: true,
-                order: [[2, 'asc']] 
+                order: [[2, 'asc']],
+                columnDefs: [
+                    { orderable: false, targets: 0 } // отключаем сортировку для чекбоксов
+                ]
             });
-
 
             $('#selectAll').on('change', function() {
                 $('input[name="selectedItemIds"]').prop('checked', this.checked);
             });
-
 
             $('#deleteSelected').on('click', function() {
                 $('#itemsForm').submit();

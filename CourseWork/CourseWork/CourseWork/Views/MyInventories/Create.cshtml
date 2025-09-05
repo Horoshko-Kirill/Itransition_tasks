@@ -7,53 +7,58 @@
     Layout = "_Layout";
 }
 
-<h2>Create New Inventory</h2>
+<div class="container my-5">
+    <h2 class="mb-4">Create New Inventory</h2>
 
-<div asp-validation-summary="All"></div>
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
 
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-    </div>
 
-    <div>
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description"></textarea>
-        <span asp-validation-for="Description"></span>
-    </div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-    <div>
-        <label asp-for="CategoryId"></label>
-        <select asp-for="CategoryId" asp-items="Model.CategoryOptions">
-            <option value="">Select category</option>
-        </select>
-        <span asp-validation-for="CategoryId"></span>
-    </div>
+  
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
 
-    <div>
-        <label>
-            <input asp-for="IsPublic" /> Public Inventory
-        </label>
-    </div>
+    
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label"></label>
+            <select asp-for="CategoryId" asp-items="Model.CategoryOptions" class="form-select">
+                <option value="">Select category</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
 
-    <div>
-        <label asp-for="ImageFile"></label>
-        <input asp-for="ImageFile" type="file" />
-    </div>
+  
+        <div class="form-check mb-3">
+            <input asp-for="IsPublic" class="form-check-input" />
+            <label asp-for="IsPublic" class="form-check-label">Public Inventory</label>
+        </div>
 
-    <div>
-        <label for="tags">Tags</label>
-        <input asp-for="Tags" placeholder="Enter tags separated by commas" />
-        <span asp-validation-for="Tags"></span>
-    </div>
+        <div class="mb-3">
+            <label asp-for="ImageFile" class="form-label"></label>
+            <input asp-for="ImageFile" type="file" class="form-control" />
+        </div>
 
-    <div>
-        <button type="submit">Create Inventory</button>
-        <a asp-action="MyInventories">Cancel</a>
-    </div>
-</form>
+        <div class="mb-3">
+            <label for="tags" class="form-label">Tags</label>
+            <input asp-for="Tags" placeholder="Enter tags separated by commas" class="form-control" />
+            <span asp-validation-for="Tags" class="text-danger"></span>
+        </div>
 
+     
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Create Inventory</button>
+            <a asp-action="MyInventories" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

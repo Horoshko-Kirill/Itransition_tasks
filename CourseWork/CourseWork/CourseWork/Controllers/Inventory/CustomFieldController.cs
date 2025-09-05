@@ -60,6 +60,7 @@ namespace CourseWork.Controllers.Inventory
 
             return View("~/Views/Inventory/CustomField/Edit.cshtml", model);
         }
+
         [HttpPost]
         public async Task<IActionResult> Edit(CustomFieldViewModel model)
         {
