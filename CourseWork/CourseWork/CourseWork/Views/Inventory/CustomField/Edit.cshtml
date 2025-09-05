@@ -110,11 +110,15 @@
             function updateOrder() {
                 Array.from(list.children).forEach((li, i) => {
                     li.dataset.index = i;
+                    li.querySelectorAll('[name]').forEach(input => {
+                        input.name = input.name.replace(/Elements\[\d+\]/, `Elements[${i}]`);
+                    });
                     li.querySelector('input[name$=".Order"]').value = i;
                     const title = li.querySelector('h5');
                     if (title) title.innerHTML = `<i class="fas fa-grip-vertical text-muted me-2"></i>Field #${i+1}`;
                 });
             }
+
 
             function initializeField(li) {
                 li.setAttribute('draggable', 'true');

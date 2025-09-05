@@ -256,15 +256,42 @@ namespace CourseWork.Controllers.Inventory
                 ModelState.AddModelError("CustomId", "Custom ID is not valid.");
             }
 
+            var allCustomFields = await _context.CustomFields
+                  .Where(cf => cf.InventoryId == existingItem.InventoryId)
+                  .ToListAsync();
+
             if (!ModelState.IsValid)
             {
+     
                 existingItem.CustomFieldValues = await _context.CustomFieldValues
                     .Where(cfv => cfv.ItemId == existingItem.Id)
                     .Include(cfv => cfv.CustomField)
                     .ToListAsync();
 
+                foreach (var cf in allCustomFields)
+                {
+                    if (!existingItem.CustomFieldValues.Any(v => v.CustomFieldId == cf.Id))
+                    {
+                        var defaultValue = cf.FieldType switch
+                        {
+                            CourseWork.Models.Enums.CustomFieldType.Boolean => "false",
+                            CourseWork.Models.Enums.CustomFieldType.Numeric => "0",
+                            _ => ""
+                        };
+
+                        existingItem.CustomFieldValues.Add(new CustomFieldValue
+                        {
+                            CustomFieldId = cf.Id,
+                            ItemId = existingItem.Id,
+                            Value = defaultValue,
+                            CustomField = cf
+                        });
+                    }
+                }
+
                 return View("~/Views/Inventory/Item/Edit.cshtml", existingItem);
             }
+
 
             existingItem.Name = item.Name;
             existingItem.Description = item.Description;
@@ -308,10 +335,6 @@ namespace CourseWork.Controllers.Inventory
                 }
             }
 
-        
-            var allCustomFields = await _context.CustomFields
-                .Where(cf => cf.InventoryId == existingItem.InventoryId)
-                .ToListAsync();
 
             foreach (var cf in allCustomFields)
             {
