@@ -51,7 +51,7 @@
                         <input type="number" name="CustomFieldValues[@i].Value" class="form-control" required />
                         break;
                     case CourseWork.Models.Enums.CustomFieldType.DocumentOrImage:
-                        <input type="file" name="CustomFieldValues[@i].Value" class="form-control" required />
+                        <input type="text" name="CustomFieldValues[@i].Value" class="form-control" placeholder="Paste document/image URL here" />
                         break;
                     case CourseWork.Models.Enums.CustomFieldType.Boolean:
                         <div class="form-check">
