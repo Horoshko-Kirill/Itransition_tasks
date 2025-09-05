@@ -118,13 +118,13 @@
             }
 
             function updatePreview(){
-                let preview = '';
-                Array.from(list.children).forEach(li => {
+                const values = Array.from(list.children).map(li => {
                     const input = li.querySelector('input[name$=".FixedValue"]');
-                    preview += input.value || '[text]';
+                    return input.value || '[text]';
                 });
-                document.getElementById('preview').innerText = preview.slice(0,-1);
+                document.getElementById('preview').innerText = values.join(' -- ');
             }
+
 
             function updateOrder(){
                 Array.from(list.children).forEach((li, i) => {
