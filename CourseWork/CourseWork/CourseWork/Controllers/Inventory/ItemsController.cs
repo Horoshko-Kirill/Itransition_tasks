@@ -3,6 +3,7 @@ using CourseWork.Migrations;
 using CourseWork.Models;
 using CourseWork.Models.ViewModels;
 using CourseWork.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,7 @@ namespace CourseWork.Controllers.Inventory
             return View("~/Views/Inventory/Item/Items.cshtml", items);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Create(int inventoryId)
         {
@@ -95,6 +97,7 @@ namespace CourseWork.Controllers.Inventory
             return View("~/Views/Inventory/Item/Create.cshtml", item);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(Item item, IFormFile? imageFile)
         {
@@ -165,6 +168,7 @@ namespace CourseWork.Controllers.Inventory
             return RedirectToAction("Items", new { inventoryId = item.InventoryId });
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -236,7 +240,7 @@ namespace CourseWork.Controllers.Inventory
         }
 
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Edit(Item item, IFormFile? imageFile)
         {
@@ -359,7 +363,7 @@ namespace CourseWork.Controllers.Inventory
 
 
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -393,6 +397,7 @@ namespace CourseWork.Controllers.Inventory
             return RedirectToAction("Items", new { inventoryId = item.InventoryId });
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeleteSelected(int inventoryId, int[] selectedItemIds)
         {
