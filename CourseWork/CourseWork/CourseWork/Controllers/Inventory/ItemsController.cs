@@ -1,10 +1,12 @@
 ﻿using CourseWork.Data;
 using CourseWork.Migrations;
 using CourseWork.Models;
+using CourseWork.Models.ViewModels;
 using CourseWork.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static Dropbox.Api.Files.ListRevisionsMode;
 
 namespace CourseWork.Controllers.Inventory
 {
@@ -217,6 +219,17 @@ namespace CourseWork.Controllers.Inventory
              .Any(p => p.UserId == userId && p.HaveWriteAccess);
 
             ViewBag.CanEdit = hasWritePermission;
+
+            var format = await _context.CustomIdFormats
+             .Include(f => f.Elements)
+             .FirstOrDefaultAsync(f => f.InventoryId == item.InventoryId);
+
+
+            string preview = format.Elements != null
+                ? string.Join("--", format.Elements.OrderBy(e => e.Order).Select(e => e.FixedValue))
+                : "";
+
+            ViewBag.Preview = preview;
 
             return View("~/Views/Inventory/Item/Edit.cshtml", item);
         }

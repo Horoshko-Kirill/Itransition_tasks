@@ -42,7 +42,7 @@
             <label asp-for="CustomId" class="form-label"></label>
             <input asp-for="CustomId" class="form-control" />
             <span asp-validation-for="CustomId" class="text-danger"></span>
-            <div class="form-text">Format will be validated.</div>
+            <div class="form-text">Format will be validated. Preview: @ViewBag.Preview</div>
         </div>
 
         <h4 class="mb-3">Custom Fields</h4>
