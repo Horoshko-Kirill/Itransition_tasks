@@ -4,11 +4,17 @@ using CourseWork.Models;
 using CourseWork.Data;
 using CourseWork.Services;
 using CourseWork.Filtres;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
 
 builder.Services.AddDbContext<CourseWorkDbContext>(options =>
     options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
@@ -43,6 +49,7 @@ builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.AddService<CheckBlockedAttribute>();
 });
+
 
 var app = builder.Build();
 
@@ -137,6 +144,16 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine($"Database initialization error: {ex.Message}");
     }
 }
+
+var supportedCultures = new[] { "en", "ru" };
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("ru"),
+    SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
+    SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList()
+};
+
+localizationOptions.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
 
 app.MapControllerRoute(
     name: "default",

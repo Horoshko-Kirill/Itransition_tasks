@@ -60,16 +60,37 @@
                                 </td>
                             }
                             <td>
-                                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
                                 {
-                                    <img src="@item.ImageUrl" alt="Photo" class="rounded" style="width:60px;height:60px;object-fit:cover;" />
+                                    <a asp-action="Edit" asp-route-id="@item.Id">
+                                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                        {
+                                            <img src="@item.ImageUrl" alt="Photo" class="rounded" style="width:60px;height:60px;object-fit:cover;" />
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center rounded"
+                                                 style="width:60px; height:60px;">
+                                                No photo
+                                            </div>
+                                        }
+                                    </a>
                                 }
                                 else
                                 {
-                                    <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center rounded" style="width:60px; height:60px;">
-                                        No photo
-                                    </div>
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl" alt="Photo" class="rounded" style="width:60px;height:60px;object-fit:cover;" />
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center rounded"
+                                             style="width:60px; height:60px;">
+                                            No photo
+                                        </div>
+                                    }
                                 }
+
                             </td>
                             <td>
                                 @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
