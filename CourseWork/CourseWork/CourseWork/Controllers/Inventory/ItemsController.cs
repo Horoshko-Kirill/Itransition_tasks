@@ -192,7 +192,7 @@ namespace CourseWork.Controllers.Inventory
                 .Where(cf => cf.InventoryId == item.InventoryId)
                 .ToListAsync();
 
-           
+
             foreach (var cf in allFields)
             {
                 if (!item.CustomFieldValues.Any(v => v.CustomFieldId == cf.Id))
@@ -213,6 +213,7 @@ namespace CourseWork.Controllers.Inventory
                     });
                 }
             }
+
 
             var userId = _userManager.GetUserId(User);
             bool hasWritePermission = inventory.Permissions
@@ -242,23 +243,22 @@ namespace CourseWork.Controllers.Inventory
             ViewBag.InventoryId = item.InventoryId;
 
             var inventory = await _context.Inventories
-               .Include(i => i.Permissions)
-               .FirstOrDefaultAsync(i => i.Id == item.InventoryId);
+                .Include(i => i.Permissions)
+                .FirstOrDefaultAsync(i => i.Id == item.InventoryId);
 
-
-            var currnetUserId = _userManager.GetUserId(User);
-            if (currnetUserId == inventory.CreatorId)
+            var currentUserId = _userManager.GetUserId(User);
+            if (currentUserId == inventory.CreatorId)
             {
                 ViewBag.IsCreator = true;
             }
             ViewBag.isPublic = inventory.isPublic;
+
             var existingItem = await _context.Items
                 .Include(i => i.CustomFieldValues)
                 .FirstOrDefaultAsync(i => i.Id == item.Id);
 
             if (existingItem == null)
                 return NotFound();
-
 
             var format = await _context.CustomIdFormats
                 .Include(f => f.Elements)
@@ -270,17 +270,12 @@ namespace CourseWork.Controllers.Inventory
             }
 
             var allCustomFields = await _context.CustomFields
-                  .Where(cf => cf.InventoryId == existingItem.InventoryId)
-                  .ToListAsync();
+                .Where(cf => cf.InventoryId == existingItem.InventoryId)
+                .ToListAsync();
 
             if (!ModelState.IsValid)
             {
-     
-                existingItem.CustomFieldValues = await _context.CustomFieldValues
-                    .Where(cfv => cfv.ItemId == existingItem.Id)
-                    .Include(cfv => cfv.CustomField)
-                    .ToListAsync();
-
+          
                 foreach (var cf in allCustomFields)
                 {
                     if (!existingItem.CustomFieldValues.Any(v => v.CustomFieldId == cf.Id))
@@ -305,7 +300,7 @@ namespace CourseWork.Controllers.Inventory
                 return View("~/Views/Inventory/Item/Edit.cshtml", existingItem);
             }
 
-
+ 
             existingItem.Name = item.Name;
             existingItem.Description = item.Description;
             existingItem.CustomId = item.CustomId;
@@ -328,43 +323,25 @@ namespace CourseWork.Controllers.Inventory
                 existingItem.ImageDropboxPath = $"/item/{item.InventoryId}_image_{imageFile.FileName}";
             }
 
-
-            foreach (var cfv in item.CustomFieldValues)
+ 
+            foreach (var cf in allCustomFields)
             {
-                var existingValue = existingItem.CustomFieldValues
-                    .FirstOrDefault(x => x.Id == cfv.Id);
+                var submittedValue = item.CustomFieldValues.FirstOrDefault(v => v.CustomFieldId == cf.Id);
+                var existingValue = existingItem.CustomFieldValues.FirstOrDefault(v => v.CustomFieldId == cf.Id);
 
                 if (existingValue != null)
                 {
-                    existingValue.Value = cfv.Value;
+                    existingValue.Value = submittedValue?.Value ?? existingValue.Value;
                     existingValue.UpdatedAt = DateTime.UtcNow;
                 }
                 else
                 {
-                    cfv.ItemId = existingItem.Id;
-                    cfv.CreatedAt = DateTime.UtcNow;
-                    cfv.UpdatedAt = DateTime.UtcNow;
-                    _context.CustomFieldValues.Add(cfv);
-                }
-            }
-
-
-            foreach (var cf in allCustomFields)
-            {
-                if (!existingItem.CustomFieldValues.Any(v => v.CustomFieldId == cf.Id))
-                {
-                    var defaultValue = cf.FieldType switch
-                    {
-                        CourseWork.Models.Enums.CustomFieldType.Boolean => "false",
-                        CourseWork.Models.Enums.CustomFieldType.Numeric => "0",
-                        _ => ""
-                    };
-
                     existingItem.CustomFieldValues.Add(new CustomFieldValue
                     {
                         CustomFieldId = cf.Id,
                         ItemId = existingItem.Id,
-                        Value = defaultValue,
+                        Value = submittedValue?.Value ?? (cf.FieldType == CourseWork.Models.Enums.CustomFieldType.Boolean ? "false" :
+                                                         cf.FieldType == CourseWork.Models.Enums.CustomFieldType.Numeric ? "0" : ""),
                         CreatedAt = DateTime.UtcNow,
                         UpdatedAt = DateTime.UtcNow
                     });
@@ -374,13 +351,12 @@ namespace CourseWork.Controllers.Inventory
             await _context.SaveChangesAsync();
 
             var userId = _userManager.GetUserId(User);
-            bool hasWritePermission = inventory.Permissions
-             .Any(p => p.UserId == userId && p.HaveWriteAccess);
-
-            ViewBag.CanEdit = hasWritePermission;
+            ViewBag.CanEdit = inventory.Permissions
+                .Any(p => p.UserId == userId && p.HaveWriteAccess);
 
             return RedirectToAction("Items", new { inventoryId = item.InventoryId });
         }
+
 
 
 
