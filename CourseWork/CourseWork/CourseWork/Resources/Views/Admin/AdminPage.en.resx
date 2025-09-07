@@ -117,22 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="List of Users" xml:space="preserve">
+    <value>List of Users</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
+  <data name="Block" xml:space="preserve">
+    <value>Block</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="Unblock" xml:space="preserve">
+    <value>Unblock</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Give Admin Role" xml:space="preserve">
+    <value>Give Admin Role</value>
+  </data>
+  <data name="Remove Admin Role" xml:space="preserve">
+    <value>Remove Admin Role</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+    <value>Email</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="Last Visit" xml:space="preserve">
+    <value>Last visit</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Just now" xml:space="preserve">
+    <value>Just now</value>
+  </data>
+  <data name="min ago" xml:space="preserve">
+    <value>min ago</value>
+  </data>
+  <data name="hours ago" xml:space="preserve">
+    <value>hours ago</value>
+  </data>
+  <data name="days ago" xml:space="preserve">
+    <value>days ago</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Never" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

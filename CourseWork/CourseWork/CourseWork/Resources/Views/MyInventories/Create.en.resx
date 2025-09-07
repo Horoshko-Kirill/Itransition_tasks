@@ -117,22 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="Create New Inventory" xml:space="preserve">
+    <value>Create New Inventory</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="CategoryId" xml:space="preserve">
+    <value>Category</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="Select category" xml:space="preserve">
+    <value>Select category</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="Public Inventory" xml:space="preserve">
+    <value>Public Inventory</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>ImageFile</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Create Inventory" xml:space="preserve">
+    <value>Create Inventory</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Enter tags separated by commas" xml:space="preserve">
+    <value>Enter tags separated by commas</value>
   </data>
 </root>

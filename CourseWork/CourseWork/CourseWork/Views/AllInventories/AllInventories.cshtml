@@ -5,20 +5,23 @@
     ViewData["Title"] = "All Inventories";
 }
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 <div class="container my-4">
-    <h2 class="mb-4">All Inventories</h2>
+    <h2 class="mb-4">@Localizer["All Inventories"]</h2>
 
 
     <form method="get" asp-action="AllInventories" class="row g-3 mb-4 align-items-end">
         <div class="col-12 col-md-4">
-            <label for="searchQuery" class="form-label">Search</label>
-            <input type="text" name="searchQuery" id="searchQuery" value="@Model.SearchQuery" placeholder="Search by name..." class="form-control" />
+            <label for="searchQuery" class="form-label">@Localizer["Search by name"]</label>
+            <input type="text" name="searchQuery" id="searchQuery" value="@Model.SearchQuery" placeholder=@Localizer["Search by name..."].Value class="form-control" />
         </div>
 
         <div class="col-6 col-md-3">
-            <label for="categoryId" class="form-label">Category</label>
+            <label for="categoryId" class="form-label">@Localizer["Category"]</label>
             <select name="categoryId" id="categoryId" class="form-select">
-                <option value="">All Categories</option>
+                <option value="">@Localizer["All Categories"]</option>
                 @foreach (var cat in Model.CategoryOptions)
                 {
                     <option value="@cat.Value"
@@ -30,10 +33,10 @@
         </div>
 
         <div class="col-6 col-md-3">
-            <label for="tagId" class="form-label">Tag</label>
+            <label for="tagId" class="form-label">@Localizer["Tag"]</label>
             <select name="tagId" id="tagId" class="form-select">
-                <option value="">All Tags</option>
-                <option value="0" selected="@(Model.SelectedTagId == 0 ? "selected" : null)">No tags</option>
+                <option value="">@Localizer["All Tags"]</option>
+                <option value="0" selected="@(Model.SelectedTagId == 0 ? "selected" : null)">@Localizer["No tags"]</option>
                 @foreach (var tag in Model.TagOptions)
                 {
                     <option value="@tag.Id"
@@ -45,7 +48,7 @@
         </div>
 
         <div class="col-12 col-md-2">
-            <button type="submit" class="btn btn-primary w-100">Filter</button>
+            <button type="submit" class="btn btn-primary w-100">@Localizer["Filter"]</button>
         </div>
     </form>
 
@@ -54,11 +57,11 @@
         <table class="table table-striped table-hover align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">Photo</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Tags</th>
+                    <th scope="col">@Localizer["Photo"]</th>
+                    <th scope="col">@Localizer["Name"]</th>
+                    <th scope="col">@Localizer["Description"]</th>
+                    <th scope="col">@Localizer["Category"]</th>
+                    <th scope="col">@Localizer["Tags"]</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,7 +75,7 @@
                             }
                             else
                             {
-                                <span class="text-muted">No image</span>
+                                <span class="text-muted">@Localizer["No image"]</span>
                             }
                         </td>
                         <td>
@@ -89,7 +92,7 @@
                             }
                             else
                             {
-                                <span class="text-muted">No tags</span>
+                                <span class="text-muted">@Localizer["No tags"]</span>
                             }
                         </td>
                     </tr>

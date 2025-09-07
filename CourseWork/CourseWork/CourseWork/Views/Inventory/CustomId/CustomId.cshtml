@@ -1,6 +1,9 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model CourseWork.Models.ViewModels.CustomIdFormatViewModel
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
     Layout = "_InventoryLayout";
     ViewData["Title"] = "Custom ID";

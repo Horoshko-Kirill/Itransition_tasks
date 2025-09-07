@@ -117,22 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="My Inventories" xml:space="preserve">
+    <value>My Inventories</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
+  <data name="Create New Inventory" xml:space="preserve">
+    <value>Create New Inventory</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="Shared With Me" xml:space="preserve">
+    <value>Shared With Me</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="Clear Selection" xml:space="preserve">
+    <value>Clear Selection</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="No public inventories. Other users can make their inventories public" xml:space="preserve">
+    <value>No public inventories. Other users can make their inventories public</value>
+  </data>
+  <data name="Public Inventories" xml:space="preserve">
+    <value>Public Inventories</value>
+  </data>
+  <data name="No shared inventories. Other users can share their inventories with you" xml:space="preserve">
+    <value>No shared inventories. Other users can share their inventories with you</value>
+  </data>
+  <data name="Create your first inventory" xml:space="preserve">
+    <value>Create your first inventory</value>
+  </data>
+  <data name="No inventories created yet" xml:space="preserve">
+    <value>No inventories created yet</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Delete Selected</value>
+  </data>
+  <data name="inventories selected" xml:space="preserve">
+    <value>inventories selected</value>
+  </data>
+  <data name="No tags" xml:space="preserve">
+    <value>No tags</value>
+  </data>
+  <data name="No photo" xml:space="preserve">
+    <value>No photo</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Select All" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="My Created Inventories" xml:space="preserve">
+    <value>My Created Inventories</value>
   </data>
 </root>

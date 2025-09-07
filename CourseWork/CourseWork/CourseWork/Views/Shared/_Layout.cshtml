@@ -4,6 +4,9 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="light">
 <head>
@@ -26,44 +29,47 @@
                     {
                         <li class="nav-item">
                             <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
-                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                <button type="submit" class="btn btn-link nav-link">@Localizer["Logout"]</button>
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="User" asp-action="Profile">Profile</a>
+                            <a class="nav-link" asp-controller="User" asp-action="Profile">@Localizer["Profile"]</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="AdminPage">Admin page</a>
+                                <a class="nav-link" asp-controller="Admin" asp-action="AdminPage">@Localizer["Admin page"]</a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="MyInventories" asp-action="MyInventories">My Inventories</a>
+                            <a class="nav-link" asp-controller="MyInventories" asp-action="MyInventories">@Localizer["My Inventories"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="AllInventories" asp-action="AllInventories">All Inventories</a>
+                            <a class="nav-link" asp-controller="AllInventories" asp-action="AllInventories">@Localizer["All Inventories"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                         </li>
                     }
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">@Localizer["Register"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="AllInventories" asp-action="AllInventories">All Inventories</a>
+                            <a class="nav-link" asp-controller="AllInventories" asp-action="AllInventories">@Localizer["All Inventories"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                         </li>
                         
                     }
+                    <li class="nav-item">
+                        <button id="langToggle" class="btn btn-outline-secondary ms-2">EN</button>
+                    </li>
                     <li class="nav-item">
                         <button id="themeToggle" class="btn btn-outline-secondary ms-2">🌙 / ☀️</button>
                     </li>
@@ -102,6 +108,29 @@
             localStorage.setItem('theme', newTheme);
         });
     </script>
+    <script>
+        const langBtn = document.getElementById('langToggle');
+
+        function getCurrentCulture() {
+            const match = document.cookie.match(/\.AspNetCore\.Culture=c=([^|;]+)/);
+            return match ? match[1] : 'en';
+        }
+
+        function setCultureCookie(culture) {
+            document.cookie = ".AspNetCore.Culture=c=" + culture + "|uic=" + culture + "; path=/; max-age=31536000";
+        }
+
+        langBtn.textContent = getCurrentCulture().toUpperCase();
+
+        langBtn.addEventListener('click', () => {
+            const current = getCurrentCulture();
+            const newCulture = current === 'en' ? 'ru' : 'en';
+            setCultureCookie(newCulture);
+
+            location.reload();
+        });
+    </script>
+
 
 </body>
 </html>

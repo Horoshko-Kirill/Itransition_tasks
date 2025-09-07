@@ -59,6 +59,17 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+var supportedCultures = new[] { "en", "ru" };
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("ru"),
+    SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
+    SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList()
+};
+
+localizationOptions.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
+app.UseRequestLocalization(localizationOptions);
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -145,15 +156,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-var supportedCultures = new[] { "en", "ru" };
-var localizationOptions = new RequestLocalizationOptions
-{
-    DefaultRequestCulture = new RequestCulture("ru"),
-    SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
-    SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList()
-};
-
-localizationOptions.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
 
 app.MapControllerRoute(
     name: "default",

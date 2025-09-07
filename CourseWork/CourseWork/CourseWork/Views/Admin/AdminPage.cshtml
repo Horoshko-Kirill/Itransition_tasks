@@ -5,6 +5,9 @@
     ViewData["Title"] = "AdminPage";
 }
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @using CourseWork.Models
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<User> UserManager
@@ -12,15 +15,15 @@
 @model List<User>
 
 <div class="container my-4">
-    <h2 class="mb-4">List of Users</h2>
+    <h2 class="mb-4">@Localizer["List of Users"]</h2>
 
     <form asp-action="ControlUserAction" method="post">
         <div class="mb-3 d-flex flex-wrap gap-2">
-            <button type="submit" name="action" value="block" class="btn btn-warning">Block</button>
-            <button type="submit" name="action" value="unblock" class="btn btn-success">Unblock</button>
-            <button type="submit" name="action" value="delete" class="btn btn-danger">Delete</button>
-            <button type="submit" name="action" value="give_admin" class="btn btn-primary">Give Admin Role</button>
-            <button type="submit" name="action" value="remove_admin" class="btn btn-secondary">Remove Admin Role</button>
+            <button type="submit" name="action" value="block" class="btn btn-warning">@Localizer["Block"]</button>
+            <button type="submit" name="action" value="unblock" class="btn btn-success">@Localizer["Unblock"]</button>
+            <button type="submit" name="action" value="delete" class="btn btn-danger">@Localizer["Delete"]</button>
+            <button type="submit" name="action" value="give_admin" class="btn btn-primary">@Localizer["Give Admin Role"]</button>
+            <button type="submit" name="action" value="remove_admin" class="btn btn-secondary">@Localizer["Remove Admin Role"]</button>
         </div>
 
         <div class="table-responsive">
@@ -28,11 +31,11 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col"><input type="checkbox" id="select-all" /></th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Last Visit</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">@Localizer["Name"]</th>
+                        <th scope="col">@Localizer["Email"]</th>
+                        <th scope="col">@Localizer["Last Visit"]</th>
+                        <th scope="col">@Localizer["Status"]</th>
+                        <th scope="col">@Localizer["Role"]</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,14 +51,17 @@
                             <td>
                                 @if (ago == null)
                                 {
-                                    <span class="text-muted">Never</span>
+                                    <span class="text-muted">@Localizer["Never"]</span>
                                 }
                                 else
                                 {
-                                    var readable = ago.Value.TotalMinutes < 1 ? "Just now"
-                                    : ago.Value.TotalMinutes < 60 ? $"{(int)ago.Value.TotalMinutes} min ago"
-                                    : ago.Value.TotalHours < 24 ? $"{(int)ago.Value.TotalHours} hours ago"
-                                    : $"{(int)ago.Value.TotalDays} days ago";
+                                    var readable = ago.Value.TotalMinutes < 1
+                                    ? Localizer["Just now"].Value
+                                    : ago.Value.TotalMinutes < 60
+                                    ? $"{(int)ago.Value.TotalMinutes} {Localizer["min ago"].Value}"
+                                    : ago.Value.TotalHours < 24
+                                    ? $"{(int)ago.Value.TotalHours} {Localizer["hours ago"].Value}"
+                                    : $"{(int)ago.Value.TotalDays} {Localizer["days ago"].Value}";
 
                                     <span title="@user.LastVisit.ToLocalTime().ToString("f")">@readable</span>
                                 }
@@ -63,21 +69,21 @@
                             <td>
                                 @if (user.IsBlocked)
                                 {
-                                    <span class="badge bg-warning text-dark">Blocked</span>
+                                    <span class="badge bg-warning text-dark">@Localizer["Blocked"]</span>
                                 }
                                 else
                                 {
-                                    <span class="badge bg-success">Active</span>
+                                    <span class="badge bg-success">@Localizer["Active"]</span>
                                 }
                             </td>
                             <td>
                                 @if (await UserManager.IsInRoleAsync(user, "Admin"))
                                 {
-                                    <span class="badge bg-primary">Admin</span>
+                                    <span class="badge bg-primary">@Localizer["Admin"]</span>
                                 }
                                 else
                                 {
-                                    <span class="badge bg-secondary">User</span>
+                                    <span class="badge bg-secondary">@Localizer["User"]</span>
                                 }
                             </td>
                         </tr>

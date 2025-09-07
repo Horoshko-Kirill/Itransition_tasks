@@ -117,22 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="My Inventories" xml:space="preserve">
+    <value>Мои инвентари</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
+  <data name="Create New Inventory" xml:space="preserve">
+    <value>Создать новый инвентарь</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="Shared With Me" xml:space="preserve">
+    <value>Поделились со мной </value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="Clear Selection" xml:space="preserve">
+    <value>Очистить выбор </value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="Category" xml:space="preserve">
+    <value>Категория</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="No public inventories. Other users can make their inventories public" xml:space="preserve">
+    <value>Нет публичных репозиториев. Другие пользователи могут сделать свои инвентари публичными.</value>
+  </data>
+  <data name="Public Inventories" xml:space="preserve">
+    <value>Публичные инвентари</value>
+  </data>
+  <data name="No shared inventories. Other users can share their inventories with you" xml:space="preserve">
+    <value>С вами не поделились инвентарями. Другие пользователи могут поделится своими инвентарями с вами.</value>
+  </data>
+  <data name="Create your first inventory" xml:space="preserve">
+    <value>Создайте свой первый инвентарь</value>
+  </data>
+  <data name="No inventories created yet" xml:space="preserve">
+    <value>Инвентари еще не созданы</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Удалить выбранное</value>
+  </data>
+  <data name="inventories selected" xml:space="preserve">
+    <value>Выбранные инвентари</value>
+  </data>
+  <data name="No tags" xml:space="preserve">
+    <value>Нет тегов</value>
+  </data>
+  <data name="No photo" xml:space="preserve">
+    <value>Нет фото</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Созданы</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Элементы</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Select All" xml:space="preserve">
+    <value>Выбрать все</value>
+  </data>
+  <data name="My Created Inventories" xml:space="preserve">
+    <value>Мои созданные инвентари</value>
   </data>
 </root>

@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "задача-Resources",
+      "appliesTo": "CourseWork/CourseWork/CourseWork/Resources/",
+      "type": "launch"
+    }
+  ]
+}

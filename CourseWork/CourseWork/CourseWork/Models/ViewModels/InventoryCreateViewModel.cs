@@ -17,7 +17,7 @@ namespace CourseWork.Models.ViewModels
         [Display(Name = "Category")]
         public int? CategoryId { get; set; }
 
-        [Display(Name = "Public Inventory")]
+        [Display(Name = "")]
         public bool IsPublic { get; set; }
 
         [Display(Name = "Inventory Image")]

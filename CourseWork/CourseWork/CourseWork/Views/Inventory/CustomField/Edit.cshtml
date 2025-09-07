@@ -1,18 +1,22 @@
 ﻿@model CustomFieldViewModel
 @using CourseWork.Models.Enums
 @using CourseWork.Models.ViewModels
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     Layout = "_InventoryLayout";
     ViewData["Title"] = "Custom Fields";
 }
 
+
 <link rel="stylesheet" href="~/css/custom-field.css" />
+
 
 <form asp-action="Edit" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
 
 
-    <h3>Custom Fields</h3>
+    <h3>@Localizer["Custom Fields"]</h3>
 
     @if (TempData["SuccessMessage"] != null)
     {
@@ -25,10 +29,10 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <button type="button" id="add-field" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Add Field
+            <i class="fas fa-plus"></i> @Localizer["Add Field"]
         </button>
         <div class="text-muted">
-            <i class="fas fa-info-circle"></i> Drag fields to reorder. Drag outside to delete.
+            <i class="fas fa-info-circle"></i> @Localizer["Drag fields to reorder. Drag outside to delete."]
         </div>
     </div>
 
@@ -45,7 +49,7 @@
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <h5 class="mb-0">
                             <i class="fas fa-grip-vertical text-muted me-2"></i>
-                            Field #@(i + 1)
+                            @Localizer["Field"] #@(i + 1)
                         </h5>
                         <span class="badge bg-secondary">@element.Type</span>
                     </div>
@@ -53,14 +57,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Field Name</label>
+                                <label>@Localizer["Field Name"]</label>
                                 <input name="Elements[@i].Name" value="@element.Name" class="form-control" required />
                                 <span class="text-danger field-validation"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Field Type</label>
+                                <label>@Localizer["Field Type"]</label>
                                 <select name="Elements[@i].Type" class="form-control type-select">
                                     @foreach (var t in Enum.GetValues(typeof(CustomFieldType)))
                                     {
@@ -72,14 +76,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Description</label>
+                        <label>@Localizer["Description"]</label>
                         <textarea name="Elements[@i].Description" class="form-control" rows="2">@element.Description</textarea>
                     </div>
 
                     <div class="form-check mb-2">
                         <input type="checkbox" name="Elements[@i].ShowInTableView" value="true"
                                class="form-check-input" checked="@element.ShowInTableView" />
-                        <label class="form-check-label">Show in Table View</label>
+                        <label class="form-check-label">@Localizer["Show in Table View"]</label>
                     </div>
 
                     <div class="type-desc text-muted small"></div>
@@ -90,7 +94,7 @@
 
     <div class="mt-3">
         <button type="submit" class="btn btn-success">
-            <i class="fas fa-save"></i> Save Changes
+            <i class="fas fa-save"></i> @Localizer["Save Changes"]
         </button>
     </div>
 </form>

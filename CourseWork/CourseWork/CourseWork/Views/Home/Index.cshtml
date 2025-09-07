@@ -6,10 +6,13 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="container my-4">
-    <h1 class="mb-4">Welcome, @User.Identity?.Name</h1>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-    <h2 class="mb-3">🔥 Popular Inventories</h2>
+<div class="container my-4">
+    <h1 class="mb-4">@Localizer["Welcome"], @User.Identity?.Name</h1>
+
+    <h2 class="mb-3">🔥 @Localizer["Popular Inventories"]</h2>
     @if (Model.PopularInventories.Any())
     {
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
@@ -24,7 +27,7 @@
                         else
                         {
                             <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height:200px;">
-                                <span class="text-muted">No photo</span>
+                                <span class="text-muted">@Localizer["No photo"]</span>
                             </div>
                         }
 
@@ -36,11 +39,11 @@
                             </h5>
 
                             <p class="text-muted mb-1">
-                                Category: <strong>@inv.Inventory.Category?.Name</strong>
+                                @Localizer["Category"]: <strong>@inv.Inventory.Category?.Name</strong>
                             </p>
 
                             <p class="text-muted mb-2">
-                                Tags:
+                                @Localizer["Tags"]:
                                 @if (inv.Inventory.InventoryTags.Any())
                                 {
                                     @string.Join(", ", inv.Inventory.InventoryTags.Select(t => t.Tag.Name))
@@ -52,13 +55,13 @@
                             </p>
 
                             <p class="card-text mt-auto">
-                                @(!string.IsNullOrEmpty(inv.Inventory.Description) ? inv.Inventory.Description : "No description")
+                                @(!string.IsNullOrEmpty(inv.Inventory.Description) ? inv.Inventory.Description : @Localizer["No description"].Value)
                             </p>
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">👍 Likes: @inv.LikesCount</small>
-                            <small class="text-muted">📅 Created: @inv.Inventory.CreatedAt.ToString("g")</small>
+                            <small class="text-muted">👍 @Localizer["Likes"]: @inv.LikesCount</small>
+                            <small class="text-muted">📅 @Localizer["Created"]: @inv.Inventory.CreatedAt.ToString("g")</small>
                         </div>
                     </div>
                 </div>
@@ -67,10 +70,10 @@
     }
     else
     {
-        <p>No popular inventories yet.</p>
+        <p>@Localizer["No popular inventories yet"].</p>
     }
 
-    <h2 class="mb-3">🆕 Latest Inventories</h2>
+    <h2 class="mb-3">🆕 @Localizer["Latest Inventories"]</h2>
     @if (Model.LatestInventories.Any())
     {
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -85,7 +88,7 @@
                         else
                         {
                             <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height:200px;">
-                                <span class="text-muted">No photo</span>
+                                <span class="text-muted">@Localizer["No photo"]</span>
                             </div>
                         }
 
@@ -97,11 +100,11 @@
                             </h5>
 
                             <p class="text-muted mb-1">
-                                Category: <strong>@inv.Category?.Name</strong>
+                                @Localizer["Category"]: <strong>@inv.Category?.Name</strong>
                             </p>
 
                             <p class="text-muted mb-2">
-                                Tags:
+                                @Localizer["Tags"]:
                                 @if (inv.InventoryTags.Any())
                                 {
                                     @string.Join(", ", inv.InventoryTags.Select(t => t.Tag.Name))
@@ -113,12 +116,12 @@
                             </p>
 
                             <p class="card-text mt-auto">
-                                @(!string.IsNullOrEmpty(inv.Description) ? inv.Description : "No description")
+                                @(!string.IsNullOrEmpty(inv.Description) ? inv.Description : @Localizer["No description"].Value)
                             </p>
                         </div>
 
                         <div class="card-footer">
-                            <small class="text-muted">📅 Created: @inv.CreatedAt.ToString("g")</small>
+                            <small class="text-muted">📅 @Localizer["Created"]: @inv.CreatedAt.ToString("g")</small>
                         </div>
                     </div>
                 </div>
@@ -127,6 +130,6 @@
     }
     else
     {
-        <p>No inventories created yet.</p>
+        <p>@Localizer["No inventories created yet"].</p>
     }
 </div>

@@ -117,22 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="Logout" xml:space="preserve">
+    <value>Выход</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="Items" xml:space="preserve">
+    <value>Элементы</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="Chat" xml:space="preserve">
+    <value>Чат</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="Access Control" xml:space="preserve">
+    <value>Управление доступом</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="Custom ID" xml:space="preserve">
+    <value>Настраиваемый индекс</value>
+  </data>
+  <data name="Custom Fields" xml:space="preserve">
+    <value>Настраиваемые поля</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="My Inventories" xml:space="preserve">
+    <value>Мои инвентари</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вход</value>
   </data>
 </root>

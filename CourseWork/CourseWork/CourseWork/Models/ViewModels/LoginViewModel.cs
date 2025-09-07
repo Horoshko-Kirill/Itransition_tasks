@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Humanizer.Localisation;
 
 namespace CourseWork.Models.ViewModels
 {
@@ -11,7 +12,7 @@ namespace CourseWork.Models.ViewModels
 
         [Required(ErrorMessage = "Input password")]
         [DataType(DataType.Password)]
-        public string Password { get; set; } 
+        public string Password { get; set; }
 
         public bool RememberMe { get; set; }
 

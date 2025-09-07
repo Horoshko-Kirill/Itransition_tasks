@@ -1,11 +1,13 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using CourseWork.Models.ViewModels;
 @model UserViewModel;
-
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Profile";
 }
+
 
 <div class="container my-5 d-flex justify-content-center">
     <div class="card shadow-lg p-5" style="width: 100%; max-width: 500px; border-radius: 1.5rem;">
@@ -18,7 +20,7 @@
             else
             {
                 <div class="rounded-circle bg-light border border-3 border-secondary d-flex align-items-center justify-content-center" style="width:180px; height:180px;">
-                    <span class="text-muted">No Avatar</span>
+                    <span class="text-muted">@Localizer["No Avatar"]</span>
                 </div>
             }
         </div>
@@ -31,10 +33,10 @@
 
         <form asp-action="UpdatePhoto" method="post" enctype="multipart/form-data" class="mb-3">
             <input type="file" name="newPhoto" accept="image/*" class="form-control mb-2" />
-            <button type="submit" class="btn btn-outline-primary w-100">Update Avatar</button>
+            <button type="submit" class="btn btn-outline-primary w-100">@Localizer["Update Avatar"]</button>
         </form>
 
-        <a asp-action="Edit" class="btn btn-primary w-100 mb-3">Edit Profile</a>
+        <a asp-action="Edit" class="btn btn-primary w-100 mb-3">@Localizer["Edit Profile"]</a>
 
         @if (TempData["SuccessMessage"] != null)
         {

@@ -117,22 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="Welcom" xml:space="preserve">
+    <value>Welcom</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
+  <data name="Popular Inventories" xml:space="preserve">
+    <value>Popular Inventories</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="No photo" xml:space="preserve">
+    <value>No photo</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="No description" xml:space="preserve">
+    <value>No description</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="Likes" xml:space="preserve">
+    <value>Likes</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="No popular inventories yet" xml:space="preserve">
+    <value>No popular inventories yet</value>
+  </data>
+  <data name="Latest Inventories" xml:space="preserve">
+    <value>Latest Inventories</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="No inventories created yet" xml:space="preserve">
+    <value>No inventories created yet</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
   </data>
 </root>

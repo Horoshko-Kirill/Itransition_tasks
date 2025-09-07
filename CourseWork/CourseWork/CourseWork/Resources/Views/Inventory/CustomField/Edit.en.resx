@@ -117,22 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
+  <data name="Drag fields to reorder. Drag outside to delete." xml:space="preserve">
+    <value>Drag fields to reorder. Drag outside to delete.</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
+  <data name="Field Name" xml:space="preserve">
+    <value>Field Name</value>
   </data>
-  <data name="Without authorization" xml:space="preserve">
-    <value>Вход без регистрации</value>
+  <data name="Field" xml:space="preserve">
+    <value>Field</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="Field Type" xml:space="preserve">
+    <value>Field Type</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="Show in Table View" xml:space="preserve">
+    <value>Show in Table View</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Custom Fields" xml:space="preserve">
+    <value>Custom Fields</value>
+  </data>
+  <data name="Add Field" xml:space="preserve">
+    <value>Add Field</value>
   </data>
 </root>
