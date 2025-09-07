@@ -10,8 +10,8 @@
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="Id" />
 
-    <h3>Elements</h3>
-    <button type="button" id="add-element" class="btn btn-sm btn-outline-secondary mb-2">Add element</button>
+    <h3>@Localizer["Elements"]</h3>
+    <button type="button" id="add-element" class="btn btn-sm btn-outline-secondary mb-2">@Localizer["Add element"]</button>
 
     <ul id="elements-list">
         @if (Model.Elements != null)
@@ -43,10 +43,10 @@
         }
     </ul>
 
-    <h3 class="mt-3">Preview</h3>
+    <h3 class="mt-3">@Localizer["Preview"]</h3>
     <div id="preview" class="p-2 rounded mb-3"></div>
 
-    <button type="submit" class="btn btn-success">Save Changes</button>
+    <button type="submit" class="btn btn-success">@Localizer["Save Changes"]</button>
 </form>
 
 @section Scripts {
@@ -63,15 +63,16 @@
             let wasDraggedOut = false;
 
             const typeDescriptions = {
-                FixedText: "You can enter any text or Emoji",
-                Random6Digit: "Random 6-digit number",
-                Random9Digit: "Random 9-digit number",
-                Random20Bit: "Random string of 5 characters",
-                Random32Bit: "Random string of 9 characters",
-                Guid: "GUID example: 00000000-0000-0000-0000-000000000000",
-                DateTime: "Date format (e.g., yyyy, MM, dd)",
-                Sequence: "Sequence format (e.g., D3, D8)"
-            };
+                FixedText: @Html.Raw(Json.Serialize(Localizer["You can enter any text or Emoji"].Value)),
+                Random6Digit: @Html.Raw(Json.Serialize(Localizer["Random 6-digit number"].Value)),
+                Random9Digit: @Html.Raw(Json.Serialize(Localizer["Random 9-digit number"].Value)),
+                Random20Bit: @Html.Raw(Json.Serialize(Localizer["Random string of 5 characters"].Value)),
+                Random32Bit: @Html.Raw(Json.Serialize(Localizer["Random string of 9 characters"].Value)),
+                Guid: @Html.Raw(Json.Serialize(Localizer["GUID example: 00000000-0000-0000-0000-000000000000"].Value)),
+                DateTime: @Html.Raw(Json.Serialize(Localizer["Date format (e.g., yyyy, MM, dd)"].Value)),
+                Sequence: @Html.Raw(Json.Serialize(Localizer["Sequence format (e.g., D3, D8)"].Value))
+                 };
+
 
             function generateValue(type) {
                 switch(type){

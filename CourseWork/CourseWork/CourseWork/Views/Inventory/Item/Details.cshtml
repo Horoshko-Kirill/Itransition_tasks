@@ -1,0 +1,58 @@
+﻿@model CourseWork.Models.Item
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_InventoryLayout";
+}
+
+<div class="container mt-3">
+    <h3>@Model.Name</h3>
+
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <div class="mb-3">
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded shadow-sm" style="max-height:300px;" />
+        </div>
+    }
+
+    <dl class="row">
+        <dt class="col-sm-3">@Localizer["Custom ID"]</dt>
+        <dd class="col-sm-9">@Model.CustomId</dd>
+
+        <dt class="col-sm-3">@Localizer["Description"]</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">@Localizer["Created At"]</dt>
+        <dd class="col-sm-9">@Model.CreatedAt.ToLocalTime()</dd>
+
+        <dt class="col-sm-3">@Localizer["Updated At"]</dt>
+        <dd class="col-sm-9">@Model.UpdatedAt.ToLocalTime()</dd>
+    </dl>
+
+    <h5>@Localizer["Custom Fields"]</h5>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Localizer["Field Name"]</th>
+                <th>@Localizer["Value"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var field in Model.CustomFieldValues.OrderBy(c => c.CustomField.DisplayOrder))
+            {
+                <tr>
+                    <td>@field.CustomField.Name</td>
+                    <td>@field.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Items" asp-route-inventoryId="@Model.InventoryId" class="btn btn-secondary">
+        @Localizer["Back to list"]
+    </a>
+</div>

@@ -9,19 +9,19 @@
     ViewData["Title"] = "Custom ID";
 }
 
-<h2>Custom ID Format</h2>
+<h2>@Localizer["Custom ID Format"]</h2>
 
 @{
     var typeDescriptions = new Dictionary<string, string>
     {
-        { "FixedText", "You can enter any text or Emoji" },
-        { "Random6Digit", "Random 6-digit number" },
-        { "Random9Digit", "Random 9-digit number" },
-        { "Random20Bit", "Random string of 5 characters" },
-        { "Random32Bit", "Random string of 9 characters" },
-        { "Guid", "GUID format" },
-        { "DateTime", "Date format (e.g., yyyy, MM, dd)" },
-        { "Sequence", "Sequence format (e.g., D3, D8)" }
+        { "FixedText", Localizer["You can enter any text or Emoji"].Value },
+        { "Random6Digit", Localizer["Random 6-digit number"].Value },
+        { "Random9Digit", Localizer["Random 9-digit number"].Value },
+        { "Random20Bit", Localizer["Random string of 5 characters"].Value },
+        { "Random32Bit", Localizer["Random string of 9 characters"].Value },
+        { "Guid", Localizer["GUID format"].Value },
+        { "DateTime", Localizer["Date format (e.g., yyyy, MM, dd)"].Value },
+        { "Sequence", Localizer["Sequence format (e.g., D3, D8)"].Value }
     };
 
     string preview = Model.Elements != null
@@ -34,10 +34,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Order</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Format</th>
+                <th>@Localizer["Order"]</th>
+                <th>@Localizer["Type"]</th>
+                <th>@Localizer["Description"]</th>
+                <th>@Localizer["Format"]</th>
             </tr>
         </thead>
         <tbody>
@@ -54,8 +54,8 @@
         </tbody>
     </table>
 
-    <h3>Preview</h3>
+    <h3>@Localizer["Preview"]</h3>
     <div>@preview</div>
 }
 
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">@Localizer["Edit"]</a>

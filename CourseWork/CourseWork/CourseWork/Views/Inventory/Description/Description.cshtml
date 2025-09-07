@@ -28,20 +28,20 @@
             else
             {
                 <div class="bg-light text-muted rounded d-flex align-items-center justify-content-center" style="width:300px; height:300px; margin:auto;">
-                    No photo
+                    @Localizer["No photo"]
                 </div>
             }
         </div>
 
         <div class="mb-3">
-            <strong>Description:</strong>
+            <strong>@Localizer["Description"]:</strong>
             <p>@Model.Description</p>
         </div>
 
         @if (!string.IsNullOrEmpty(ViewBag.TagString))
         {
             <div class="mb-3">
-                <strong>Tags:</strong>
+                <strong>@Localizer["Tags"]:</strong>
                 <p>@ViewBag.TagString</p>
             </div>
         }
@@ -50,13 +50,13 @@
             <form asp-controller="InventoryLikes" asp-action="ToggleLike" method="post" class="d-inline">
                 <input type="hidden" name="inventoryId" value="@Model.Id" />
                 <button type="submit" class="btn @(hasLiked ? "btn-danger" : "btn-primary")">
-                    @(hasLiked ? "Unlike" : "Like") (@likeCount)
+                    @(hasLiked ? @Localizer["Unlike"].Value : @Localizer["Like"].Value) (@likeCount)
                 </button>
             </form>
 
             @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin"))
             {
-                <a asp-action="EditDescription" asp-route-inventoryId="@Model.Id" class="btn btn-secondary ms-2">Edit</a>
+                <a asp-action="EditDescription" asp-route-inventoryId="@Model.Id" class="btn btn-secondary ms-2">@Localizer["Edit"]</a>
             }
         </div>
     </div>

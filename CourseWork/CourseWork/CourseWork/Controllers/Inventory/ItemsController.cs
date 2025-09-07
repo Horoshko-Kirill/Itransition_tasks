@@ -436,5 +436,40 @@ namespace CourseWork.Controllers.Inventory
             return RedirectToAction("Items", new { inventoryId });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var item = await _context.Items
+                .Include(i => i.CustomFieldValues)
+                .ThenInclude(cfv => cfv.CustomField)
+                .FirstOrDefaultAsync(i => i.Id == id);
+
+            if (item == null)
+                return NotFound();
+
+            var inventory = await _context.Inventories
+                .Include(i => i.Permissions)
+                .FirstOrDefaultAsync(i => i.Id == item.InventoryId);
+
+            SetInventoryViewData(inventory.Id, inventory.Name);
+
+            var currentUserId = _userManager.GetUserId(User);
+            if (currentUserId == inventory.CreatorId)
+            {
+                ViewBag.IsCreator = true;
+            }
+
+            ViewBag.isPublic = inventory.isPublic;
+
+            var userId = _userManager.GetUserId(User);
+            bool hasWritePermission = inventory.Permissions
+             .Any(p => p.UserId == userId && p.HaveWriteAccess);
+
+            ViewBag.CanEdit = hasWritePermission;
+
+            return View("~/Views/Inventory/Item/Details.cshtml", item);
+        }
+
+
     }
 }

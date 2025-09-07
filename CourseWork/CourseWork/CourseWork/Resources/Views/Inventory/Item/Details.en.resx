@@ -117,37 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>Добро пожаловать</value>
+  <data name="Custom ID" xml:space="preserve">
+    <value>Custom ID</value>
   </data>
-  <data name="Popular Inventories" xml:space="preserve">
-    <value>Популярные инвентари</value>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="No photo" xml:space="preserve">
-    <value>Нет фото</value>
+  <data name="Created At" xml:space="preserve">
+    <value>Created At</value>
   </data>
-  <data name="No description" xml:space="preserve">
-    <value>Нет описания</value>
+  <data name="Updated At" xml:space="preserve">
+    <value>Updated At</value>
   </data>
-  <data name="Likes" xml:space="preserve">
-    <value>Лайки</value>
+  <data name="Custom Fields" xml:space="preserve">
+    <value>Custom Fields</value>
   </data>
-  <data name="Created" xml:space="preserve">
-    <value>Создан</value>
+  <data name="Field Name" xml:space="preserve">
+    <value>Field Name</value>
   </data>
-  <data name="No popular inventories yet" xml:space="preserve">
-    <value>Еще нет популярных инвенторей</value>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
   </data>
-  <data name="Latest Inventories" xml:space="preserve">
-    <value>Последние инвентари</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Категория</value>
-  </data>
-  <data name="No inventories created yet" xml:space="preserve">
-    <value>Еще нет созданных инвентарей</value>
-  </data>
-  <data name="Tags" xml:space="preserve">
-    <value>Теги</value>
+  <data name="Back to list" xml:space="preserve">
+    <value>Back to list</value>
   </data>
 </root>

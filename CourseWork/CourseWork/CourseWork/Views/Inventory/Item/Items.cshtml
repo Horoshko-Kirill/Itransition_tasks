@@ -18,13 +18,13 @@
 }
 
 <div class="container my-4">
-    <h2 class="mb-4">Items</h2>
+    <h2 class="mb-4">@Localizer["Items"]</h2>
 
     @if ((ViewBag.isCreator ?? false) || User.IsInRole("Admin") || (ViewBag.isPublic ?? false) || (ViewBag.CanEdit ?? false))
     {
         <div class="mb-3 d-flex flex-wrap gap-2">
-            <a asp-action="Create" asp-route-inventoryId="@inventoryId" class="btn btn-success">Add Item</a>
-            <button id="deleteSelected" class="btn btn-danger">Delete Selected</button>
+            <a asp-action="Create" asp-route-inventoryId="@inventoryId" class="btn btn-success">@Localizer["Add Item"]</a>
+            <button id="deleteSelected" class="btn btn-danger">@Localizer["Delete Selected"]</button>
         </div>
     }
 
@@ -39,15 +39,15 @@
                         {
                             <th><input type="checkbox" id="selectAll" /></th>
                         }
-                        <th>Photo</th>
-                        <th>Custom ID</th>
-                        <th>Name</th>
+                        <th>@Localizer["Photo"]</th>
+                        <th>@Localizer["Custom ID"]</th>
+                        <th>@Localizer["Name"]</th>
                         @foreach (var field in tableFields)
                         {
                             <th>@field.Name</th>
                         }
-                        <th>Created at</th>
-                        <th>Updated at</th>
+                        <th>@Localizer["Created at"]</th>
+                        <th>@Localizer["Updated at"]</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,13 +72,14 @@
                                         {
                                             <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center rounded"
                                                  style="width:60px; height:60px;">
-                                                No photo
+                                                @Localizer["No photo"]"
                                             </div>
                                         }
                                     </a>
                                 }
                                 else
                                 {
+                                    <a asp-action="Details" asp-route-id="@item.Id">
                                     @if (!string.IsNullOrEmpty(item.ImageUrl))
                                     {
                                         <img src="@item.ImageUrl" alt="Photo" class="rounded" style="width:60px;height:60px;object-fit:cover;" />
@@ -87,9 +88,10 @@
                                     {
                                         <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center rounded"
                                              style="width:60px; height:60px;">
-                                            No photo
+                                            @Localizer["No photo"]
                                         </div>
                                     }
+                                    </a>
                                 }
 
                             </td>
@@ -100,7 +102,7 @@
                                 }
                                 else
                                 {
-                                    @item.CustomId
+                                    <a asp-action="Details" asp-route-id="@item.Id">@item.CustomId</a>
                                 }
                             </td>
                             <td>@item.Name</td>

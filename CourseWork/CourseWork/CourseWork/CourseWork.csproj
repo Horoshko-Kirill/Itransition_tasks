@@ -32,12 +32,4 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Resources\Views\Inventory\CustomId\" />
-    <Folder Include="Resources\Views\Inventory\Description\" />
-    <Folder Include="Resources\Views\Inventory\Item\" />
-    <Folder Include="Resources\Views\Inventory\Permissions\" />
-    <Folder Include="Resources\Views\Inventory\Reviews\" />
-  </ItemGroup>
-
 </Project>

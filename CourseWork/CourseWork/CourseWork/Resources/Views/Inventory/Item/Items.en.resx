@@ -117,37 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>Добро пожаловать</value>
+  <data name="Items" xml:space="preserve">
+    <value>Items</value>
   </data>
-  <data name="Popular Inventories" xml:space="preserve">
-    <value>Популярные инвентари</value>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="Created at" xml:space="preserve">
+    <value>Created at</value>
+  </data>
+  <data name="Updated at" xml:space="preserve">
+    <value>Updated at</value>
   </data>
   <data name="No photo" xml:space="preserve">
-    <value>Нет фото</value>
+    <value>No photo</value>
   </data>
-  <data name="No description" xml:space="preserve">
-    <value>Нет описания</value>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="Likes" xml:space="preserve">
-    <value>Лайки</value>
+  <data name="Custom ID" xml:space="preserve">
+    <value>Custom ID</value>
   </data>
-  <data name="Created" xml:space="preserve">
-    <value>Создан</value>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
-  <data name="No popular inventories yet" xml:space="preserve">
-    <value>Еще нет популярных инвенторей</value>
+  <data name="Add Item" xml:space="preserve">
+    <value>Add Item</value>
   </data>
-  <data name="Latest Inventories" xml:space="preserve">
-    <value>Последние инвентари</value>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>Категория</value>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
   </data>
-  <data name="No inventories created yet" xml:space="preserve">
-    <value>Еще нет созданных инвентарей</value>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
   </data>
-  <data name="Tags" xml:space="preserve">
-    <value>Теги</value>
+  <data name="(filtered from MAX total entries)" xml:space="preserve">
+    <value>(filtered from MAX total entries)</value>
+  </data>
+  <data name="No matching records found" xml:space="preserve">
+    <value>No matching records found</value>
+  </data>
+  <data name="Show MENU entries" xml:space="preserve">
+    <value>Show MENU entries</value>
+  </data>
+  <data name="Showing START to END of TOTAL entries" xml:space="preserve">
+    <value>Showing START to END of TOTAL entries</value>
+  </data>
+  <data name="No entries to show" xml:space="preserve">
+    <value>No entries to show</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Delete Selected</value>
   </data>
 </root>
