@@ -13,12 +13,14 @@ namespace CourseWork.Controllers
 
         private readonly UserManager<User> _userManager;
         private readonly DropboxService _dropboxService;
+        private readonly SalesforceService _salesforce;
 
 
-        public UserController(UserManager<User> userManager, DropboxService dropboxService)
+        public UserController(UserManager<User> userManager, DropboxService dropboxService, SalesforceService salesforce)
         {
             _userManager = userManager;
             _dropboxService = dropboxService;
+            _salesforce = salesforce;
         }
 
         [HttpGet]
@@ -32,6 +34,7 @@ namespace CourseWork.Controllers
 
             var model = new UserViewModel
             {
+                SalesForce = user.SalesForce,
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
@@ -164,5 +167,100 @@ namespace CourseWork.Controllers
             TempData["SuccessMessage"] = "Profile update successful!";
             return RedirectToAction(nameof(Profile));
         }
+
+        [HttpGet("ExportToCRM")]
+        public async Task<IActionResult> ExportToCRM()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return NotFound();
+
+            var model = new ExportToCrmViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+
+            return View(model);
+        }
+
+        [HttpPost("ExportToCRM")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ExportToCRM(ExportToCrmViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            try
+            {
+                var user = !string.IsNullOrEmpty(model.UserId)
+                    ? await _userManager.FindByIdAsync(model.UserId)
+                    : await _userManager.GetUserAsync(User);
+
+                if (user == null) return NotFound();
+
+                var result = await _salesforce.CreateAccountAndContactAsync(
+                    model.CompanyName ?? "Default Company",
+                    user.FirstName,
+                    user.LastName,
+                    user.Email
+                );
+
+                TempData["SuccessMessage"] = "Data add to CRM!";
+                ViewBag.Result = result;
+
+                user.SalesForce = true;
+                await _userManager.UpdateAsync(user);
+
+                return View("ExportToCRMResult");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Error Salesforce: {ex.Message}";
+                return View(model);
+            }
+        }
+
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ProfileById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            var model = new UserViewModel
+            {
+                SalesForce = user.SalesForce,
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhotoUrl = user.PhotoUrl
+            };
+
+            ViewBag.Id = user.Id;
+
+            return View("Profile", model);
+        }
+
+        [HttpGet("ExportToCRM/{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ExportToCRMById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            var model = new ExportToCrmViewModel
+            {
+                UserId = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+
+            return View("ExportToCRM", model);
+        }
+
     }
 }

@@ -10,6 +10,8 @@ namespace CourseWork.Models
         public string? DropboxPath { get; set; }
         public string? PhotoUrl { get; set; }
         public bool IsBlocked { get; set; }
+        
+        public bool? SalesForce { get; set; }
         public DateTime LastVisit { get; set; }
 
         public ICollection<Inventory> OwnedInventories { get; set; }

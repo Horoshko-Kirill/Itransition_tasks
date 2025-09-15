@@ -43,8 +43,8 @@
                     {
                         <tr>
                             <td><input type="checkbox" name="selectedIds" value="@user.Id" /></td>
-                            <td>@user.UserName</td>
-                            <td>@user.Email</td>
+                            <td>@user.FirstName</td>
+                            <td><a class="text-primary" asp-controller="User" asp-action="ProfileById" asp-route-id="@user.Id">@user.Email</a></td>
                             @{
                                 TimeSpan? ago = user.LastVisit == default ? (TimeSpan?)null : DateTime.UtcNow - user.LastVisit;
                             }

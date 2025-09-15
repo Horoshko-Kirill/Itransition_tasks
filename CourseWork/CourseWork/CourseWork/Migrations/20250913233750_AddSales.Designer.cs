@@ -3,6 +3,7 @@ using System;
 using CourseWork.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CourseWork.Migrations
 {
     [DbContext(typeof(CourseWorkDbContext))]
-    partial class CourseWorkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250913233750_AddSales")]
+    partial class AddSales
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -474,8 +477,13 @@ namespace CourseWork.Migrations
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("text");
 
-                    b.Property<bool?>("SalesForce")
-                        .HasColumnType("boolean");
+                    b.Property<string>("SalesforceAccountId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SalesforceContactId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");

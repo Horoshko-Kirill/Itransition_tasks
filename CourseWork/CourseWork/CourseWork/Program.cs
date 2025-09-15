@@ -50,6 +50,8 @@ builder.Services.AddControllersWithViews(options =>
     options.Filters.AddService<CheckBlockedAttribute>();
 });
 
+builder.Services.AddHttpClient<SalesforceService>();
+
 
 var app = builder.Build();
 

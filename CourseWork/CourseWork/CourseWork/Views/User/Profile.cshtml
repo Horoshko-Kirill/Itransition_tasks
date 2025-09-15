@@ -38,14 +38,42 @@
 
         <a asp-action="Edit" class="btn btn-primary w-100 mb-3">@Localizer["Edit Profile"]</a>
 
+
+        @if (User.IsInRole("Admin"))
+        {
+            if (Model.SalesForce == true)
+        {
+                <button class="btn btn-secondary w-100 mb-3" disabled>
+                    @Localizer["User already in CRM"]
+                </button>
+            }
+            else
+            {
+                <a asp-action="ExportToCRMById" asp-route-id="@ViewBag.Id" class="btn btn-success w-100 mb-3">
+                    @Localizer["Export to CRM"]
+                </a>
+            }
+        }
+        else
+        {
+            if (Model.SalesForce == true)
+            {
+                <button class="btn btn-secondary w-100 mb-3" disabled>
+                    @Localizer["You are already in CRM"]
+                </button>
+            }
+            else
+            {
+                <a asp-action="ExportToCRM" class="btn btn-success w-100 mb-3">
+                    @Localizer["Export to CRM"]
+                </a>
+            }
+        }
+
+
         @if (TempData["SuccessMessage"] != null)
         {
             <div class="alert alert-success mt-3">@TempData["SuccessMessage"]</div>
-        }
-
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger mt-3">@TempData["ErrorMessage"]</div>
         }
     </div>
 </div>

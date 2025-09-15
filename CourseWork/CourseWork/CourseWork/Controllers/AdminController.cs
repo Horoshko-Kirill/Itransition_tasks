@@ -7,6 +7,7 @@ using CourseWork.Models;
 using Microsoft.EntityFrameworkCore;
 using CourseWork.Services;
 using Dropbox.Api.Team;
+using CourseWork.Models.ViewModels;
 
 namespace CourseWork.Controllers
 {
@@ -110,5 +111,25 @@ namespace CourseWork.Controllers
             TempData["Message"] = $"Action '{action}' completed.";
             return RedirectToAction("AdminPage");
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ProfileById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            var model = new UserViewModel
+            {
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhotoUrl = user.PhotoUrl
+            };
+
+            return View("Profile", model);
+        }
+
     }
 }
